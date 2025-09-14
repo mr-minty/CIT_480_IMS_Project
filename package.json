@@ -1,0 +1,24 @@
+{
+  "name": "cit_480_ims_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mr-minty/CIT_480_IMS_Project.git"
+  },
+  "author": "Carter Wood",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mr-minty/CIT_480_IMS_Project/issues"
+  },
+  "homepage": "https://github.com/mr-minty/CIT_480_IMS_Project#readme",
+  "dependencies": {
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0"
+  }
+}
