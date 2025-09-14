@@ -44,7 +44,7 @@
 1. `cd "Project_Folder"`: Enter your local project folder/repo
 2. `git pull`: Sync your local repo with the latest changes
 3. Make any changes to files, Add files, assets, etc.
-4. `git add .`: Add all the files I changed to the next commit
+4. `git add .`: Add all the files you changed to the next commit
 5. `git commit -m "my changes"`: Local commit, updating your Project folder with the changes, optionally comment what you changed/added
 6. `git push`: This pushes the changes you've made 
 
