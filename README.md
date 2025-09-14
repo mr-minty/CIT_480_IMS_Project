@@ -24,5 +24,18 @@
 ## Contributing to the project:
 
 ### Helpful commands
-- Copy all current data from repo before starting work
-    -`git pull 
+>[!IMPORTANT]
+>You must run `git pull` *before* making any changes to the project.
+
+`git pull` or `git pull origin main`
+- Ensures your local repo is up-to-date with the remote repo (this repo)
+
+`git add .`
+- Add all files youu've made changes to to the next commit
+
+`git commit -m "my changes"`
+- Make a local commit which adds your changed files to your local repo
+
+`git push`
+- Copy your local repo to the remote repo (this repo) 
+
