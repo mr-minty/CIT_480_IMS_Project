@@ -1,6 +1,8 @@
 
 # Project Information
 
+>[!CAUTION]
+>Do not clone this repository into networked or cloud-synced folders (e.g., Google Drive, OneDrive). Pushing commits from such locations can corrupt the repository. Use a local folder instead.
 ## Requred tools
 
 -Git: https://git-scm.com/downloads/win  
