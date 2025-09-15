@@ -1,4 +1,10 @@
 
+# Web Based Inventory Management System (IMS)
+
+### Project Description
+We are buiding a responsive, dynamic web-based application to be used as an inventory management system by single location food/produce retailers.  
+Project duration is 32 weeks.  
+
 # Project Information
 
 >[!CAUTION]
@@ -13,7 +19,7 @@
 1. Install git, make sure it works by running `git -v`
 2. Navigate to the directory you want to clone the repo inside
 3. Run `git clone https://github.com/mr-minty/CIT_480_IMS_Project`
-4. You should now see a dir called 'CIT_480_IMS_Project' in your current dir
+4. You should now see a directory called 'CIT_480_IMS_Project' in your current directory
 
 ## Run the Node.js app locally
 1. Install Node.js, make sure it works by running `node -v`
@@ -27,17 +33,17 @@
 >[!IMPORTANT]
 >You must run `git pull` *before* making any changes to the project.
 
-`git pull` or `git pull origin main`
-- Ensures your local repo is up-to-date with the remote repo (this repo)
+`git pull` or `git pull origin main`:  
+Ensures your local repo is up-to-date with the remote repo (this repo)
 
-`git add .`
-- Add all files youu've made changes to to the next commit
+`git add .`:  
+Add all files you've made changes to to the next commit
 
-`git commit -m "my changes"`
-- Make a local commit which adds your changed files to your local repo
+`git commit -m "my changes"`:  
+Create a local commit that records your changes. Optionally, replace "my changes" with a short description of what you updated
 
-`git push`
-- Copy your local repo to the remote repo (this repo)
+`git push`:  
+Copy your local repo to the remote repo (this repo)
 
 ### Typical workflow
 
@@ -48,7 +54,7 @@
 5. `git commit -m "my changes"`: Local commit, updating your Project folder with the changes, optionally comment what you changed/added
 6. `git push`: This pushes the changes you've made 
 
-### Web app file stucture and folder descriptions
+### Web app file structure and folder descriptions
 
 Being specific, we're using the following tools:  
 - Node.js with Express framework as our backend.
@@ -67,7 +73,7 @@ ims-app/
   views/              - EJS templates for server-side rendering
   public/             - Static files (images, CSS, client-side JS)
   tests/              - Automated tests
-  server.js           - Application entry-point, handles site routing
+  server.js           - Application entry point, handles site routing
   package.json        - Project metadata and dependencies
   README.md           - Documentation
 ```
