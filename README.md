@@ -2,7 +2,7 @@
 # Web Based Inventory Management System (IMS)
 
 ### Project Description
-We are buiding a responsive, dynamic web-based application to be used as an inventory management system by single location food/produce retailers.  
+We are buiding a responsive, dynamic, web-based application to be used as an inventory management system by single location food/produce retailers.  
 Project duration is 32 weeks.  
 
 # Project Information
