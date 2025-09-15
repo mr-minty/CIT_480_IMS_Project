@@ -5,8 +5,8 @@
 >Do not clone this repository into networked or cloud-synced folders (e.g., Google Drive, OneDrive). Pushing commits from such locations can corrupt the repository. Use a local folder instead.
 ## Required tools
 
--Git: https://git-scm.com/downloads/win  
--Node.js: https://nodejs.org/en/download/
+- Git: https://git-scm.com/downloads/win  
+- Node.js: https://nodejs.org/en/download/
 
 ## Clone this repo to a local folder on your device
 
@@ -48,3 +48,25 @@
 5. `git commit -m "my changes"`: Local commit, updating your Project folder with the changes, optionally comment what you changed/added
 6. `git push`: This pushes the changes you've made 
 
+### Web app file stucture and folder descriptions
+
+Being specific, we're using the following tools:  
+- Node.js with Express framework as our backend.
+- Embedded Javascript (EJS) for dynamic html pages
+- Bootstrap + CSS for styling components
+
+**File Structure and Folder Descriptions**
+```
+ims-app/
+  src/                - Main application source code
+    routes/           - Express route handlers
+    models/           - Database models (e.g., Users, Items, Orders)
+    controllers/      - Business logic between routes and models
+    middleware/       - Custom Express middleware
+    utils/            - Helper functions and utilities
+  views/              - EJS templates for server-side rendering
+  public/             - Static files (images, CSS, client-side JS)
+  tests/              - Automated tests
+  package.json        - Project metadata and dependencies
+  README.md           - Documentation
+```
