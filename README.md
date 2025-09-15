@@ -67,6 +67,7 @@ ims-app/
   views/              - EJS templates for server-side rendering
   public/             - Static files (images, CSS, client-side JS)
   tests/              - Automated tests
+  server.js           - Application entry-point, handles site routing
   package.json        - Project metadata and dependencies
   README.md           - Documentation
 ```
