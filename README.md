@@ -24,8 +24,9 @@ Project duration is 32 weeks.
 ## Run the Node.js app locally
 1. Install Node.js, make sure it works by running `node -v`
 2. Navigate to the CIT_480_IMS_Project directory
-3. Run the command 'node .'
-4. In a web browser, navigate to localhost:3000 and you should see "IMS Project is running 🚀"
+3. Run the command `npm install`, this will install all necessary dependencies
+4. Run the command `node .`
+5. In a web browser, navigate to localhost:3000 and you should see "IMS Project is running 🚀"
 
 ## Contributing to the project:
 
