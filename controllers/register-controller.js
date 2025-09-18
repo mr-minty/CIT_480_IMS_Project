@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const router = express.Router();
 const sqlite3 = require("sqlite3").verbose();
 const path = require("path");
-const dbPath = path.join(process.env.DB);
+const dbPath = process.env.DB;
 
 async function registerUser(req, res) {
   const { username, email, password } = req.body;

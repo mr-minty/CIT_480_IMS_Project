@@ -6,7 +6,7 @@ const path = require("path")
 const app = express()
 const port = process.env.PORT;
 
-const registerRouter = require("./routes/register-server.js");
+const registerRouter = require("./routes/register-route.js");
 const loginRouter = require("./routes/login-route.js");
 const dashboardRouter = require("./routes/dashboard-route.js");
 
