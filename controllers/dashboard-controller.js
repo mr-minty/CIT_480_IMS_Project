@@ -2,7 +2,8 @@ const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const path = require("path");
 
-const dbPath = path.join(process.env.DB);
+const dbPath = process.env.DB;
+
 function renderDashboard(req, res) {
   const userId = req.session.userId;
 

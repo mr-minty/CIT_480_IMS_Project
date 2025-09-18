@@ -4,7 +4,7 @@ const sqlite3 = require('sqlite3').verbose();
 const path = require("path");
 const bcrypt = require("bcrypt");
 
-const dbPath = path.join(process.env.DB);
+const dbPath = process.env.DB;
 
 async function loginUser(req, res) {
   const { username, password } = req.body;
