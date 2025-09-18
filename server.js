@@ -1,22 +1,58 @@
-//server.js
-
 require("dotenv").config();
-const app = require("./src/app");
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
+const express = require("express")
+const session = require("express-session");
+const path = require("path")
+const app = express()
+const port = process.env.PORT;
+
+const registerRouter = require("./routes/register-server.js");
+const loginRouter = require("./routes/login-route.js");
+const dashboardRouter = require("./routes/dashboard-route.js");
+
+//Set EJS as templating engine
+app.set('view engine', 'ejs');
+
+app.use(express.urlencoded({ extended: true })); // parses form submissions
+app.use(express.json()); // parses JSON payloads
+
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  cookie: { httpOnly: true }
+}));
+
+//Static Routes
+app.use(express.static(path.join(__dirname, "public")));
+
+//Routes
+app.use("/api/register", registerRouter);
+
+app.use("/api/login", loginRouter);
+
+app.use("/dashboard", dashboardRouter);
+
+app.get("/", (req, res) => {
+  res.render('index');
+});
+
+app.get("/login", (req, res) => {
+  res.render('login');
+});
+
+app.get("/create-account", (req, res) => {
+  res.render('create-account');
 });
 
 
-/*
---Make a first 'git commit'--
+//TEST ENDPOINT
 
-git init
-git add .
-git commit -m "Initial project skeleton"
-git branch -M main
-git remote add origin <your_repo_url>
-git push -u origin main
+app.get("/test", (req, res) => {
+  res.render('test');
+});
 
-*/
+//start server
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`)
+})

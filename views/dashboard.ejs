@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <!-- Link to your CSS files here 
+    <link rel="stylesheet" href="/css/style.css"> -->
+
+    <!-- Bootstrap call -->
+    <%- include("partials/bootstrap-call.ejs") %>
+</head>
+<body>
+    <%- include('partials/header') %> 
+
+    <main>
+        <!-- Your main content goes here -->
+        <h1>Welcome, <%= user.username %></h1>
+        <p><%= content %></p>
+    </main>
+
+    <%- include('partials/footer') %>
+
+    <!-- Link to your JavaScript files here 
+    <script src="/js/main.js"></script> -->
+</body>
+</html>

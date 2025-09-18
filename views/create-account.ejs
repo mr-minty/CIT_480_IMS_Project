@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="stylesheet" href="css/create-account.css">
+	<%- include("partials/bootstrap-call.ejs") %> 
+	<%- include("partials/fonts-call.ejs") %> 
+    <title>Document</title>
+</head>
+<body>
+     <%- include('partials/header') %> 
+	<form id="registerForm" method ="POST">
+	   <div class="create-account-header">
+		  <div class="create-account-title">Create your account</div>
+	   </div>
+	  <div class="mb-3">
+		<input type="text" class="form-control" name="username" placeholder="Username" required>
+		<p id="usernameError" style="color:red"></p>
+	  </div>
+	  <div class="mb-3">
+		<input type="text" class="form-control" name="email" placeholder="Email Address" required>
+		<p id="emailError" style="color:red"></p>
+	  </div>
+	  <div class="mb-3">
+		<input type="password" class="form-control" name="password" placeholder="Password" required>
+		<p id="passwordError" style="color:red"></p>
+	  </div>
+	  <div class="text-center">
+		<input type="submit" class="btn btn-primary w-50">
+	  </div>
+	</form>
+	  <%- include('partials/footer') %> 
+	<script src="/js/register-client.js" defer></script>
+</body>
+</html>

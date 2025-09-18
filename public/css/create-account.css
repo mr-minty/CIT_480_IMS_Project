@@ -1,0 +1,20 @@
+#registerForm {
+  min-width: 300px;
+  position: absolute;
+  text-align: left;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1rem;
+  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.create-account-header {
+  font-family: "Roboto", "Sans Serif";
+}
+
+.create-account-title {
+  font-size: 1.75rem;
+}
