@@ -5,7 +5,7 @@
 We are buiding a responsive, dynamic, web-based application to be used as an inventory management system by single location food/produce retailers.  
 Project duration is 32 weeks.  
 
-# Project Information
+# Setting Up the Project
 
 >[!CAUTION]
 >Do not clone this repository into networked or cloud-synced folders (e.g., Google Drive, OneDrive). Pushing commits from such locations can corrupt the repository. Use a local folder instead.
@@ -15,7 +15,6 @@ Project duration is 32 weeks.
 - Node.js: https://nodejs.org/en/download/
 
 ## Clone this repo to a local folder on your device
-
 1. Install git, make sure it works by running `git -v`
 2. Navigate to the directory you want to clone the repo inside
 3. Run `git clone https://github.com/mr-minty/CIT_480_IMS_Project`
@@ -28,7 +27,19 @@ Project duration is 32 weeks.
 4. Run the command `node .`
 5. In a web browser, navigate to localhost:3000 and you should see "IMS Project is running 🚀"
 
-## Contributing to the project:
+## Configure the .env file
+1. In your project folder do `copy .env.example .env` or create a blank text file titled '.env'
+2. Fill out environment vars from the following sources:  
+      -DB=[path of 'test.db' in your filesystem] (see next section)
+      -PORT=3000
+      -SESSION_SECRET=For testing you can put anything here, usually a long randomly generated string that you store somewhere
+
+## Download the sqlite3 database file (temporary)
+1. Download "test.db" from our Google Drive project folder
+2. Choose a path for test.db and copy that path into your .env file
+
+
+# Contributing to the project:
 
 ### Helpful commands
 >[!IMPORTANT]
