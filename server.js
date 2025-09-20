@@ -1,56 +1,6 @@
-require("dotenv").config();
+const app = require("./src/app.js");
 
-const express = require("express")
-const session = require("express-session");
-const path = require("path")
-const app = express()
 const port = process.env.PORT;
-
-const registerRouter = require("./routes/register-route.js");
-const loginRouter = require("./routes/login-route.js");
-const dashboardRouter = require("./routes/dashboard-route.js");
-
-//Set EJS as templating engine
-app.set('view engine', 'ejs');
-
-app.use(express.urlencoded({ extended: true })); // parses form submissions
-app.use(express.json()); // parses JSON payloads
-
-app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
-  cookie: { httpOnly: true }
-}));
-
-//Static Routes
-app.use(express.static(path.join(__dirname, "public")));
-
-//Routes
-app.use("/api/register", registerRouter);
-
-app.use("/api/login", loginRouter);
-
-app.use("/dashboard", dashboardRouter);
-
-app.get("/", (req, res) => {
-  res.render('index');
-});
-
-app.get("/login", (req, res) => {
-  res.render('login');
-});
-
-app.get("/create-account", (req, res) => {
-  res.render('create-account');
-});
-
-
-//TEST ENDPOINT
-
-app.get("/test", (req, res) => {
-  res.render('test');
-});
 
 //start server
 app.listen(port, () => {
