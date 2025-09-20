@@ -30,8 +30,8 @@ Project duration is 32 weeks.
 ## Configure the .env file
 1. In your project folder do `copy .env.example .env` or create a blank text file titled '.env'
 2. Fill out environment vars from the following sources:  
-      -DB=[path of 'test.db' in your filesystem] (see next section)
-      -PORT=3000
+      -DB=[path of 'test.db' in your filesystem] (see next section)  
+      -PORT=3000  
       -SESSION_SECRET=For testing you can put anything here, usually a long randomly generated string that you store somewhere
 
 ## Download the sqlite3 database file (temporary)
