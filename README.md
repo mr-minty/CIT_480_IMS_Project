@@ -60,10 +60,10 @@ Copy your local repo to the remote repo (this repo)
 ### Typical workflow
 
 1. `cd "Project_Folder"`: Enter your local project folder/repo
-2. `git pull`: Sync your local repo with the latest changes
-3. Make any changes to files, Add files, assets, etc.
-4. `git add .`: Add all the files you changed to the next commit
-5. `git commit -m "my changes"`: Local commit, updating your Project folder with the changes, optionally comment what you changed/added
+2. Make any changes to files, Add files, assets, etc.
+3. `git add .`: Add all the files you changed to the next commit
+4. `git commit -m "my changes"`: Local commit, updating your Project folder with the changes, optionally comment what you changed/added
+5. `git pull`: Sync your local repo with the latest changes
 6. `git push`: This pushes the changes you've made 
 
 ### Web app file structure and folder descriptions
