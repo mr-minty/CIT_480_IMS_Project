@@ -43,7 +43,7 @@ Project duration is 32 weeks.
 
 ### Helpful commands
 >[!IMPORTANT]
->You must run `git pull` *before* making any changes to the project.
+>You must run `git pull` ***before*** running `git push` to avoid conflicts
 
 `git pull` or `git pull origin main`:  
 Ensures your local repo is up-to-date with the remote repo (this repo)
