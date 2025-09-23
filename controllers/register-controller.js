@@ -32,7 +32,7 @@ async function registerUser(req, res) {
         return res.status(409).json({ username: "Username or email already exists" });
       }
 
-     
+      //Add user to users table in database
       const sqlInsert = "INSERT INTO users(username, email, password_hash) VALUES(?, ?, ?)";
       db.run(sqlInsert, [username, email, hashedPassword], function(err) {
         if (err) {
