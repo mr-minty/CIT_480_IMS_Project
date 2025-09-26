@@ -3,21 +3,22 @@ const bcrypt = require("bcrypt");
 const router = express.Router();
 
 //Call external functions for user registration and auth
-const checkUserExists = require("../services/auth-service.checkUserExists");
+const checkUserCredentials = require("../services/auth-service.checkUserCredentials");
 const addUser = require("../services/user-service.addUser");
 
 async function registerUser (req, res){
 //Get submitted form elements and put them in newUser object   
     const { username, email, password, role, name, dob } = req.body;
     const newUser = { username, email, password, role, name, dob };
+    const userCredential = { username, email };
 
 //Generate hash for storing password securely
     newUser.password = await bcrypt.hash(newUser.password, 10);
 
 //Check if User already exists
     try {
-        const userExists = await checkUserExists(username, email);
-        if (userExists) {
+        const existingUser = await checkUserCredentials(userCredential);
+        if (existingUser) {
             return res.status(409).json({ username: "Username or email already exists" });
         }
     } catch (err) {

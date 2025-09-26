@@ -1,43 +1,26 @@
-require('dotenv').config();
-
-const sqlite3 = require('sqlite3').verbose();
-const path = require("path");
+const checkUserCredentials = require("../services/auth-service.checkUserCredentials");
 const bcrypt = require("bcrypt");
 
-const dbPath = process.env.DB;
-
 async function loginUser(req, res) {
-  const { username, password } = req.body;
-  const db = new sqlite3.Database(dbPath, (err) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).send("Database error");
+    const { loginField, password } = req.body;
+    const userCredential = { loginField, password };
+
+//Check database for matching username and password
+    try {
+        const authorizedUser = await checkUserCredentials(userCredential);
+        if (!authorizedUser) return res.status(401).json({ error: "Login Failed: Invalid username/email or password." }); 
+        else {
+            const match = await bcrypt.compare(password, authorizedUser.password);
+            if(!match)  return res.status(401).json({ error: "Login Failed: Invalid username/email or password." });
+        }
+    } catch(err) {
+        return res.status(500).json({ error: err.message });
     }
-    console.log("DB connection successful.");
-  });
+//Set session cookie
+    req.session.userId = authorizedUser.user_id;
+//User authentication successful
+    return res.status(200).json({ status: "Login Successful", userId: authorizedUser.user_id });
 
-const sqlCheck = "SELECT * FROM users WHERE username = ? OR email = ?";	
-db.get(sqlCheck, [username, username], async (err, row) => {
-   if (err) {
-      console.error("Query failed:", err.message);
-      return res.status(500).json({ error: "Database error" });
-   }
-
-   if (!row) {
-	return res.status(401).json({ error: "Invalid username/email or password." });
-   }
-   const match = await bcrypt.compare(password, row.password_hash);
-   if (!match){
-     return res.status(401).json({ error: "Invalid username/email or password." });
-   }
-     
-   req.session.userId = row.id;
-   console.log("Session after login:", req.session);
-   res.status(200).json({ status: "OK" });
-
-   db.close();
-  });
 }
 
 module.exports = loginUser;
-
