@@ -23,4 +23,24 @@ async function addUser(newUser) {
     return userId;
 }
 
-module.exports = addUser;
+async function getUserInfo(userId) {
+//Get user information from user_info and users_table
+    try {
+        const [rows] = await pool.query(
+           `SELECT u.username, u.role, i.name, i.dob  
+            FROM users u" +
+            INNER JOIN user_info i ON u.user_id = i.user_id`
+        );
+
+        const userInfo = rows[0];
+        if(!userInfo){
+            return null;
+        }
+//Operation successful, return the userInfo
+        return userInfo;
+    } catch (err) {
+        throw err;
+    }
+} 
+
+module.exports = { addUser, getUserInfo} ;
