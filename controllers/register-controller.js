@@ -1,50 +1,36 @@
-require('dotenv').config();
-
 const express = require("express");
 const bcrypt = require("bcrypt");
 const router = express.Router();
-const sqlite3 = require("sqlite3").verbose();
-const path = require("path");
-const dbPath = process.env.DB;
 
-async function registerUser(req, res) {
-  const { username, email, password } = req.body;
-  console.log(username, email, password);
+//Call external functions for user registration and auth
+const checkUserExists = require("../services/auth-service.checkUserExists");
+const addUser = require("../services/user-service.addUser");
 
-  const hashedPassword = await bcrypt.hash(password, 10);
-	
-  const db = new sqlite3.Database(dbPath, (err) => {
-    if (err) {
-      console.error("Database connection failed:", err.message);
-      return res.status(500).json({ error: "Database connection failed" });
-    }
-    console.log("DB opened successfully");
+async function registerUser (req, res){
+//Get submitted form elements and put them in newUser object   
+    const { username, email, password, role, name, dob } = req.body;
+    const newUser = { username, email, password, role, name, dob };
 
-    const sqlCheck = "SELECT * FROM users WHERE username = ? OR email = ?"; //Check if User already exists
-    db.get(sqlCheck, [username, email], (err, row) => {
-      if (err) {
-        console.error("Query failed:", err.message);
-        return res.status(500).json({ error: "Database error" });
-      }
+//Generate hash for storing password securely
+    newUser.password = await bcrypt.hash(newUser.password, 10);
 
-      if (row) {
-        // row exists → username or email already taken
-        return res.status(409).json({ username: "Username or email already exists" });
-      }
-
-      //Add user to users table in database
-      const sqlInsert = "INSERT INTO users(username, email, password_hash) VALUES(?, ?, ?)";
-      db.run(sqlInsert, [username, email, hashedPassword], function(err) {
-        if (err) {
-          console.error("Insert failed:", err.message);
-          return res.status(500).json({ error: "Insert failed" });
+//Check if User already exists
+    try {
+        const userExists = await checkUserExists(username, email);
+        if (userExists) {
+            return res.status(409).json({ username: "Username or email already exists" });
         }
-        console.log("Row inserted, id:", this.lastID);
-        res.status(200).json({ status: "User registered!" });
-        db.close(); // close after insert
-      });
-    });
-  });
+    } catch (err) {
+        return res.status(500).json({ error: err.message });
+    }
+//User does not exist, insert them into the DB
+    try {
+        const user_id = await addUser(newUser);
+        console.log("User inserted successfuly");
+        res.status(201).json({ message: "User created successfully", userId: user_id });
+    } catch (err) {
+        return res.status(500).json({ error: err.message });
+    }
 }
 
 module.exports = registerUser;

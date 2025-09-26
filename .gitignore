@@ -2,4 +2,4 @@ desktop.ini
 node_modules/
 *.log
 .env
-TO-DO.txt
+*.txt
