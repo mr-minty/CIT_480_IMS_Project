@@ -1,42 +1,29 @@
-const express = require('express');
-const sqlite3 = require('sqlite3').verbose();
-const path = require("path");
+const getUserInfo = require("../services/user-service.getUserInfo");
 
-const dbPath = process.env.DB;
+//Dashboard render variables NOT dependent on user
+const dashboardTitle = "Dashboard";
+const dashboardContent= "Dashboard-Content";
 
-function renderDashboard(req, res) {
-  const userId = req.session.userId;
-
-  if (!userId) {
+async function renderDashboard(req, res) {
+    const userId = req.session.userId;
+//Check if user has a valid userId session cookie
+    if (!userId) {
     return res.redirect("/login"); // or return 401
-  }
-
-  const db = new sqlite3.Database(dbPath, (err) => {
-    if (err) {
-      console.log(err);
-      return res.status(500).send("Database error"); 
-    }
-  });
-
-  const sqlGet = "SELECT * FROM users WHERE id=?";
-  db.get(sqlGet, [userId], (err, row) => {
-    if (err) {
-      console.error("Query failed:", err.message);
-      return res.status(500).json({ error: "Database error" });
-    }
-    if (!row) {
-      return res.redirect("/login");
     }
 
-    res.render('dashboard', {
-      title: "Dashboard",
-      heading: "Welcome",
-      content: "...",
-      user: row
-    });
+//Get user info for dashboard rendering
+    try {
+        const userInfo = await getUserInfo(userId);
+        if(!userInfo) return res.redirect("/login");
 
-    db.close();
-  });
+        return res.render("dashboard", { 
+            user: userInfo,
+            title: dashboardTitle,
+            content: dashboardContent
+        });
+    } catch(err) {
+        return res.status(500).json({ error: "User not found" });
+    }
 }
 
 module.exports = renderDashboard;
