@@ -1,4 +1,4 @@
-const getUserInfo = require("../services/user-service.getUserInfo");
+const userService = require("../services/user-service");
 
 //Dashboard render variables NOT dependent on user
 const dashboardTitle = "Dashboard";
@@ -13,9 +13,8 @@ async function renderDashboard(req, res) {
 
 //Get user info for dashboard rendering
     try {
-        const userInfo = await getUserInfo(userId);
+        const userInfo = await userService.getUserInfo(userId);
         if(!userInfo) return res.redirect("/login");
-
         return res.render("dashboard", { 
             user: userInfo,
             title: dashboardTitle,

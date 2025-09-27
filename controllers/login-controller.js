@@ -1,17 +1,17 @@
-const checkUserCredentials = require("../services/auth-service.checkUserCredentials");
+const authService = require("../services/auth-service");
 const bcrypt = require("bcrypt");
 
 async function loginUser(req, res) {
     const { loginField, password } = req.body;
     const userCredential = { loginField, password };
-
+    let authorizedUser;
 //Check database for matching username and password
     try {
-        const authorizedUser = await checkUserCredentials(userCredential);
-        if (!authorizedUser) return res.status(401).json({ error: "Login Failed: Invalid username/email or password." }); 
+        authorizedUser = await authService.checkUserCredentials(userCredential);
+        if (!authorizedUser) return res.status(401).json({ error: "1Login Failed: Invalid username/email or password." });
         else {
             const match = await bcrypt.compare(password, authorizedUser.password);
-            if(!match)  return res.status(401).json({ error: "Login Failed: Invalid username/email or password." });
+            if(!match)  return res.status(401).json({ error: "2Login Failed: Invalid username/email or password." });
         }
     } catch(err) {
         return res.status(500).json({ error: err.message });

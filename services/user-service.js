@@ -2,19 +2,21 @@ const pool = require("../db/db");
 
 async function addUser(newUser) {
 //Destructure newUser back into its individual fields
-    const { username, email, password, role, name, dob } = newUser;
-
+    const { username, email, password, role="staff", name="name", /*dob,*/ org_id=1 } = newUser;
+    let userId;
     try {
 //INSERT statement for user authentication info
+  //reeeemove
         const [userIdResult] = await pool.query(
-            "INSERT INTO users(username, email, role, password_hash) VALUES(?, ?, ?, ?)",
-            [username, email, role, password]
+            `INSERT INTO users(username, email, role, password, org_id)
+             VALUES(?, ?, ?, ?, ?)`,
+            [username, email, role, password, org_id]
         );
-        const userId = userIdResult.insertId; 
+        userId = userIdResult.insertId; 
 //INSERT statement for non-sensitive user info    
         await pool.query(
-            "INSERT INTO user_info(name, dob, user_id) VALUES(?, ?, ?)",
-            [name, dob, userId]
+            "INSERT INTO user_info(name, user_id) VALUES(?, ?)",
+            [name, userId]
         );
     } catch (err) {
         throw err;
@@ -28,8 +30,10 @@ async function getUserInfo(userId) {
     try {
         const [rows] = await pool.query(
            `SELECT u.username, u.role, i.name, i.dob  
-            FROM users u" +
-            INNER JOIN user_info i ON u.user_id = i.user_id`
+            FROM users u 
+            INNER JOIN user_info i ON u.user_id = i.user_id
+            WHERE u.user_id=?`,
+            [userId]
         );
 
         const userInfo = rows[0];

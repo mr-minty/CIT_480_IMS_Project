@@ -27,6 +27,7 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
     const errorData = await res.json();
  
     for(const [field, msg] of Object.entries(errorData)) {
+       console.log(errorData);
        const el = document.getElementById(field + "Error");
        if (el) el.innerText = msg;
     }
