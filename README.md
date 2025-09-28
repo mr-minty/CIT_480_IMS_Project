@@ -77,17 +77,18 @@ Being specific, we're using the following tools:
 
 **File Structure and Folder Descriptions**
 ```
-ims-app/
-  src/                - Main application source code
-    routes/           - Express route handlers
-    models/           - Database models (e.g., Users, Items, Orders)
-    controllers/      - Business logic between routes and models
-    middleware/       - Custom Express middleware
-    utils/            - Helper functions and utilities
+CIT_480_IMS_Project/
+  src/                - Additional application source code, helpers, utilities
+  routes/             - Express route handlers
+  controllers/        - Business logic between routes and models
+  middleware/         - Custom Express middleware
+  db/                 - Database connection and models
+  services/           - External services or API integrations
   views/              - EJS templates for server-side rendering
   public/             - Static files (images, CSS, client-side JS)
-  tests/              - Automated tests
   server.js           - Application entry point, handles site routing
   package.json        - Project metadata and dependencies
+  package-lock.json   - Locked dependency versions
   README.md           - Documentation
+
 ```
