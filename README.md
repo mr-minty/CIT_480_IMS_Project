@@ -13,6 +13,7 @@ Project duration is 32 weeks.
 
 - Git: https://git-scm.com/downloads/win  
 - Node.js: https://nodejs.org/en/download/
+- MariaDB/MySQL: https://mariadb.org/download/?t=mariadb&p=mariadb&r=12.0.2&os=windows&cpu=x86_64&pkg=msi&mirror=xtom_fre
 
 ## Clone this repo to a local folder on your device
 1. Install git, make sure it works by running `git -v`
@@ -29,14 +30,15 @@ Project duration is 32 weeks.
 
 ## Configure the .env file
 1. In your project folder do `copy .env.example .env` or create a blank text file titled '.env'
-2. Fill out environment vars from the following sources:  
-      -DB=[path of 'test.db' in your filesystem] (see next section)  
-      -PORT=3000  
-      -SESSION_SECRET=For testing you can put anything here, usually a long randomly generated string that you store somewhere
+2. Fill out environment vars
 
-## Download the sqlite3 database file (temporary)
-1. Download "test.db" from our Google Drive project folder
-2. Choose a path for test.db and copy that path into your .env file
+## Set Up MySQL Database
+1. Install MariaDB/MySQL server (You will create the password for the default "root" account here)
+2. Download 'IMS_Database_Schema.sql"
+3. Run the command `mysql -u root -p < [PATH_TO_"IMS_Database_Schema.sql"]`
+4. Enter your password
+5. This should have created the empty database 'ims_test'
+6. You can interact with 'ims_test' by running `mysql -u root -p ims_test`
 
 
 # Contributing to the project:
