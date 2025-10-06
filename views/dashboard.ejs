@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
-    <!-- Link to your CSS files here 
-    <link rel="stylesheet" href="/css/style.css"> -->
+    <link rel="stylesheet" href="/css/dashboard.css">
 
     <!-- Bootstrap call -->
     <%- include("partials/bootstrap-call.ejs") %>
@@ -19,6 +18,57 @@
         <h1>Welcome, <%= user.username %></h1>
         <p><%= content %></p>
     </main>
+    
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12">  
+            <div id="inventoryTableContainer" class="border rounded shadow p-3">
+                <table id="inventoryTable" class="table table-striped">
+                    <thead>
+                        <tr>
+                        <th>Sku</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Supplier</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Unit</th>
+                        </tr>
+                    </thead>
+                    <tbody id="itemsList">
+                        <!--Dynamically insert the inventory of the user's org-->
+                        <% items.forEach(({sku, name, category, supplier, price, quantity, unit})=> { %>
+                        <tr>
+                            <td><%= sku %></td>
+                            <td><%= name %></td>
+                            <td><%= category %></td>
+                            <td><%= supplier %></td>
+                            <td><%= price %></td>
+                            <td><%= quantity %></td>
+                            <td><%= unit %></td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                    <tfoot>
+
+                    </tfoot>
+                </table>
+                <div>
+                    <form id="addItemsForm">
+                        <input type="text" class="form-control" placeholder="Sku">
+                        <input type="text" class="form-control" placeholder="Name">
+                        <input type="text" class="form-control" placeholder="Category">
+                        <input type="text" class="form-control" placeholder="Supplier">
+                        <input type="text" class="form-control" placeholder="Price">
+                        <input type="text" class="form-control" placeholder="Qty">
+                        <input type="text" class="form-control" placeholder="Unit">
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
 
     <%- include('partials/footer') %>
 

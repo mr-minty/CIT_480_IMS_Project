@@ -2,8 +2,9 @@ const pool = require("../db/db");
 
 async function addUser(newUser) {
 //Destructure newUser back into its individual fields
-    const { username, email, password, role="staff", name="name", /*dob,*/ org_id=1 } = newUser;
+    const { username, email, password, role, name="name", dob, org_id=1 } = newUser;
     let userId;
+    console.log(newUser);
     try {
 //INSERT statement for user authentication info
   //reeeemove
@@ -15,8 +16,8 @@ async function addUser(newUser) {
         userId = userIdResult.insertId; 
 //INSERT statement for non-sensitive user info    
         await pool.query(
-            "INSERT INTO user_info(name, user_id) VALUES(?, ?)",
-            [name, userId]
+            "INSERT INTO user_info(name, dob, user_id) VALUES(?, ?, ?)",
+            [name, dob,  userId]
         );
     } catch (err) {
         throw err;

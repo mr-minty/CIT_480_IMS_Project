@@ -6,6 +6,7 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
 								//Verify inputs before sending to server
   let hasError = false;
 
+  //Form user input validation
   if(!data.username){
       document.getElementById("usernameError").innerText = "Please enter a valid username";
       hasError = true;
@@ -14,15 +15,17 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
       hasError = true;
   } else if(data.username)
   
-
+  //Return error message if user submits any
   if(hasError) return;
  
+  //No input errors sending user registration info to /api/register
    const res = await fetch("/api/register", {    		//Inputs verified, send to server
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data)
   });
-
+  
+  //Check for a successfull 200 range response code
   if (!res.ok) {
     const errorData = await res.json();
  

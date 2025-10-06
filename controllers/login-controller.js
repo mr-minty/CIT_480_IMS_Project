@@ -18,6 +18,7 @@ async function loginUser(req, res) {
     }
 //Set session cookie
     req.session.userId = authorizedUser.user_id;
+    req.session.orgId = authorizedUser.org_id;
 //User authentication successful
     return res.status(200).json({ status: "Login Successful", userId: authorizedUser.user_id });
 

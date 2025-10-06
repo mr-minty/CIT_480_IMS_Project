@@ -1,0 +1,54 @@
+#inventoryDisplay { 
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  max-height: 800px;
+  min-height: 400px;
+}
+
+#itemsTable {
+    flex: 1;
+    margin: 0; 
+}
+
+/*
+#itemsHeaders {
+    display: flex;
+    gap: 0.5rem;
+}
+
+#itemsHeaders p {
+    flex: 1;           /* make each header take equal width 
+    margin: 0; 
+}
+*/
+#itemsList {
+    flex-grow: 1; /* fills space above the form */
+    overflow-y: auto;
+}
+
+#addItemsForm {
+    display: flex;
+    gap: 0.5rem;
+}
+
+#addItemsForm div {
+    flex: 1;             /* optional: make each div take equal width */
+}
+
+#inventoryTableContainer {
+    height: 60vh;          /* fixed height */
+    overflow-y: auto;      /* allow scrolling */
+    min-height: 60vh;
+}
+
+#inventoryTable {
+    width: 100%;
+    border-collapse: collapse;
+    min-height: 50vh;
+}
+
+#inventoryTable tfoot input {
+    width: 100%;           /* inputs fill their cells */
+    box-sizing: border-box;
+}

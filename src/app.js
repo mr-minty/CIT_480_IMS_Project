@@ -11,6 +11,7 @@ const registerRouter = require("../routes/register-route.js");
 const loginRouter = require("../routes/login-route.js");
 const dashboardRouter = require("../routes/dashboard-route.js");
 const tableRouter = require("../routes/table-route.js");
+const logoutRouter = require("../routes/logout-route.js");
 
 //External middleware
 const requireLogin = require("../middleware/auth.js");
@@ -38,7 +39,7 @@ app.use(express.static(path.join(__dirname, "..", "public")));
 app.use("/api/register", registerRouter);
 app.use("/api/login", loginRouter);
 app.use("/dashboard", requireLogin, dashboardRouter);
-app.use("/table", requireLogin, tableRouter);
+app.use("/api/logout", logoutRouter);
 
 
 //Pages

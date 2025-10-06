@@ -24,7 +24,10 @@ async function registerUser (req, res){
         }
     } catch (err) {
         console.log("[ERROR1]: " + err);
-        return res.status(500).json({ error: err.message });
+        return res.status(500).json({ 
+            error: err.message,
+            form: "Something went wrong, please try again."
+         });
     }
 //User does not exist, insert them into the DB
     try {
@@ -33,8 +36,11 @@ async function registerUser (req, res){
         console.log("User inserted successfuly");
         return res.status(201).json({ message: "User created successfully", userId: user_id });
     } catch (err) {
-         console.log("[ERROR2]: " + err);
-        return res.status(500).json({ error: err.message });
+        console.log("[ERROR2]: " + err);
+        return res.status(500).json({ 
+            err: err.message, 
+            form: "Something went wrong, please try again."
+        });
     }
 }
 
