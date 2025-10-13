@@ -1,35 +1,27 @@
-<!DOCTYPE html>
-<html>
+   <!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width-device-width, initial-scale=1.0">
-   <%- include("partials/bootstrap-call.ejs") %>
-   <title>Index.ejs</title>
+	<link rel="stylesheet" href="/css/test.css">
+     <%- include("partials/bootstrap-call.ejs") %> 
+	 <%- include("partials/fonts-call.ejs") %> 
 
+    <title>Test</title>
 </head>
 <body>
-  <div class="container-fluid">
-	<div class="row">
-	  <div class="col-12" style="background-color:red; height:33.33vh">
-	  </div>
+  <%- include('partials/header') %> 
+	<div class="container mt-5 text-center">
+		<div class="row justify-content-center g-4" id="row1">
+			<div class="col-12 col-md-5 border rounded shadow p-3 box me-md-5" id="box1">1</div>
+			<div class="col-12 col-md-5 border rounded shadow p-3 box " id="box2">2</div>		
+			<div class="col-12 col-md-5 border rounded shadow p-3 box me-md-5" id="box3">3</div>
+			<div class="col-12 col-md-5 border rounded shadow p-3 box " id="box4">4</div>
+		</div>
 	</div>
-	<div class="row">
-	  <div class="col-6" style="background-color:orange; height:33.33vh">
-	  </div>
-	  <div class="col-6" style="background-color:blue; height:33.33vh">
-	  </div>
-	</div>
-	<div class="row">
-	  <div class="col-4" style="background-color:green; height:33.33vh">
-	  </div>
-	  <div class="col-4" style="background-color:white; height:33.33vh">
-	  </div>
-	  <div class="col-4" style="background-color:grey; height:33.33vh">
-	  </div>
-	</div>
-  </div>
+
+   <%- include('partials/footer') %> 
+	<script src="/js/login-client.js" defer></script>
 </body>
-
-
 </html>
