@@ -9,68 +9,31 @@
 
     <!-- Bootstrap call -->
     <%- include("partials/bootstrap-call.ejs") %>
+    <%- include("partials/fonts-call.ejs") %> 
 </head>
 <body>
     <%- include('partials/header') %> 
-
-    <main>
-        <!-- Your main content goes here -->
-        <h1>Welcome, <%= user.username %></h1>
-        <p><%= content %></p>
-    </main>
-    
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-12">  
-            <div id="inventoryTableContainer" class="border rounded shadow p-3">
-                <table id="inventoryTable" class="table table-striped">
-                    <thead>
-                        <tr>
-                        <th>Sku</th>
-                        <th>Name</th>
-                        <th>Category</th>
-                        <th>Supplier</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Unit</th>
-                        </tr>
-                    </thead>
-                    <tbody id="itemsList">
-                        <!--Dynamically insert the inventory of the user's org-->
-                        <% items.forEach(({sku, name, category, supplier, price, quantity, unit})=> { %>
-                        <tr>
-                            <td><%= sku %></td>
-                            <td><%= name %></td>
-                            <td><%= category %></td>
-                            <td><%= supplier %></td>
-                            <td>$<%= price %></td>
-                            <td><%= quantity %></td>
-                            <td><%= unit %></td>
-                        </tr>
-                        <% }) %>
-                    </tbody>
-                    <tfoot>
-
-                    </tfoot>
-                </table>
+    <!--Welcome Banner-->
+    <div id="welcome-banner" class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center">
+                <h1>Welcome, <%= user.username %></h1>
                 <div>
-                    <form id="addItemsForm">
-                        <input type="text" class="form-control" placeholder="Sku">
-                        <input type="text" class="form-control" placeholder="Name">
-                        <input type="text" class="form-control" placeholder="Category">
-                        <input type="text" class="form-control" placeholder="Supplier">
-                        <input type="text" class="form-control" placeholder="Price">
-                        <input type="text" class="form-control" placeholder="Qty">
-                        <input type="text" class="form-control" placeholder="Unit">
-                    </form>
-                </div>
+                    <p><%=content%></p>
+                </div>  
             </div>
         </div>
-        </div>
-      </div>
+    </div>
+    
+    <!--Nav Cards-->
+    <div class="container d-flex flex-wrap justify-content-center gap-4 mt-5">
+        <div class="nav-card">Orders</div>
+        <div class="nav-card">Organization</div>
+        <div class="nav-card">Account</div>
+        <div class="nav-card">Items</div>
     </div>
 
-    <%- include('partials/footer') %>
+    
 
     <!-- Link to your JavaScript files here 
     <script src="/js/main.js"></script> -->

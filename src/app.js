@@ -13,6 +13,9 @@ const dashboardRouter = require("../routes/dashboard-route.js");
 const tableRouter = require("../routes/table-route.js");
 const logoutRouter = require("../routes/logout-route.js");
 
+//Test Route Handlers
+const changeRequestRouter = require("../routes/change-request-route.js")
+
 //External middleware
 const requireLogin = require("../middleware/auth.js");
 
@@ -57,7 +60,12 @@ app.get("/create-account", (req, res) => res.render('create-account'));
 
 //TEST ENDPOINT
 app.get("/test", (req, res) => res.render('test', {
-	
+
 }));
 
+//TEST ROUTES
+app.use("/api/change-request", changeRequestRouter);
+
+//Final line
 module.exports = app;
+

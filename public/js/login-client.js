@@ -23,7 +23,5 @@ document.getElementById("loginForm").addEventListener("submit", async (e) => {
     document.getElementById("errorMsg").innerText = data.error;
   } else {
     window.location.href = "/dashboard"; // redirect on success
-
-    //document.getElementById("errorMsg").innerText = res.getHeaders;
   }
 });

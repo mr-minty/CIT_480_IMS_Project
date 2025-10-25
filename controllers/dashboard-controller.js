@@ -17,7 +17,6 @@ async function renderDashboard(req, res) {
     try {
         const userInfo = await userService.getUserInfo(userId);
         const userInventory = await inventoryService.getInventory(orgId);
-        console.log(userInventory);
         if(!userInfo) return res.redirect("/login");
         return res.render("dashboard", { 
             user: userInfo,
