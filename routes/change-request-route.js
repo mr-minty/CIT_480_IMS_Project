@@ -4,8 +4,6 @@ const changeRequestController = require("../controllers/change-request-controlle
 
 const router = express.Router();
 
-console.log("test route called");
-
 router.post("/", changeRequestController);
 
 module.exports = router;

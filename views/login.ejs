@@ -12,6 +12,8 @@
 </head>
 <body>
   <%- include('partials/header') %> 
+
+  <main class="flex-grow-1">
 	 <form id="loginForm" method="POST">
 		<div class="signin-header">
 		  <div class="signin-title">Sign in</div>
@@ -24,7 +26,7 @@
  	     <!--<label>Password</label>-->
  	     <input type="password" class="form-control" name="password" placeholder="Password" required>
 	   </div>
-	   <button type="submit" class="btn btn-primary">Login</button>
+	   <button type="submit" class="btn">Login</button>
 	   <!--empty tag for error message-->
 	   <p id="errorMsg" style="color:red"></p>
 	
@@ -33,7 +35,7 @@
 			<a id="createAccountLink" href="/create-account">Create Account</a>
 	   </p>   
 	</form>
-
+  </main>
    <%- include('partials/footer') %> 
 	<script src="/js/login-client.js" defer></script>
 </body>

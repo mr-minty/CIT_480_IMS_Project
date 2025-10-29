@@ -13,29 +13,49 @@
 </head>
 <body>
     <%- include('partials/header') %> 
-    <!--Welcome Banner-->
-    <div id="welcome-banner" class="container">
-        <div class="row justify-content-center">
-            <div class="col-12 text-center">
-                <h1>Welcome, <%= user.username %></h1>
-                <div>
-                    <p><%=content%></p>
-                </div>  
+
+    <main class="flex-grow-1">
+        <!--Welcome Banner-->
+        <div id="welcome-banner" class="container">
+            <div class="row justify-start">
+                <div class="col-12">
+                    <h1>Welcome, <%= user.username %></h1>
+                    <div>
+                        <p><%=content%></p>
+                    </div>  
+                </div>
             </div>
         </div>
-    </div>
-    
-    <!--Nav Cards-->
-    <div class="container d-flex flex-wrap justify-content-center gap-4 mt-5">
-        <div class="nav-card">Orders</div>
-        <div class="nav-card">Organization</div>
-        <div class="nav-card">Account</div>
-        <div class="nav-card">Items</div>
-    </div>
 
-     
+        <div class="container">
+          <div class="row g-4 p-4">
+                <div class="col-md-6">
+                    <div class="card p-4 shadowm-sm align-items-center" id="card1">Card 1</div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card p-4 shadowm-sm align-items-center" id="card2">Card 2</div>
+                </div>
+          </div>
+          <div class="row g-4">
+            <div class="col-md-12">
+                <div class="card p-4 shadowm-sm align-items-center" id="card3">Card 3</div>
+            </div>
+          </div>
+        </div>
+        
+        <!--Nav Cards-->
+        <div class="container d-flex flex-wrap justify-content-center gap-4 mt-5">
+            <div class="nav-card">Orders</div>
+            <div class="nav-card">Organization</div>
+            <div class="nav-card">Account</div>
+            <div class="nav-card">Items</div>
+        </div>
 
-    <!-- Link to your JavaScript files here 
-    <script src="/js/main.js"></script> -->
+        
+
+        <!-- Link to your JavaScript files here 
+        <script src="/js/main.js"></script> -->
+    </main>
+    <%- include('partials/footer') %> 
 </body>
 </html>
