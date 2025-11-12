@@ -14,6 +14,24 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
       document.getElementById("usernameError").innerText = "Username must be between 6-16 characters";
       hasError = true;
   } else if(data.username)
+
+  if(!data.email){
+      document.getElementById("emailError").innerText = "Please enter a valid email";
+      hasError = true;
+  } else if(data.email)
+
+  if(!data.password){
+      document.getElementById("passwordError").innerText = "Please enter a valid password";
+      hasError = true;
+  } else if(data.password.length < 8 || data.password.length > 20){
+      document.getElementById("passwordError").innerText = "password must be between 8-20 characters";
+      hasError = true;
+  } else if(!/[A-Z]/.test(data.password)) {
+      document.getElementById("passwordError").innerText = "password must ";
+      hasError = true;
+  } else if(data.password)
+
+
   
   //Return error message if user submits any
   if(hasError) return;

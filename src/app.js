@@ -18,6 +18,7 @@ const changeRequestRouter = require("../routes/change-request-route.js")
 
 //External middleware
 const requireLogin = require("../middleware/auth.js");
+const inventoryService = require("../services/inventory-service.js");
 
 const app = express()
 
@@ -59,9 +60,10 @@ app.get("/create-account", (req, res) => res.render('create-account'));
 
 
 //TEST ENDPOINT
-app.get("/test", (req, res) => res.render('test', {
-
-}));
+app.get("/test", requireLogin, async (req, res) => {
+  const items = await inventoryService.getInventory(req.session.orgId);
+  res.render("test", { items });
+});
 
 //TEST ROUTES
 app.use("/api/change-request", changeRequestRouter);
