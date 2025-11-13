@@ -56,7 +56,19 @@ app.get("/login", (req, res) => {
   if(req.session.userId) return res.redirect("/");
   res.render('login')
 });
+
 app.get("/create-account", (req, res) => res.render('create-account'));
+
+app.get("/orders", (req, res) => res.render('orders', { title:"orders"}));
+
+app.get("/organization", (req, res) => res.render('organization', { title:"org"}));
+
+app.get("/items", (req, res) => res.render('items', { title:"items"}));
+
+app.get("/account", (req, res) => res.render('account', { title:"account"}));
+
+//Resources
+app.get("/api/maintenance-image", (req, res) => res.sendFile(path.join(__dirname, "..", "public", "img", "Maintenance-Page-Oranges.png")));
 
 
 //TEST ENDPOINT

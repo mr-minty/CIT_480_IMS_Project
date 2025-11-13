@@ -40,6 +40,10 @@ main {
   background-color: #eef6ff;
 }
 
+.nav-link{
+    text-decoration: none;
+}
+
 #card1 {
   min-height: 500px;
 }
