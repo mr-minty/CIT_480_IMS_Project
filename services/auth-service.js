@@ -19,5 +19,19 @@ async function checkUserCredentials(userCredential) {
     }
 }
 
+async function verifyOrgCode(org_code) {
+    try {
+        const [rows] = await pool.query(
+            "SELECT * FROM orgs WHERE org_code=?",
+            [org_code]
+        );
+        const validOrgCode = rows[0];
+        return validOrgCode || null;
+    } catch(err) {
+        console.log(err);
+        throw err;
+    }
+}
 
-module.exports = { checkUserCredentials };
+
+module.exports = { checkUserCredentials, verifyOrgCode };
