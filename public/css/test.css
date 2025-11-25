@@ -1,0 +1,189 @@
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1; 
+  margin-bottom: 2rem; 
+}
+
+
+/* one rule for all boxes */
+.box {
+  min-height: 30vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: black;
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* optional smooth hover effect */
+}
+
+/* individual colors 
+#box1 { background-image: linear-gradient(to bottom, red, tomato); }
+#box2 { background-image: linear-gradient(to bottom, blue, lightskyblue); }
+#box3 { background-image: linear-gradient(to bottom, green, limegreen); }
+#box4 { background-image: linear-gradient(to bottom, gold, yellow); }
+*/
+
+#box1 { background-color: whitesmoke; border: 2px solid aqua;}
+#box2 { background-color: whitesmoke; border: 2px solid aqua;}
+#box3 { background-color: whitesmoke; border: 2px solid aqua;}
+#box4 { background-color: whitesmoke; border: 2px solid aqua;}
+
+
+/* single hover rule for all boxes */
+.box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  cursor: pointer;
+}
+
+
+/*chatgpt shit*/
+.nav-card {
+  width: 220px;
+  height: 130px;
+  background-color: #FAF9F6;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nav-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  background-color: #eef6ff;
+}
+
+
+/*Form Styling*/
+
+#changeRequestFormCard {
+  background-color: #FAF9F6;
+}
+
+#changeRequestFormCard textarea {
+  resize: none;
+}
+
+#changeRequestFormCard button {
+  background-color: #5fa87a;
+  color: white;
+  width: 100px;
+}
+
+#changeRequestFormCard button:hover {
+  background-color: #559d70;
+}
+
+.form-control:focus {
+  border-color: #0052f5;
+  box-shadow: 0 0 0 0.15rem rgba(0,82,245,0.25);
+}
+
+#responseMessage {
+  margin: 0;              /* or class="m-0" in Bootstrap */
+  min-height: 1.5em;      /* reserve space for one line */
+  line-height: 1.5em;
+  visibility: hidden;     /* hidden but layout still reserved */
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+
+#responseMessage.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+#responseMessage.fade-out {
+  opacity: 0;
+}
+
+#responseMessage.success { color: green; }
+#responseMessage.error   { color: red; }
+
+/* INVENTORY TABLE STYLING */
+
+#itemsList {
+    flex-grow: 1; /* fills space above the form */
+    overflow-y: auto;
+}
+
+#addItemsForm {
+    display: flex;
+    gap: 0.5rem;
+}
+
+#addItemsForm div {
+    flex: 1;             /* optional: make each div take equal width */
+}
+
+#inventoryTableContainer {
+    height: 60vh;          /* fixed height */
+    overflow-y: auto;      /* allow scrolling */
+    min-height: 60vh;
+}
+
+#inventoryTable {
+    width: 100%;
+    border-collapse: collapse;
+    min-height: 50vh;
+}
+
+#inventoryTable tfoot input {
+    width: 100%;           /* inputs fill their cells */
+    box-sizing: border-box;
+}
+
+.item-card {
+  font-family: "Roboto", "Sans Serif";
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  position: relative;
+  top: calc(var(--i, 0) * -10px);
+  transform: translateY(calc(var(--i, 0) * -100px));
+  z-index: var(--i, 0);
+}
+
+/*
+.item-card-data {
+  border-radius: 5%;
+  margin: 0;
+  align-items: center;
+  flex-basis: content;
+}
+
+.item-card-data:hover {
+  background-color: rgba(95, 168, 122, 0.2);
+}
+*/
+
+.item-card-data {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;         /* centers key/value vertically */
+  margin-bottom: 0.5rem;       /* space between rows */
+  padding: 0.1rem 0.4rem;      /* subtle breathing room */
+  border-radius: 3%;
+}
+
+.item-card-data p {
+  margin: 0;                   /* remove the mt-3 offset */
+  line-height: 1.2;            /* compact line height */
+}
+
+.item-card-data:hover {
+  background-color: rgba(95, 168, 122, 0.2);
+}
+
+.item-card.fade-out { opacity: 0; transition: opacity 0.2s ease; }
+.item-card.fade-in  { opacity: 1; transition: opacity 0.2s ease; }
