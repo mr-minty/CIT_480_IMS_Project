@@ -66,7 +66,8 @@ app.get("/organization", (req, res) => res.render('organization', { title:"org"}
 
 app.get("/items", (req, res) => res.render('items', { title:"items"}));
 
-//app.get("/account", (req, res) => res.render('account', { title:"account"}));
+//
+app.get("/account", (req, res) => res.render('account', { title:"account"}));
 
 //Resources
 app.get("/api/maintenance-image", (req, res) => res.sendFile(path.join(__dirname, "..", "public", "img", "Maintenance-Page-Oranges.png")));
