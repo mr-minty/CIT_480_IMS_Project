@@ -12,6 +12,7 @@ const loginRouter = require("../routes/login-route.js");
 const dashboardRouter = require("../routes/dashboard-route.js");
 const tableRouter = require("../routes/table-route.js");
 const logoutRouter = require("../routes/logout-route.js");
+const accountRouter = require("../routes/account-route.js");
 
 //Test Route Handlers
 const changeRequestRouter = require("../routes/change-request-route.js")
@@ -44,7 +45,7 @@ app.use("/api/register", registerRouter);
 app.use("/api/login", loginRouter);
 app.use("/dashboard", requireLogin, dashboardRouter);
 app.use("/api/logout", logoutRouter);
-
+app.use("/account", requireLogin, accountRouter)
 
 //Pages
 app.get("/", (req, res) => {
@@ -65,7 +66,7 @@ app.get("/organization", (req, res) => res.render('organization', { title:"org"}
 
 app.get("/items", (req, res) => res.render('items', { title:"items"}));
 
-app.get("/account", (req, res) => res.render('account', { title:"account"}));
+//app.get("/account", (req, res) => res.render('account', { title:"account"}));
 
 //Resources
 app.get("/api/maintenance-image", (req, res) => res.sendFile(path.join(__dirname, "..", "public", "img", "Maintenance-Page-Oranges.png")));

@@ -4,25 +4,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title %></title>
-    <link rel="stylesheet" href="/css/account.css">
 
     <!-- Bootstrap call -->
     <%- include("partials/bootstrap-call.ejs") %>
     <%- include("partials/fonts-call.ejs") %> 
+
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/css/account.css">
+
+    
 </head>
 <body>
     <%- include('partials/header') %> 
 
    <main class="flex-grow-1">
 
-    <div class="container">
+    <div class="container mt-2">
+
+      <!-- Header row (separate) -->
       <div class="row">
-        <div class="col-md-12 d-flex justify-content-center">
-            <img src="/img/Maintenance-Page-Oranges.png" class="img-fluid" style="max-width:100%; height:auto;">
+        <div class="col-12">
+          <span class="h1">My Account</span>
+          <hr class="w-100">
         </div>
       </div>
+
+      
+
+        <div class="grid-container">
+
+          <div class="left-column">
+            <!--Top Card-->
+            <div class="card info-block flex-fill stretch-card">
+              <div class="card-body">
+                <h5 class="card-title">My Org</h5>
+                <hr class="w-100">
+
+                <div class="d-flex flex-column mb-2">
+                  <span class="fw-semibold">Org</span>
+                  <span class="text-end pe-2 text-muted"><%=user.org_name%></span>
+                </div>
+                 <div class="d-flex flex-column mb-2">
+                  <span class="fw-semibold">Role</span>
+                  <span class="text-end pe-2 text-muted"><%=user.role%></span>
+                </div>
+
+              </div> 
+            </div>
+
+            <!-- Bottom Card -->
+            <div class="card info-block flex-fill stretch-card">
+              <div class="card-body">
+                <h5 class="card-title">Messages</h5>
+                <hr class="w-100">
+                <span class="card-text">No messages to display.</span>
+              </div>
+            </div>
+          </div>
+
+          <!--Account Info Card-->
+          <div class="card info-block h-100 stretch-card">
+              <div class="card-body">
+                <h5 class="card-title">Account Info</h5>
+                <hr class="w-100">
+
+                <div class="d-flex flex-column mb-2">
+                  <span class="fw-semibold">Username</span>
+                  <span class="text-end pe-2 text-muted"><%=user.username%></span>
+                </div>
+
+                <div class="d-flex flex-column mb-2">
+                  <span class="fw-semibold">Password</span>
+                  <span class="text-end pe-2 text-muted">********</span>
+                </div>
+
+                <div class="d-flex flex-column mb-2">
+                  <span class="fw-semibold">Name</span>
+                  <span class="text-end pe-2 text-muted"><%=user.name%></span>
+                </div>
+
+                <div class="d-flex flex-column mb-2">
+                  <span class="fw-semibold">Birthday</span>
+                  <span class="text-end pe-2 text-muted"><%=user.dob%></span>
+                </div>
+
+                <div class="d-flex flex-column mb-2">
+                  <span class="fw-semibold">Date Joined</span>
+                  <span class="text-end pe-2 text-muted"><%=user.created_at%></span>
+                </div>
+
+                <hr class="w-100">
+                <a id="accountInfoButton" class="btn mt-3 float-end">Edit</a>
+
+              </div>
+          </div>
+        </div>
+
+      </div>
     </div>
+
           
     </main>
     

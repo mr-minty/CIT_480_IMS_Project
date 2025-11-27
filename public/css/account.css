@@ -15,3 +15,44 @@ main {
 footer {
   flex-shrink: 0;      /* ensures footer stays at the bottom */
 }
+
+.account-page-header {
+  font-family: "Roboto", "Sans Serif";
+}
+
+.fake-box {
+  background: #f4f4f4;
+  border: 1px dashed #aaa;
+  min-height: 200px;
+}
+
+.info-block {
+  background-color: rgb(250, 249, 246);
+}
+
+/* Allows cards inside flex containers to stretch */
+.card {
+  height: 100%;
+}
+
+/* Removes margin from stretchable cards */
+.stretch-card {
+  margin: 0 !important;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.left-column {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+#accountInfoButton {
+  background-color: #6fa66f;
+  color: white;
+}

@@ -15,11 +15,11 @@ async function renderDashboard(req, res) {
 
 //Get user info for dashboard rendering
     try {
-        const userInfo = await userService.getUserInfo(userId);
+        const userAccount= await userService.getUserAccount(userId);
         const userInventory = await inventoryService.getInventory(orgId);
-        if(!userInfo) return res.redirect("/login");
+        if(!userAccount) return res.redirect("/login");
         return res.render("dashboard", { 
-            user: userInfo,
+            user: userAccount,
             title: dashboardTitle,
             content: dashboardContent,
             items: userInventory
