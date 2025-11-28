@@ -15,6 +15,14 @@
 - Node.js: https://nodejs.org/en/download/
 - MariaDB/MySQL: https://mariadb.org/download/?t=mariadb&p=mariadb&r=12.0.2&os=windows&cpu=x86_64&pkg=msi&mirror=xtom_fre
 
+## Set Up MySQL Database
+1. Install MariaDB/MySQL server (You will create the password for the default "root" account here)
+2. Download 'IMS_Database_Schema.sql"
+3. Run the command `mysql -u root -p < [PATH_TO_"IMS_Database_Schema.sql"]`
+4. Enter your password
+5. This should have created the empty database 'ims_test'
+6. You can interact with 'ims_test' by running `mysql -u root -p ims_test`
+
 ## Clone this repo to a local folder on your device
 1. Install git, make sure it works by running `git -v`
 2. Navigate to the directory you want to clone the repo inside
@@ -31,15 +39,6 @@
 2. Run the command `npm install`, this will install all necessary dependencies
 3. Run the command `node .`
 4. In a web browser, navigate to localhost:3000 and you should see "IMS Project is running 🚀"
-
-## Set Up MySQL Database
-1. Install MariaDB/MySQL server (You will create the password for the default "root" account here)
-2. Download 'IMS_Database_Schema.sql"
-3. Run the command `mysql -u root -p < [PATH_TO_"IMS_Database_Schema.sql"]`
-4. Enter your password
-5. This should have created the empty database 'ims_test'
-6. You can interact with 'ims_test' by running `mysql -u root -p ims_test`
-
 
 # Contributing to the project:
 
