@@ -20,17 +20,17 @@
 2. Navigate to the directory you want to clone the repo inside
 3. Run `git clone https://github.com/mr-minty/CIT_480_IMS_Project`
 4. You should now see a directory called 'CIT_480_IMS_Project' in your current directory
-
-## Run the Node.js app locally
-1. Install Node.js, make sure it works by running `node -v`
-2. Navigate to the CIT_480_IMS_Project directory
-3. Run the command `npm install`, this will install all necessary dependencies
-4. Run the command `node .`
-5. In a web browser, navigate to localhost:3000 and you should see "IMS Project is running 🚀"
+5. Navigate to the CIT_480_IMS_Project directory, all instructions moving forward will be run from inside this directory
 
 ## Configure the .env file
 1. In your project folder do `copy .env.example .env` or create a blank text file titled '.env'
 2. Fill out environment vars
+
+## Run the Node.js app locally
+1. Install Node.js, make sure it works by running `node -v`
+2. Run the command `npm install`, this will install all necessary dependencies
+3. Run the command `node .`
+4. In a web browser, navigate to localhost:3000 and you should see "IMS Project is running 🚀"
 
 ## Set Up MySQL Database
 1. Install MariaDB/MySQL server (You will create the password for the default "root" account here)
