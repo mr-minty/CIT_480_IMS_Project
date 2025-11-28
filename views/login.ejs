@@ -1,51 +1,82 @@
-   <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link rel="stylesheet" href="/css/login.css">
-     <%- include("partials/bootstrap-call.ejs") %> 
-	 <%- include("partials/fonts-call.ejs") %> 
+  <link rel="stylesheet" href="/css/login.css">
+  <%- include("partials/bootstrap-call.ejs") %>
+  <%- include("partials/fonts-call.ejs") %>
 
-    <title>Document</title>
+  <title>Sign in</title>
 </head>
 <body>
-  <%- include('partials/header') %> 
+  <%- include('partials/header') %>
 
   <main class="flex-grow-1">
-	 <form id="loginForm" method="POST">
-		<div class="signin-header">
-		  <div class="signin-title">Sign in</div>
-	   </div>
-	   <div class="mb-3">
-	     <!--<label for="username">Username</label>-->
- 	     <input type="text" class="form-control" name="loginField" placeholder="Username or Email" required>
-	   </div>
- 	   <div class="mb-3">
- 	     <!--<label>Password</label>-->
- 	     <input type="password" class="form-control" name="password" placeholder="Password" required>
-	   </div>
-	   <button type="submit" class="btn">Login</button>
-	   <!--empty tag for error message-->
-	   <p id="errorMsg" style="color:red"></p>
-	
-	   <p class="switch-form"> 
-			Don't have an account? 
-			<a id="createAccountLink" href="/create-account">Create Account</a>
-	   </p>   
-	</form>
+    <div class="auth-container">
+     
+      <section class="auth-brand">
+        <div class="auth-brand-inner">
+          <img
+            src="/img/logo.png"
+            alt="Company logo"
+            class="auth-logo"
+          />
+          <h1 class="auth-title">Stockify IMS</h1>
+          <p class="auth-tagline">
+           An inventory management system that allows you to manage your company's inventory, create orders, and keep track of transactions, all under one simple dashboard.
+          </p>
+        </div>
+      </section>
+
+     
+      <section class="auth-form">
+        <form id="loginForm" method="POST" class="auth-card">
+          <div class="auth-card-header">
+            <h2 class="auth-card-title">Sign in</h2>
+            <p class="auth-card-subtitle">
+              Welcome back! Log in to access your dashboard.
+            </p>
+          </div>
+
+          <div class="mb-3">
+            <input
+              type="text"
+              class="form-control"
+              name="loginField"
+              placeholder="Username or Email"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <input
+              type="password"
+              class="form-control"
+              name="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn w-100 auth-submit-btn">
+            Login
+          </button>
+
+          
+          <p id="errorMsg" class="auth-error"></p>
+
+          <p class="switch-form">
+            Don't have an account?
+            <a id="createAccountLink" href="/create-account">Create account</a>
+          </p>
+        </form>
+      </section>
+    </div>
   </main>
-   <%- include('partials/footer') %> 
-	<script src="/js/login-client.js" defer></script>
+
+  <%- include('partials/footer') %>
+  <script src="/js/login-client.js" defer></script>
 </body>
 </html>
-
-
-<!--
-<div class="container d-flex justify-content-center align-items-center" style="min-height:80vh;">
-<div class="p-3 border rounded shadow-sm" style="width:350px;">
-
-</div>
-</div>
--->
