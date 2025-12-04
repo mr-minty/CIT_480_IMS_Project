@@ -1,70 +1,73 @@
-
 let i = 0;
 let cooldown = false;
-const cooldownPeriod = 0;
 const fadeDuration = 100;
+
+// Grab the card element
+const card = document.getElementById("currentItem");
+
+// --------------------
+// Shared logic
+// --------------------
+
+// Fade + update contents
+async function showItem(index) {
+  cooldown = true;
+  card.classList.add("fade-out");
+  await sleep(fadeDuration);
+
+  const item = inventory[index];
+  document.getElementById("name").innerText = item.name;
+  document.getElementById("sku").innerText = item.sku;
+  document.getElementById("category").innerText = item.category;
+  document.getElementById("supplier").innerText = item.supplier;
+  document.getElementById("pricePerUnit").innerText = "price / " + item.unit;
+  document.getElementById("price").innerText = "$" + item.price;
+  document.getElementById("quantity").innerText = item.quantity;
+
+  card.classList.remove("fade-out");
+  card.classList.add("fade-in");
+  await sleep(fadeDuration);
+  card.classList.remove("fade-in");
+
+  cooldown = false;
+}
+
+// Move forward / backward
+async function nextItem() {
+  if (cooldown || i >= inventory.length - 1) return;
+  i++;
+  await showItem(i);
+}
+
+async function prevItem() {
+  if (cooldown || i <= 0) return;
+  i--;
+  await showItem(i);
+}
+
+// --------------------
+// Event binding
+// --------------------
+
 const isDesktop = window.matchMedia("(pointer: fine)").matches;
 
-const card=document.getElementById("currentItem");
-
-if(isDesktop){ 
-    card.addEventListener("wheel", async (e) => {
-    e.preventDefault();   // stops the page from scrolling
+if (isDesktop) {
+  // Desktop: mouse wheel
+  card.addEventListener("wheel", async (e) => {
+    e.preventDefault();
     e.stopPropagation();
-    if (cooldown) return;
+    if (e.deltaY > 0) await nextItem();
+    else if (e.deltaY < 0) await prevItem();
+  }, { passive: false });
 
-    cooldown = true;
-
-    if(e.deltaY > 0 && i < inventory.length - 1) {
-        i++;
-    }
-    else if (e.deltaY < 0 && i != 0) {
-        i--;
-    }
-    else {
-        cooldown = false;
-        return;
-    }
-
-    // Fade out
-    card.classList.add("fade-out");
-    await sleep(fadeDuration);
-
-    // Populate card with next items information
-    let title = document.getElementById("name");
-    title.innerText = inventory[i].name;
-    let sku = document.getElementById("sku");
-    sku.innerText = inventory[i].sku;
-    let category = document.getElementById("category");
-    category.innerText = inventory[i].category;
-    let supplier = document.getElementById("supplier");
-    supplier.innerText = inventory[i].supplier;
-    let unit = document.getElementById("pricePerUnit");
-    unit.innerText= "price / " + inventory[i].unit;
-    let price = document.getElementById("price");
-    price.innerText = "$" + inventory[i].price;
-    let quantity = document.getElementById("quantity");
-    quantity.innerText = inventory[i].quantity;
-
-    // Fade back in
-    card.classList.remove("fade-out");
-    card.classList.add("fade-in");
-    await sleep(fadeDuration);
-
-    // Clean up
-    card.classList.remove("fade-in");
-
-    await sleep(cooldownPeriod);
-    cooldown = false;
-    }, { passive : false });
-}
-else {
-    let startY = 0;
-    card.addEventListener("touchstart", e => startY = e.touches[0].clientY);
-    card.addEventListener("touchend", e => {
-        const endY = e.changedTouches[0].clientY;
-        const deltaY = endY - startY;
-        if (deltaY < -30) nextItem();
-        else if (deltaY > 30) prevItem();
-    });
+} else {
+  // Mobile: vertical swipe
+  let startY = 0;
+  card.addEventListener("touchstart", e => startY = e.touches[0].clientY);
+  card.addEventListener("touchend", async e => {
+    const endY = e.changedTouches[0].clientY;
+    const deltaY = endY - startY;
+    if (deltaY < -30) await nextItem();    // swipe up
+    else if (deltaY > 30) await prevItem(); // swipe down
+  });
 }
