@@ -16,9 +16,25 @@ footer {
   flex-shrink: 0;      /* ensures footer stays at the bottom */
 }
 
+
+/* ITEM TABLE STYLING */
+
+.inventory-row {
+  cursor:pointer;
+}
+
+table tr.inventory-row:hover td {
+  background-color: rgba(95, 168, 122, 0.2) !important;
+}
+
+
+/* ITEM CARD STYLING [START] */
+
 .item-card {
   font-family: "Roboto", "Sans Serif";
+  font-size: 1.5rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  background-color: rgb(250, 249, 246);
   position: relative;
   top: calc(var(--i, 0) * -10px);
   transform: translateY(calc(var(--i, 0) * -100px));
@@ -31,7 +47,7 @@ footer {
   align-items: center;         /* centers key/value vertically */
   margin-bottom: 0.5rem;       /* space between rows */
   padding: 0.1rem 0.4rem;      /* subtle breathing room */
-  border-radius: 3%;
+  border-radius: 15px;
 }
 
 .item-card-data p {
@@ -45,3 +61,12 @@ footer {
 
 .item-card.fade-out { opacity: 0; transition: opacity 0.2s ease; }
 .item-card.fade-in  { opacity: 1; transition: opacity 0.2s ease; }
+
+/* ITEM CARD STYLING [END] */
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+

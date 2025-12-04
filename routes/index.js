@@ -20,7 +20,7 @@ router.use("/api/login", loginRouter);
 router.use("/dashboard", requireLogin, dashboardRouter);
 router.use("/api/logout", logoutRouter);
 router.use("/account", requireLogin, accountRouter)
-//router.use("/items", requireLogin, itemsRouter)
+router.use("/items", requireLogin, itemsRouter)
 
 //Static Files
 router.use(express.static(path.join(__dirname, "..", "public")));
@@ -44,10 +44,10 @@ router.get("/orders", (req, res) => res.render('orders', { title:"orders"}));
 
 router.get("/organization", (req, res) => res.render('organization', { title:"org"}));
 
-router.get("/items", requireLogin, async (req, res) => {
-  const items = await inventoryService.getInventory(req.session.orgId);
-  res.render("items", { items, title:"items" });
-});
+// router.get("/items", requireLogin, async (req, res) => {
+//   const items = await inventoryService.getInventory(req.session.orgId);
+//   res.render("items", { items, title:"items" });
+// });
 
 //Resources
 router.get("/api/maintenance-image", (req, res) => res.sendFile(path.join(__dirname, "..", "public", "img", "Maintenance-Page-Oranges.png")));
