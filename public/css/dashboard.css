@@ -20,10 +20,11 @@ main {
 
 .nav-card {
   width: 220px;
-  height: 130px;
-  background-color: #FAF9F6;
+  height: 500px;
+  background-color: #FFF;
   border-radius: 1rem;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  /* box-shadow: 0 4px 12px rgba(0,0,0,0.1); */
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,14 +45,34 @@ main {
     text-decoration: none;
 }
 
-#card1 {
-  min-height: 500px;
+/*  MOBILE STYLING */
+
+@media (max-width: 768px) {
+
+  .nav-card {
+  width: 150px;
+  height: 250px;
+  background-color: #FFF;
+  border-radius: 1rem;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
-#card2 {
-  min-height: 500px;
+.nav-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  background-color: #eef6ff;
 }
 
-#card3 {
-  min-height: 250px;
+.nav-link{
+    text-decoration: none;
+}
+
 }
