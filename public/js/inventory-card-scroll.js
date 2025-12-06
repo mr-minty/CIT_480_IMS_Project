@@ -3,7 +3,7 @@ let cooldown = false;
 const fadeDuration = 100;
 
 // Grab the card element
-const card = document.getElementById("currentItem");
+const card = document.querySelector(".item-card");
 
 // --------------------
 // Shared logic

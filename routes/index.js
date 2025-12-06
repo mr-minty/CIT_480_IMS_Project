@@ -29,8 +29,7 @@ router.use(express.static(path.join(__dirname, "..", "public")));
 //Pages
 router.get("/", (req, res) => {
     if(req.session.userId) return res.redirect("/dashboard");
-    else return res.redirect("/login");
-    
+    else return res.redirect("/login");  
 });
 
 router.get("/login", (req, res) => {

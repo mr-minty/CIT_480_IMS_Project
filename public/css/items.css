@@ -27,7 +27,21 @@ table tr.inventory-row:hover td {
   background-color: rgba(95, 168, 122, 0.2) !important;
 }
 
+#leftCard {
+   overflow: none;
+  }
 
+#tableScrollContainer {
+  max-height: 60vh;      
+  overflow-y: auto;      
+  overflow-x: hidden;    
+}
+
+#tableScrollContainer table {
+  width: auto;
+  table-layout: fixed;    /* ← ensure natural column width */
+  border-collapse: collapse;
+}
 /* ITEM CARD STYLING [START] */
 
 .item-card {
@@ -63,10 +77,68 @@ table tr.inventory-row:hover td {
 .item-card.fade-in  { opacity: 1; transition: opacity 0.2s ease; }
 
 /* ITEM CARD STYLING [END] */
-
 .grid-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
+}
+
+/* ITEM LIST STYLING */
+.inventory-list {
+  display: none;
+}
+
+/* 
+                -----------------------
+                |MOBILE DEVICE STYLING|
+                -----------------------
+
+*/
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+ 
+  #leftCard {
+    display: none;
+  }
+
+  #rightCard {
+    font-size: 14px;
+  }
+
+  .grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.inventory-list {
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  padding: 1rem;
+}
+
+.inventory-list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-top: 1px solid #6fa66f;
+}
+
+.inventory-list-item:last-child {
+  border-bottom: 1px solid #6fa66f;;
+}
+
+.inventory-list-item:hover {
+  background-color: #e0e0e0;
+}
+
+.inventory-list-data {
+  color: black;
+}
+
 }
 

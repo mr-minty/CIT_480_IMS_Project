@@ -7,7 +7,8 @@ async function getInventory(orgId) {
          FROM items i
          INNER JOIN categories c ON c.category_id = i.category_id
          INNER JOIN suppliers s ON s.supplier_id = i.supplier_id
-         ORDER BY i.sku`,
+         WHERE i.org_id = ?
+         ORDER BY i.item_id ASC`,
         [orgId]
         );
         return items;

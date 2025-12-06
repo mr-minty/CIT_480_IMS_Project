@@ -34,37 +34,37 @@
       <div class="grid-container">
 
         <!-- LEFT CARD -->
-        <div class="card">
+        <div class="card" id="leftCard"> 
+          <div id=tableScrollContainer>
+            <table id="inventoryTable" class="table-responsive table-hover">
+                <thead>
+                    <tr>
+                    <th>Sku</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Supplier</th>
+                    <th>Price / Unit</th>
+                    <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody id="itemsList">
+                    <!-- Dynamically insert the inventory of the user's org -->
+                    <% items.forEach(({sku, name, category, supplier, price, quantity, unit})=> { %>
+                    <tr class="inventory-row">
+                        <td><%= sku %></td>
+                        <td><%= name %></td>
+                        <td><%= category %></td>
+                        <td><%= supplier %></td>
+                        <td>$<%= price %> / <%= unit %></td>
+                        <td><%= quantity %></td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+                <tfoot>
 
-          <table id="inventoryTable" class="table table-hover">
-              <thead>
-                  <tr>
-                  <th>Sku</th>
-                  <th>Name</th>
-                  <th>Category</th>
-                  <th>Supplier</th>
-                  <th>Price / Unit</th>
-                  <th>Quantity</th>
-                  </tr>
-              </thead>
-              <tbody id="itemsList">
-                  <!-- Dynamically insert the inventory of the user's org -->
-                  <% items.forEach(({sku, name, category, supplier, price, quantity, unit})=> { %>
-                  <tr class="inventory-row">
-                      <td><%= sku %></td>
-                      <td><%= name %></td>
-                      <td><%= category %></td>
-                      <td><%= supplier %></td>
-                      <td>$<%= price %> / <%= unit %></td>
-                      <td><%= quantity %></td>
-                  </tr>
-                  <% }) %>
-              </tbody>
-              <tfoot>
-
-              </tfoot>
-          </table>
-
+                </tfoot>
+            </table>
+          </div>
           <!-- <div>
               <form id="addItemsForm">
                   <input type="text" class="form-control" placeholder="Sku">
@@ -81,7 +81,7 @@
 
           <!-- RIGHT CARD -->
           <% const item = items[0]; %>
-            <div class="card item-card" id="currentItem">
+            <div class="card item-card" id="rightCard">
               <div class="card-body">
                 <h5 class="card-title text-center mb-3" id="name"><%= item.name%></h5>
                 <hr class="w-100">
@@ -110,6 +110,15 @@
         
       </div>
 
+      <!-- Mobile Scroll Display -->
+      <div class="inventory-list">
+        <% items.forEach(({sku, name})=> { %>
+          <div class="inventory-list-item">
+            <div class="inventory-list-data"><%= name%></div>
+            <div class="inventory-list-data"><%= sku%></div>
+          </div>
+        <% }) %>
+      </div>
   
       <script> const inventory = <%- JSON.stringify(items) %>; </script>
       <script src="/js/utils.js"></script>
