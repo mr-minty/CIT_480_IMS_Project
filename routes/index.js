@@ -43,11 +43,6 @@ router.get("/orders", (req, res) => res.render('orders', { title:"orders"}));
 
 router.get("/organization", (req, res) => res.render('organization', { title:"org"}));
 
-// router.get("/items", requireLogin, async (req, res) => {
-//   const items = await inventoryService.getInventory(req.session.orgId);
-//   res.render("items", { items, title:"items" });
-// });
-
 //Resources
 router.get("/api/maintenance-image", (req, res) => res.sendFile(path.join(__dirname, "..", "public", "img", "Maintenance-Page-Oranges.png")));
 
