@@ -1,22 +1,25 @@
+<%# Make page=null for any page besides /login or /create-account %>
+<% if (typeof page === 'undefined') page = null; %>
+
 <header class="text-white d-flex align-items-center justify-content-between px-3"> 
 
   <a href="/"> 
-  <img id="siteLogo" src="img/stockify-logo-transparent.png" alt="app logo"> 
+    <img id="siteLogo" src="img/stockify-logo-transparent.png" alt="app logo"> 
   </a> 
+  <%# Do not display hamburger dropdown menu for /login or /create-account %>
+  <% if (page !== '/login' && page !== '/create-account') { %>
+  <div id=dropdownMenu> 
+    <a href="/items">Inventory</a> 
+    <a href="/orders">Orders</a> 
+    <a href="/organization">Organization</a> 
+    <a href="/account">Account</a> 
+    <a href="/api/logout">Log out</a>
+  </div>
   
   <a class="icon" onclick="showDropdownMenu()"> 
-  <i id="hbIcon"class="fa fa-bars"></i> 
+    <i id="hbIcon"class="fa fa-bars"></i> 
   </a> 
-
+  <% } %>
 </header> 
-
-
-<div id=dropdownMenu> 
-  <a href="/items">Inventory</a> 
-  <a href="/orders">Orders</a> 
-  <a href="/organization">Organization</a> 
-  <a href="/account">Account</a> 
-  <a href="/api/logout">Log out</a>
-</div>
 
 <script src="/js/header-client.js"></script>
