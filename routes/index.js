@@ -33,11 +33,13 @@ router.get("/", (req, res) => {
 });
 
 router.get("/login", (req, res) => {
-  if(req.session.userId) return res.redirect("/");
-  res.render('login')
+  if (req.session.userId) return res.redirect("/");
+  res.render('login', { page: '/login' });
 });
 
-router.get("/create-account", (req, res) => res.render('create-account'));
+router.get("/create-account", (req, res) => {
+  res.render('create-account', { page: '/create-account' });
+});
 
 router.get("/orders", (req, res) => res.render('orders', { title:"orders"}));
 

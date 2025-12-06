@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="icon" href="img/stockify-favicon-32x32.png" type="image/x-icon">
     
     <!-- Bootstrap call -->
     <%- include("partials/bootstrap-call.ejs") %>
@@ -11,6 +14,10 @@
 
     <!-- CSS call -->
     <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    
 
     <title><%= title %></title>
 </head>
@@ -20,31 +27,13 @@
 
     <main class="flex-grow-1">
         <!--Welcome Banner-->
-        <div id="welcome-banner" class="container">
+        <div id="welcome-banner" class="container mt-2">
             <div class="row justify-start">
                 <div class="col-12">
                     <h1>Welcome, <%= user.username %></h1>
-                    <div>
-                        <p><%=content%></p>
-                    </div>  
+                    
                 </div>
             </div>
-        </div>
-
-        <div class="container">
-          <div class="row g-4 p-4">
-                <div class="col-md-6">
-                    <div class="card p-4 shadowm-sm align-items-center" id="card1">Card 1</div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card p-4 shadowm-sm align-items-center" id="card2">Card 2</div>
-                </div>
-          </div>
-          <div class="row g-4">
-            <div class="col-md-12">
-                <div class="card p-4 shadowm-sm align-items-center" id="card3">Card 3</div>
-            </div>
-          </div>
         </div>
         
         <!--Nav Cards-->
@@ -56,9 +45,7 @@
         </div>
 
         
-
-        <!-- Link to your JavaScript files here 
-        <script src="/js/main.js"></script> -->
+        <script src="/js/header-client.js"></script> 
     </main>
     <%- include('partials/footer') %> 
 </body>

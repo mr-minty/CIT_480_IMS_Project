@@ -1,0 +1,106 @@
+/* GLOBAL/DESKTOP STYLING */
+:root {
+    font-family: "Roboto", "Sans Serif";
+}
+
+header {
+    background-color: #6fa66f;
+    align-items: center;
+    font-family: "Roboto", "Sans Serif";
+    font-size: 1.5rem;
+}
+
+#siteLogo {
+    height:70px; 
+    width:70px; 
+    position: relative; 
+    left:20px;
+    max-width: none;
+    flex-shrink: 0;
+}
+
+#dropdownMenu {
+    display: none;
+    height: auto;
+    width: 200px;
+    position: absolute;
+    right: 0px;
+    top: 70px;
+    transition: all 0.2s ease;
+    border-top: 2px solid white;
+}
+
+#dropdownMenu a{
+    height: 60px;
+    font-size: 1.2rem;;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    background-color: #6fa66f;
+}
+
+#dropdownMenu a:hover{
+    background-color: #5087065f;
+}
+
+ #hbIcon{
+    font-size: 45px;
+    color: white;
+    position: relative;
+    right: 20px;
+    cursor: pointer;
+ }
+
+ #hbIcon:hover {
+    color: #eee
+ }
+
+/* MOBILE STYLING */
+@media (max-width: 768px) {
+
+    #siteLogo {
+    height:30px; 
+    width:30px; 
+    position: relative; 
+    left:10px;
+    max-width: none;
+    flex-shrink: 0;
+}
+
+#dropdownMenu {
+    display: none;
+    height:400px;
+    width:200px;
+    position: absolute;
+    right: 0px;;
+    top: 70px;
+    transition: all 0.2s ease;
+}
+
+#dropdownMenu a{
+    height: 60px;
+    font-size: 1.2rem;;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    background-color: #6fa66f;
+}
+
+#dropdownMenu a:hover{
+    background-color: #6e965f;
+}
+
+#hbIcon{
+    font-size: 20px;
+    color: white;
+    position: relative;
+    right: 10px;
+    cursor: pointer;
+}
+
+    
+}
