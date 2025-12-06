@@ -104,7 +104,7 @@ table tr.inventory-row:hover td {
   }
 
   #rightCard {
-    font-size: 14px;
+    display: none;
   }
 
   .grid-container {
