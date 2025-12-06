@@ -21,7 +21,7 @@
 3. Run the command `mysql -u root -p < [PATH_TO_"IMS_Database_Schema.sql"]`
 4. Enter your password
 5. This should have created the empty database 'ims_test'
-6. You can interact with 'ims_test' by running `mysql -u root -p ims_test`
+6. You can interact with 'ims_test' by running `mysql -u root -p ims_test` and your OS password OR `mysql -u ims_user -p ims_test` with the password: 'ims_pass'
 
 ## Clone this repo to a local folder on your device
 1. Install git, make sure it works by running `git -v`
@@ -32,7 +32,7 @@
 
 ## Configure the .env file
 1. In your project folder do `copy .env.example .env` or create a blank text file titled '.env'
-2. Fill out environment vars
+2. The default environment variables in .env.example will work. You do not need to change the password.
 
 ## Run the Node.js app locally
 1. Install Node.js, make sure it works by running `node -v`
