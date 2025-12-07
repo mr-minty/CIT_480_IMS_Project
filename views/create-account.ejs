@@ -22,52 +22,54 @@
 <body>
      <%- include('partials/header') %> 
 	 <main class="flex-grow-1">
-		<form id="registerForm" method ="POST">
-		<div class="create-account-header">
-			<div class="create-account-title">Create your account</div>
+	 	<div id="registerFormCard" class="card mb-2">
+			<form id="registerForm" method ="POST">
+				<div class="create-account-header">
+					<div class="create-account-title">Create your account</div>
+				</div>
+				<div class="mb-2">
+					<input type="text" class="form-control" name="name" placeholder="Name" required>
+					<p id="nameError" style="color:red"></p>
+				</div>
+				<div class="mb-2">
+					<input type="text" class="form-control" name="username" placeholder="Username" required>
+					<p id="usernameError" style="color:red"></p>
+				</div>
+				<div class="mb-2">
+					<input type="text" class="form-control" name="email"
+						placeholder="Email Address" required
+						pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$">
+					<p id="emailError" style="color:red"></p>
+				</div>
+				<div class="mb-2">
+					<input type="password" class="form-control" name="password" placeholder="Password" required>
+					<p id="passwordError" style="color:red"></p>
+				</div>
+				<div class="mb-2">
+					<input type="text" class="form-control" name="org_code" placeholder="Org Code" required>
+					<p id="orgCodeError" style="color:red"></p>
+				</div>
+				<div id="roleRadios" class="d-flex justify-content-between">
+					<div class="form-check form-check-inline">
+						<input type="radio" class="form-check-input" name="role" id="roleRadio1" value="staff" checked="checked" required>
+						<label for="roleRadio1" class="form-check-label">Staff</label>
+					</div>
+					<div class="form-check form-check-inline">
+						<input type="radio" class="form-check-input" name="role" id = "roleRadio2" value="manager" required>
+						<label for="roleRadio2" class="form-check-label">Manager</label>	
+					</div>	
+					<div class="form-check form-check-inline">
+						<input type="radio" class="form-check-input" name="role" id = "roleRadio3" value="org_owner" required>
+						<label for="roleRadio3" class="form-check-label">Org Owner</label>
+						<p id="roleRadioError" style="color:red"></p>
+					</div>
+				</div>
+				<div class="d-flex justify-content-center">
+					<button type="submit" class="btn w-50">Submit</button>
+				</div>
+				<p id="formError" style="color:red"></p>
+			</form>
 		</div>
-		<div class="mb-3">
-			<input type="text" class="form-control" name="name" placeholder="Name" required>
-			<p id="nameError" style="color:red"></p>
-		</div>
-		<div class="mb-3">
-			<input type="text" class="form-control" name="username" placeholder="Username" required>
-			<p id="usernameError" style="color:red"></p>
-		</div>
-		<div class="mb-3">
-			<input type="text" class="form-control" name="email"
-      			 placeholder="Email Address" required
-      			 pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$">
-			<p id="emailError" style="color:red"></p>
-		</div>
-		<div class="mb-3">
-			<input type="password" class="form-control" name="password" placeholder="Password" required>
-			<p id="passwordError" style="color:red"></p>
-		</div>
-		<div id="roleRadios" class="d-flex gap-3">
-			<div class="form-check form-check-inline">
-				<input type="radio" class="form-check-input" name="role" id="roleRadio1" value="staff" checked="checked" required>
-				<label for="roleRadio1" class="form-check-label">Staff</label>
-			</div>
-			<div class="form-check form-check-inline">
-				<input type="radio" class="form-check-input" name="role" id = "roleRadio2" value="manager" required>
-				<label for="roleRadio2" class="form-check-label">Manager</label>	
-			</div>	
-			<div class="form-check form-check-inline">
-				<input type="radio" class="form-check-input" name="role" id = "roleRadio3" value="org_owner" required>
-				<label for="roleRadio3" class="form-check-label">Org Owner</label>
-			</div>
-		</div>
-		<p id="roleRadioError" style="color:red"></p>
-		<div class="mb-3">
-			<input type="text" class="form-control" name="org_code" placeholder="Org Code" required>
-			<p id="orgCodeError" style="color:red"></p>
-		</div>
-		<div class="d-flex justify-content-center">
-			<button type="submit" class="btn w-50">Submit</button>
-		</div>
-		<p id="formError" style="color:red"></p>
-		</form>
 	  </main>
 	  <%- include('partials/footer') %> 
 	<script src="/js/register-client.js" defer></script>
