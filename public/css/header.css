@@ -20,14 +20,14 @@ header {
 }
 
 #dropdownMenu {
+    position: absolute;
+    top: 70px;
+    right: 0px;
     display: none;
     height: auto;
-    width: 200px;
-    position: absolute;
-    right: 0px;
-    top: 70px;
+    width: 180px;
     transition: all 0.2s ease;
-    border-top: 2px solid white;
+    overflow: hidden;
 }
 
 #dropdownMenu a{
@@ -38,7 +38,8 @@ header {
     justify-content: center;
     color: white;
     text-decoration: none;
-    background-color: #6fa66f;
+    background-color: #5a8e5a;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
 #dropdownMenu a:hover{
@@ -60,7 +61,7 @@ header {
 /* MOBILE STYLING */
 @media (max-width: 768px) {
 
-    #siteLogo {
+#siteLogo {
     height:30px; 
     width:30px; 
     position: relative; 
@@ -71,12 +72,11 @@ header {
 
 #dropdownMenu {
     display: none;
-    height:400px;
-    width:200px;
-    position: absolute;
-    right: 0px;;
-    top: 70px;
-    transition: all 0.2s ease;
+    position: static;
+    top: auto;
+    right: auto;
+    width: 100%;
+    flex-shrink: 0;
 }
 
 #dropdownMenu a{
@@ -87,7 +87,7 @@ header {
     justify-content: center;
     color: white;
     text-decoration: none;
-    background-color: #6fa66f;
+    background-color: #5a8e5a;
 }
 
 #dropdownMenu a:hover{
