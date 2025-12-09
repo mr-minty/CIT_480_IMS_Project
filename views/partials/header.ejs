@@ -6,20 +6,25 @@
   <a href="/"> 
     <img id="siteLogo" src="img/stockify-logo-transparent.png" alt="app logo"> 
   </a> 
-  <%# Do not display hamburger dropdown menu for /login or /create-account %>
+
   <% if (page !== '/login' && page !== '/create-account') { %>
-  <div id=dropdownMenu> 
+  <a class="icon" onclick="showDropdownMenu()"> 
+    <i id="hbIcon"class="fa fa-bars"></i> 
+  </a> 
+  <% } %>
+ 
+</header> 
+
+ <%# Do not display hamburger dropdown menu for /login or /create-account %>
+  <% if (page !== '/login' && page !== '/create-account') { %>
+  <nav id="dropdownMenu"> 
     <a href="/items">Inventory</a> 
     <a href="/orders">Orders</a> 
     <a href="/organization">Organization</a> 
     <a href="/account">Account</a> 
     <a href="/api/logout">Log out</a>
-  </div>
-  
-  <a class="icon" onclick="showDropdownMenu()"> 
-    <i id="hbIcon"class="fa fa-bars"></i> 
-  </a> 
+  </nav>
   <% } %>
-</header> 
 
+<%# Script Call %>
 <script src="/js/header-client.js"></script>
