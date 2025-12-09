@@ -93,3 +93,71 @@ main {
 .create-account-title {
   font-size: 1.75rem;
 }
+
+#roleRadios {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+
+/* AI BS */
+
+
+/* Aligning radio button with labels */
+#roleRadios .form-check-inline {
+  display: flex;
+  align-items: center; /* vertically centers radio + label */
+  gap: 10px;            /* optional: small spacing between them */
+}
+
+#roleRadios p.form-check-label {
+  display: flex;
+  align-items: center; /* aligns "Role:" with the radios */
+  margin-bottom: 0;    /* removes Bootstrap paragraph spacing */
+}
+
+/* Radio button custom color */
+#roleRadios .form-check-input[type="radio"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #5fa87a;
+  border-radius: 50%;
+  display: inline-grid;
+  place-content: center;
+  cursor: pointer;
+}
+
+/* The inner filled dot */
+#roleRadios .form-check-input[type="radio"]::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  background-color: #5fa87a;
+}
+
+/* Show the dot when checked */
+#roleRadios .form-check-input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+#roleRadios .form-check-input[type="radio"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(95, 168, 122, 0.4); /* soft green halo */
+}
+
+/* Optional: focus ring for accessibility */
+#roleRadios .form-check-input[type="radio"]:focus-visible {
+  outline: 2px solid #5fa87a;
+  outline-offset: 2px;
+}
+
+#roleRadios .form-check-input:checked {
+    background-color: #6fa66f;
+    border-color: #6fa66f;
+}
