@@ -77,6 +77,14 @@ header {
     flex-shrink: 0;
 }
 
+#logoBrand {
+    color: darkgreen;
+    position: absolute;
+    left: 55px;
+    top: 11px;
+    font-size: medium;
+}
+
 #dropdownMenu {
     display: none;
     position: static;
