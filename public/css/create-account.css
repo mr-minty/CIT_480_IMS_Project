@@ -86,6 +86,16 @@ main {
   color: white;
 }
 
+#registerForm button {
+  background-color: #5fa87a;
+  color: white;
+  border-radius: 3rem;
+}
+
+#registerForm button:hover {
+  background-color: #4f987a;
+}
+
 .create-account-header {
   font-family: "Roboto", "Sans Serif";
 }

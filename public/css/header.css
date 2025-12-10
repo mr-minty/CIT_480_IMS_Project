@@ -19,6 +19,13 @@ header {
     flex-shrink: 0;
 }
 
+#logoBrand {
+    color: darkgreen;
+    position: absolute;
+    left: 100px;
+    top: 20px;
+}
+
 #dropdownMenu {
     position: absolute;
     top: 70px;
