@@ -11,11 +11,17 @@ async function loadAccountInfo(req, res) {
 
 
         //check for null name
-        if(!userAccount.dob) userAccount.name = "Value not set"
+        if(!userAccount.name) userAccount.name = "Value not set";
 
         //check for null birthday
-        if(!userAccount.dob) userAccount.dob = "Value not set"
-
+        if(!userAccount.dob) userAccount.dob = "Value not set";
+        else {
+            //Format created_at date
+            userAccount.dob = new Date(userAccount.dob).toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric"
+            });
+        }   
         //Format created_at date
         userAccount.created_at = new Date(userAccount.created_at).toLocaleDateString("en-US", {
             month: "short",

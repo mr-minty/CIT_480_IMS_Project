@@ -4,7 +4,6 @@ async function addUser(newUser) {
 //Destructure newUser back into its individual fields
     const { username, email, password, role, name, dob, org_id=1 } = newUser;
     let userId;
-    console.log(newUser);
     try {
 //INSERT statement for user authentication info
   //reeeemove

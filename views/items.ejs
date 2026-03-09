@@ -39,8 +39,8 @@
 
         <!-- LEFT CARD -->
         <div class="card" id="leftCard"> 
-          <div id=tableScrollContainer>
-            <table id="inventoryTable" class="table-responsive table-hover">
+          <div id="tableScrollContainer" class="table-responsive">
+            <table id="inventoryTable" class="table-hover">
                 <thead>
                     <tr>
                     <th>Sku</th>
@@ -68,6 +68,21 @@
 
                 </tfoot>
             </table>
+          </div>
+
+          <div id="inventoryControlPanel">
+            <div class="inventoryControlPanelItem">
+                <span id="inventoryControlPanelLabel">Sort by </span>
+                <select name="sort" id="sort" class="form-select">
+                  <option>Sku #</option>
+                  <option>Category</option>
+                  <option>A-Z</option>
+                  <option>Z-A</option>
+                </select>
+            </div>
+              <div class="inventoryControlPanelItem">
+                <span id="inventoryControlPanelLabel">Zoom</span>
+            </div>
           </div>
           <!-- <div>
               <form id="addItemsForm">
@@ -114,7 +129,7 @@
         
       </div>
 
-      <!-- Mobile Scroll Display -->
+      <%# Mobile Scroll Display  %>
       <div class="inventory-list">
         <% items.forEach(({sku, name})=> { %>
           <div class="inventory-list-item">
@@ -127,9 +142,10 @@
       <script> const inventory = <%- JSON.stringify(items) %>; </script>
       <script src="/js/utils.js"></script>
       <script src="/js/inventory-card-scroll.js" defer></script>
+      <script src="js/items-client.js" defer></script>
     </div>
     </main>
-    
+
     <%- include('partials/footer') %> 
 </body>
 </html>

@@ -21,7 +21,7 @@ main {
 .nav-card {
   width: 220px;
   height: 500px;
-  background-color: #FFF;
+  background-color: rgb(250, 249, 246);
   border-radius: 1rem;
   /* box-shadow: 0 4px 12px rgba(0,0,0,0.1); */
   box-shadow: 0 10px 5px rgba(15, 23, 42, 0.12);

@@ -16,16 +16,82 @@ footer {
   flex-shrink: 0;      /* ensures footer stays at the bottom */
 }
 
+ #rightCard {
+    display: none;
+  }
+
+
 
 /* ITEM TABLE STYLING */
+table{
+   font-family: "Roboto", "Sans Serif";
+}
+
+#inventoryTable{
+  width: 100%;
+  background-color: rgb(250, 249, 246);
+}
+
+#inventoryTable th,td {
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+#inventoryTable th{
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+#inventoryTable td{
+  padding: 10px;
+}
+
+#inventoryTable td:nth-child(6),
+                th:nth-child(6),
+                td:nth-child(5),
+                th:nth-child(5) {
+  text-align: right; 
+}
 
 .inventory-row {
   cursor:pointer;
 }
 
-table tr.inventory-row:hover td {
+/* .inventory-row:hover {
   background-color: rgba(95, 168, 122, 0.2) !important;
+} */
+
+#inventoryTable tr.inventory-row:hover td {
+  background-color: rgba(95, 168, 122, 0.2);
 }
+
+#inventoryControlPanel {
+  display: flex;
+  flex-direction: row;
+  height: 10vh;
+  width: 100%;
+  background-color: rgb(250, 249, 246); 
+}
+
+.inventoryControlPanelItem {
+  display: flex;
+  color: black;
+  padding: 10px;
+  width: auto;
+  gap: 0.5rem;
+}
+
+#sort {
+  width: auto;
+  max-height: 4vh;
+}
+
+#inventoryControlPanelLabel {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: large;
+  padding-top: 5px;
+}
+
 
 #leftCard {
    overflow: none;
@@ -34,14 +100,15 @@ table tr.inventory-row:hover td {
 #tableScrollContainer {
   max-height: 60vh;      
   overflow-y: auto;      
-  overflow-x: hidden;    
+  overflow-x: hidden; 
+  scrollbar-color: #6fa66f rgb(250, 249, 246);;   
 }
 
-#tableScrollContainer table {
-  width: auto;
-  table-layout: fixed;    /* ← ensure natural column width */
-  border-collapse: collapse;
+/* Scrollbar styling */
+#tableScrollContainer::-webkit-scrollbar {
+    width: 20px;
 }
+
 /* ITEM CARD STYLING [START] */
 
 .item-card {
@@ -79,7 +146,7 @@ table tr.inventory-row:hover td {
 /* ITEM CARD STYLING [END] */
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 1.5rem;
 }
 
