@@ -15,3 +15,19 @@ main {
 footer {
   flex-shrink: 0;      /* ensures footer stays at the bottom */
 }
+
+.grid-card {
+  background-color: rgb(250, 249, 246);
+}
+
+.grid-container {
+  display:grid;
+  grid-template-columns: 1fr 1fr ;
+  gap: 1.5rem;
+}
+
+#memberList {
+  min-height: 60%;
+  max-height: 60%;
+  overflow-y: scroll;
+}

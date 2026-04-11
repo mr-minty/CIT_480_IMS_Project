@@ -1,6 +1,6 @@
 const userService = require("../services/user-service");
 
-async function loadAccountInfo(req, res) {
+async function renderAccounts(req, res) {
     const userId = req.session.userId;
 
     try {
@@ -40,4 +40,4 @@ async function loadAccountInfo(req, res) {
     }
 }
 
-module.exports = loadAccountInfo;
+module.exports = renderAccounts;

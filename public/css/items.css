@@ -29,6 +29,7 @@ table{
 
 #inventoryTable{
   width: 100%;
+  table-layout: fixed;
   background-color: rgb(250, 249, 246);
 }
 
@@ -53,9 +54,34 @@ table{
   text-align: right; 
 }
 
+#inventoryTable th:first-child,
+#inventoryTable td:first-child {
+  width: 80px;
+}
+
+#addItem {
+  position: relative;
+
+}
+
+#newItemPrice, #newItemQuantity {
+  text-align: end;
+}
+
+#submitNewItemButton {
+  height: 45px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#submitNewItemButton:hover {
+  color: #6fa66f;
+}
+
 .inventory-row {
   cursor:pointer;
 }
+
 
 /* .inventory-row:hover {
   background-color: rgba(95, 168, 122, 0.2) !important;
@@ -81,6 +107,33 @@ table{
   gap: 0.5rem;
 }
 
+.inventoryControlPanelItem:last-child {
+  margin-left: auto;
+}
+
+#addItemButton {
+  background-color: #6fa66f;
+  color: white;
+  border-color: #6fa66f;
+  width: 95px;
+}
+
+#addItemButton:hover {
+  background-color: #6e965f;
+  border-color: #6e965f;
+}
+
+#addItemButton:active {
+  background-color: #5f8550; /* optional slightly darker */
+  border-color: #5f8550;
+}
+
+#addItemButton:focus,
+#addItemButton:focus-visible {
+  box-shadow: none; /* remove blue ring */
+}
+
+
 #sort {
   width: auto;
   max-height: 4vh;
@@ -91,7 +144,6 @@ table{
   font-size: large;
   padding-top: 5px;
 }
-
 
 #leftCard {
    overflow: none;
@@ -154,6 +206,20 @@ table{
 .inventory-list {
   display: none;
 }
+
+#addItem {
+  height: 45px;
+  width: 1098px;
+  
+}
+
+#addItemContent {
+  width: auto;
+  display: flex;
+  justify-content: center;
+}
+
+
 
 /* 
                 -----------------------

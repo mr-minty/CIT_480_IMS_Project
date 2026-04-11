@@ -63,9 +63,40 @@
                         <td><%= quantity %></td>
                     </tr>
                     <% }) %>
+                    
                 </tbody>
                 <tfoot>
-
+                    
+                    <!-- New Item Form Row -->
+                    <tr class="inventory-row d-none" id="newItemForm">
+                    <form>
+                      <td>
+                        0<%= items.length + 2 %>
+                      </td>
+                      <td>
+                          <input type="text" class="form-control" id="newItemName" name="name" placeholder="Name" required>
+                      </td>
+                      <td>
+                          <input type="text" class="form-control" id="newItemCategory" name="category" placeholder="Category" required>
+                      </td>
+                      <td>
+                          <input type="text" class="form-control" id="newItemSupplier" name="supplier" placeholder="Supplier" required>
+                      </td>
+                      <td>
+                          <input type="text" class="form-control" id="newItemPrice" name="price" placeholder="Price/Unit" required>
+                      </td>
+                      <td>
+                          <input type="text" class="form-control" id="newItemQuantity" name="quantity" placeholder="Quantity" required>
+                      </td>
+                    </form>
+                    </tr>
+                    <!-- Submit New Item button -->
+                    <tr id="submitNewItemButton" class="d-none">
+                      <td colspan="6">
+                        <span>Submit +</span>
+                      </td>
+                    </tr>
+                    
                 </tfoot>
             </table>
           </div>
@@ -83,18 +114,11 @@
               <div class="inventoryControlPanelItem">
                 <span id="inventoryControlPanelLabel">Zoom</span>
             </div>
+            <div class="inventoryControlPanelItem">
+                <button type="button" class="btn" id="addItemButton">New Item</button>
+            </div>
           </div>
-          <!-- <div>
-              <form id="addItemsForm">
-                  <input type="text" class="form-control" placeholder="Sku">
-                  <input type="text" class="form-control" placeholder="Name">
-                  <input type="text" class="form-control" placeholder="Category">
-                  <input type="text" class="form-control" placeholder="Supplier">
-                  <input type="text" class="form-control" placeholder="Price">
-                  <input type="text" class="form-control" placeholder="Qty">
-                  <input type="text" class="form-control" placeholder="Unit">
-              </form>
-          </div> -->
+           
           
         </div>
 
@@ -141,11 +165,13 @@
   
       <script> const inventory = <%- JSON.stringify(items) %>; </script>
       <script src="/js/utils.js"></script>
+      <script src="/js/add-item.js"></script>
       <script src="/js/inventory-card-scroll.js" defer></script>
       <script src="js/items-client.js" defer></script>
     </div>
     </main>
 
     <%- include('partials/footer') %> 
+    
 </body>
 </html>

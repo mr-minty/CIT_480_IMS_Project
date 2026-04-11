@@ -21,16 +21,58 @@
 </head>
 
 <body>
-    <%- include('partials/header') %> 
-
+   <%- include('partials/header') %> 
+   <% console.log(`info: ${info}`); %>
    <main class="flex-grow-1">
 
     <div class="container">
+      
+        
+      <!-- Header row (separate) -->
       <div class="row">
-        <div class="col-md-12 d-flex justify-content-center">
-            <img src="/img/Maintenance-Page-Oranges.png" class="img-fluid" style="max-width:100%; height:auto;">
+        <div class="col-12">
+          <span class="h1">My Org</span>
+          <hr class="w-100">
         </div>
-      </div>
+   
+        <div class="grid-container">
+
+            <!-- Org Details Card -->
+            <div class="card grid-card">
+                <div class="card-body">
+                    <h5 class="card-title">Details</h5>
+                    <hr class="w-100">
+                    <div class="d-flex flex-column mb-2">
+                        <span class="fw-semibold">Org</span>
+                        <span class="text-end pe-2 text-muted"><%= info.name %></span>
+                    </div>
+                    <div class="d-flex flex-column mb-2">
+                        <span class="fw-semibold">Org Owner</span>
+                        <span class="text-end pe-2 text-muted"><%= info.owner %></span>
+                    </div>
+                </div>
+            </div>
+
+            <!--  Org Members Card-->
+            <div class="card grid-card">
+                <div class="card-body">
+                    <h5 class="card-title">Members</h5>
+                    <hr class="w-100">
+                    
+                    <div  id="memberList">
+                        <% members.forEach(({ name, role})=> { %>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="ps-2"><%= name %></span>
+                            <span class="text-end pe-5 fw-semibold"><%= role %></span>
+                        </div>        
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+    
     </div>
           
     </main>

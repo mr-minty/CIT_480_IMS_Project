@@ -20,12 +20,6 @@ footer {
   font-family: "Roboto", "Sans Serif";
 }
 
-.fake-box {
-  background: #f4f4f4;
-  border: 1px dashed #aaa;
-  min-height: 200px;
-}
-
 .info-block {
   background-color: rgb(250, 249, 246);
 }

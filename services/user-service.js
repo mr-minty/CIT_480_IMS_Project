@@ -66,4 +66,42 @@ async function getUserAccount(userId) {
     }
 } 
 
-module.exports = { addUser, getUserCreds, getUserAccount} ;
+async function getOrgInfo(userId) {
+    try {
+        const [rows] = await pool.query(
+            `SELECT o.name, owner_info.name AS owner
+             FROM users u
+             JOIN orgs o ON o.org_id = u.org_id
+             JOIN users owner ON owner.org_id = o.org_id AND owner.role = "org_owner"
+             JOIN user_info owner_info ON owner_info.user_id = owner.user_id
+             WHERE u.user_id = ?`,
+             [userId]
+        );
+
+        const orgInfo = rows[0];
+        if(!orgInfo) return null;
+        return orgInfo;
+    } catch (err) {
+        throw err;
+    }
+}
+
+async function getOrgMembers(orgId) {
+    try {
+        const [rows] = await pool.query(
+            `SELECT i.name, u.role
+             FROM users u
+             INNER JOIN user_info i ON u.user_id = i.user_id
+             WHERE u.org_id=?`,
+             [orgId]
+        );
+
+        const orgMembers = rows;
+        if(!orgMembers) return null;
+        return orgMembers;
+    } catch (err) {
+        throw err;
+    }
+}
+
+module.exports = { addUser, getUserCreds, getUserAccount, getOrgInfo, getOrgMembers} ;
