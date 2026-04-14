@@ -55,7 +55,7 @@
                     <!-- Dynamically insert the inventory of the user's org -->
                     <% items.forEach(({sku, name, category, supplier, price, quantity, unit})=> { %>
                     <tr class="inventory-row">
-                        <td><%= sku %></td>
+                        <td><%= String(sku).padStart(3, "0") %></td>
                         <td><%= name %></td>
                         <td><%= category %></td>
                         <td><%= supplier %></td>
@@ -69,26 +69,39 @@
                     
                     <!-- New Item Form Row -->
                     <tr class="inventory-row d-none" id="newItemForm">
-                    <form>
-                      <td>
-                        0<%= items.length + 2 %>
+                      <td id="newItemSku">
+                        <% const newSku = items.length + 1%>
+                        <%= String(newSku).padStart(3, "0") %>
                       </td>
                       <td>
                           <input type="text" class="form-control" id="newItemName" name="name" placeholder="Name" required>
                       </td>
                       <td>
-                          <input type="text" class="form-control" id="newItemCategory" name="category" placeholder="Category" required>
+                          <select class="form-select" id="newItemCategory" name="category" placeholder="Category" required>
+                            <option value="" disabled selected>Select a category</option>
+                            <option value="1">Vegetable</option>
+                            <option value="2">Fruit</option>
+                            <option value="3">Nuts & Seeds</option>
+                          </select>
                       </td>
                       <td>
-                          <input type="text" class="form-control" id="newItemSupplier" name="supplier" placeholder="Supplier" required>
+                          <select class="form-select" id="newItemSupplier" name="supplier" placeholder="Supplier" required>
+                            <option value="" disabled selected>Select a supplier</option>
+                            <option value="1">Vegetable Co.</option>
+                            <option value="2">Fruit Co.</option>
+                            <option value="3">Nut & Seed Co.</option>
+                          </select>
                       </td>
                       <td>
-                          <input type="text" class="form-control" id="newItemPrice" name="price" placeholder="Price/Unit" required>
+                        <div class="price-unit-wrapper">
+                          <input type="text" class="form-control" id="newItemPrice" name="price" placeholder="Price" required>
+                          <span id="perUnit">/</span>
+                          <input type="text" class="form-control" id="newItemUnit" name="unit" placeholder="Unit" required>
+                        </div>
                       </td>
                       <td>
                           <input type="text" class="form-control" id="newItemQuantity" name="quantity" placeholder="Quantity" required>
                       </td>
-                    </form>
                     </tr>
                     <!-- Submit New Item button -->
                     <tr id="submitNewItemButton" class="d-none">
@@ -100,56 +113,39 @@
                 </tfoot>
             </table>
           </div>
-
+          <!-- Inventory Control Panel -->
           <div id="inventoryControlPanel">
             <div class="inventoryControlPanelItem">
                 <span id="inventoryControlPanelLabel">Sort by </span>
-                <select name="sort" id="sort" class="form-select">
-                  <option>Sku #</option>
-                  <option>Category</option>
-                  <option>A-Z</option>
-                  <option>Z-A</option>
+                <!-- Column Select --> 
+                <select name="sortColumn" id="sortColumn" class="form-select">
+                  <option value="default">Default</option>
+                  <option value="name">Name</option>
+                  <option value="sku">Sku</option>
+                  <option value="category">Category</option>
+                  <option value="price">Price</option>
+                  <option value="quantity">Quantity</option>
                 </select>
+                <!-- Ascending or Descending -->
+                <select name="sortOrder" id="sortOrder" class="form-select">
+                  <option value="asc">Ascending</option>
+                  <option value="desc">Descending</option>
+                </select>
+                <!-- Sort Submit button -->
+                <button type="button" class="btn" id="sortButton">Go</button>
             </div>
-              <div class="inventoryControlPanelItem">
-                <span id="inventoryControlPanelLabel">Zoom</span>
+            <!-- Response Message Container -->
+            <div class="inventoryControlPanelItem responseMessageContainer">
+                <span id="responseMessage" class=""></span>
             </div>
+            <!-- Add Item Button -->
             <div class="inventoryControlPanelItem">
-                <button type="button" class="btn" id="addItemButton">New Item</button>
+                <button type="button" class="btn" id="addItemButton">Add a New Item</button>
             </div>
           </div>
            
           
         </div>
-
-          <!-- RIGHT CARD -->
-          <% const item = items[0]; %>
-            <div class="card item-card" id="rightCard">
-              <div class="card-body">
-                <h5 class="card-title text-center mb-3" id="name"><%= item.name%></h5>
-                <hr class="w-100">
-                <div class="d-flex justify-content-between item-card-data">
-                  <p class="card-text">sku:</p>
-                  <p class="card-text" id="sku"><%= item.sku%></p>
-                </div>
-                <div class="d-flex justify-content-between item-card-data">
-                  <p class="card-text">category: </p>
-                  <p class="card-text" id="category"><%= item.category%></p>
-                </div>
-                <div class="d-flex justify-content-between item-card-data">
-                  <p class="card-text">supplier: </p>
-                  <p class="card-text" id="supplier"><%= item.supplier%></p>
-                </div>
-                <div class="d-flex justify-content-between item-card-data">
-                  <p class="card-text" id="pricePerUnit">price / <%= item.unit%></p>
-                  <p class="card-text" id="price"><%= item.price%></p>
-                </div>
-                <div class="d-flex justify-content-between item-card-data">
-                  <p class="card-text">quantity: </p>
-                  <p class="card-text" id="quantity"><%= item.quantity%></p>
-                </div>
-                </div>
-              </div>
         
       </div>
 
@@ -165,9 +161,33 @@
   
       <script> const inventory = <%- JSON.stringify(items) %>; </script>
       <script src="/js/utils.js"></script>
-      <script src="/js/add-item.js"></script>
-      <script src="/js/inventory-card-scroll.js" defer></script>
+      <script src="/js/add-item.js" defer></script>
+      <script src="/js/retrieve-items.js" defer></script>
       <script src="js/items-client.js" defer></script>
+    </div>
+
+   <!-- Mobile Pop up details Modal -->
+   <div class="modal fade" id="itemModal" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+          <!-- HEADER -->
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalName"></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+          </div>
+
+          <!-- BODY -->
+          <div class="modal-body">
+            <p><strong>SKU:</strong> <span id="modalSku"></span></p>
+            <p><strong>Category:</strong> <span id="modalCategory"></span></p>
+            <p><strong>Supplier:</strong> <span id="modalSupplier"></span></p>
+            <p><strong>Price:</strong> <span id="modalPrice"></span>/<span id="modalUnit"></span></p>
+            <p><strong>Quantity:</strong> <span id="modalQuantity"></span></p>
+          </div>
+
+        </div>
+      </div>
     </div>
     </main>
 

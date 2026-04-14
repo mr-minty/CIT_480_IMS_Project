@@ -5,10 +5,12 @@ const path = require('path');
 const registerRouter = require("../routes/register-route.js");
 const loginRouter = require("../routes/login-route.js");
 const dashboardRouter = require("../routes/dashboard-route.js");
-const tableRouter = require("../routes/table-route.js");
+// const tableRouter = require("../routes/table-route.js");
 const logoutRouter = require("../routes/logout-route.js");
 const accountRouter = require("../routes/account-route.js");
 const itemsRouter = require("../routes/items-route.js");
+const addItemsRouter = require("../routes/add-item-route.js");
+const retrieveItemsRouter = require("../routes/retrieve-items-route.js");
 const orgRouter = require("../routes/org-route.js");
 
 //External middleware
@@ -22,6 +24,8 @@ router.use("/dashboard", requireLogin, dashboardRouter);
 router.use("/api/logout", logoutRouter);
 router.use("/account", requireLogin, accountRouter);
 router.use("/items", requireLogin, itemsRouter);
+router.use("/api/retrieve-item", requireLogin, retrieveItemsRouter);
+router.use("/api/add-item", requireLogin, addItemsRouter);
 router.use("/organization", requireLogin, orgRouter);
 
 //Static Files

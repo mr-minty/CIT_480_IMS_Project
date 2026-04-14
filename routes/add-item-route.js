@@ -3,7 +3,7 @@ const itemsController = require("../controllers/items-controller");
 
 const router = express.Router();
 
-//Render Items Page
-router.get("/", itemsController.renderItems);
+//Add new Inventory Item
+router.post("/", itemsController.createItems);
 
 module.exports = router;
