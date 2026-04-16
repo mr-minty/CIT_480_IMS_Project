@@ -9,9 +9,10 @@ const dashboardRouter = require("../routes/dashboard-route.js");
 const logoutRouter = require("../routes/logout-route.js");
 const accountRouter = require("../routes/account-route.js");
 const itemsRouter = require("../routes/items-route.js");
-const addItemsRouter = require("../routes/add-item-route.js");
+const addItemRouter = require("../routes/add-item-route.js");
 const retrieveItemsRouter = require("../routes/retrieve-items-route.js");
 const orgRouter = require("../routes/org-route.js");
+const aiRouter = require("../routes/ai-route.js");
 
 //External middleware
 const requireLogin = require("../middleware/auth.js");
@@ -25,7 +26,8 @@ router.use("/api/logout", logoutRouter);
 router.use("/account", requireLogin, accountRouter);
 router.use("/items", requireLogin, itemsRouter);
 router.use("/api/retrieve-item", requireLogin, retrieveItemsRouter);
-router.use("/api/add-item", requireLogin, addItemsRouter);
+router.use("/api/add-item", requireLogin, addItemRouter);
+router.use("/api/ai/add-item", requireLogin, aiRouter);
 router.use("/organization", requireLogin, orgRouter);
 
 //Static Files

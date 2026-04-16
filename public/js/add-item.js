@@ -1,8 +1,17 @@
-const button = document.getElementById("addItemButton");
-buttonTextOriginal = button.innerText;
+
+//-------------------
+// ASSIGNMENTS
+//-------------------
+
+const addItemButton = document.getElementById("addItemButton");
+buttonTextOriginal = addItemButton.innerText;
 buttonTextAlternate = "Cancel";
+const select = document.getElementById("addItemDropdowmButton");
+const dropdown = document.getElementById("addItemDropdowm");
 const table = document.getElementById("inventoryTable");
-const newItemForm = document.getElementById("newItemForm");
+const manualForm = document.getElementById("manualForm");
+const smartForm = document.getElementById("smartForm");
+const smartFillButton =document.getElementById("smartFillButton");
 const submitNewItemButton = document.getElementById("submitNewItemButton");
 const scrollbar = document.getElementById("tableScrollContainer");
 let buttonState = 0;
@@ -16,20 +25,89 @@ const MESSAGE_TYPES = Object.freeze({
   ERROR: "error",
   INFO: "info"
 });
+const smartAddOption = document.getElementById("smartAddOption");
+const manualAddOption = document.getElementById("manualAddOption");
+let addMode = "smart";
 
-button.addEventListener("click", async () => {
-if(buttonState === 0){
-    setView();
-} else {
-    resetView();
+
+//-------------------
+// EVENTS
+//-------------------
+
+
+smartAddOption.addEventListener("click", (e) => {
+  e.preventDefault();
+  addMode = "smart";
+
+  if (buttonState === 1) {
+    showCurrentForm();
   }
 });
 
+manualAddOption.addEventListener("click", (e) => {
+  e.preventDefault();
+  addMode = "manual";
+
+  if (buttonState === 1) {
+    showCurrentForm();
+  }
+});
+
+//Handle UI after user clicks "add item"
+addItemButton.addEventListener("click", async () => {
+  if(buttonState === 0){
+      setView();
+  } else {
+      resetView();
+  }
+});
+
+//Extracting data from user prompt
+smartFillButton.addEventListener("click", async () => {
+  //Display info message on fill
+  displayResponseMessage(MESSAGE_TYPES.INFO, "Filling out fields, one moment");
+  //Get user prompt 
+  const userPrompt = document.getElementById("newItemPrompt").value;
+  //Send to OpenAI API endpoint for VALUES extraction
+  try {
+    const res = await fetch("/api/ai/add-item", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt: userPrompt }),
+      credentials: "same-origin",
+    });
+
+    //Get VALUES
+    const { name, category, supplier, price, unit, quantity }= await res.json();
+
+    //Add VALUES to UI display for user check
+    document.getElementById("newItemName").value = name;
+    document.getElementById("newItemCategory").value = category;
+    document.getElementById("newItemSupplier").value = supplier;
+    document.getElementById("newItemPrice").value = price;
+    document.getElementById("newItemUnit").value = unit;
+    document.getElementById("newItemQuantity").value = quantity;
+
+    //Reveal smart-filled manual entry form
+    smartForm.classList.add("d-none");
+    manualForm.classList.remove("d-none");
+
+
+  } catch (err) {
+      console.log(err);
+      displayResponseMessage(MESSAGE_TYPES.ERROR, errorMessage);
+      return;
+  }
+});
+
+
+//Submitting user data to server
 submitNewItemButton.addEventListener("click", async () => {
+  let data;
   submitNewItemButton.classList.add("pressed");
   setTimeout(() => { submitNewItemButton.classList.remove("pressed"); }, 150);
   //Get user entered item information
-  const data = {
+  data = {
     name: document.getElementById("newItemName").value,
     category: document.getElementById("newItemCategory").value,
     supplier: document.getElementById("newItemSupplier").value,
@@ -44,12 +122,12 @@ submitNewItemButton.addEventListener("click", async () => {
       //Display error message
       displayResponseMessage(MESSAGE_TYPES.ERROR, "Please ensure all fields are entered");
       return;
-    }
+  }
 
   //Display info message on submit
   displayResponseMessage(MESSAGE_TYPES.INFO, infoMessage);
   try {
-    const res = await fetch("/api/items", {
+    const res = await fetch("/api/add-item", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
@@ -84,30 +162,42 @@ submitNewItemButton.addEventListener("click", async () => {
     displayResponseMessage(MESSAGE_TYPES.SUCCESS, successMessage);
     
   } catch (err) {
-      //Display error message
+      //Display and log error message
+      console.log("error: ", err);
       displayResponseMessage(MESSAGE_TYPES.ERROR, errorMessage);
   }
   
 });
 
+
+//-------------------
+// FUNCTIONS
+//-------------------
+
+
 //Set the scrollbar to the bottom row and reveal the add item form
 function setView() {
   buttonState = 1;
-    //capture scroll height
-    scrollbarPosition = scrollbar.scrollTop;
-    button.innerText = buttonTextAlternate ;
-    newItemForm.classList.remove("d-none");
-    submitNewItemButton.classList.remove("d-none");
-    scrollbar.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'end' });
+  scrollRatio = scrollbar.scrollTop / (scrollbar.scrollHeight - scrollbar.clientHeight || 1);
+  addItemButton.innerText = buttonTextAlternate;
+
+  showCurrentForm();
+
+  submitNewItemButton.classList.remove("d-none");
+  scrollbar.lastElementChild.scrollIntoView({ behavior: "smooth", block: "end" });
 }
 
 //Reset the view back to the user's prior scroll-height, hide the add item form
 function resetView() {
-    buttonState = 0;
-    button.innerText = buttonTextOriginal;
-    newItemForm.classList.add("d-none");
-    submitNewItemButton.classList.add("d-none");
-    scrollbar.scrollTo({ behavior: 'smooth', top: scrollbarPosition });
+  buttonState = 0;
+  addItemButton.innerText = buttonTextOriginal;
+
+  smartForm.classList.add("d-none");
+  manualForm.classList.add("d-none");
+  submitNewItemButton.classList.add("d-none");
+
+  const maxScroll = scrollbar.scrollHeight - scrollbar.clientHeight;
+  scrollbar.scrollTo({ behavior: "smooth", top: scrollRatio * maxScroll });
 }
 
 //Takes a message type 
@@ -129,10 +219,18 @@ function displayResponseMessage(type, message) {
 
 }
 
+function showCurrentForm() {
+  if (addMode === "manual") {
+    manualForm.classList.remove("d-none");
+    smartForm.classList.add("d-none");
+  } else {
+    smartForm.classList.remove("d-none");
+    manualForm.classList.add("d-none");
+  }
+}
+
 //Empty the form after an invalid entry attempt
 function resetNewItemForm(){
   const newItemForm = getElementById("newItemForm");
   
 }
-
- 

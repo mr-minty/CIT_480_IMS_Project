@@ -9,10 +9,12 @@ async function renderItems (req, res) {
         res.render("items", { items, title:"items" });
     } catch (err) {
         console.log(err);
+        throw(err);
     }
         
 }
 
+//Re-retrieve items for different sorting parameters
 async function retrieveItems(req, res) {
     const orgId = req.session.orgId;
     const { column, order } = req.body;
@@ -27,7 +29,7 @@ async function retrieveItems(req, res) {
 
 }
 
-//Called by /api/items, add an additional item row
+//Called by /api/add-item, add an additional item row
 async function createItems (req, res) {
      const newItem = req.body; 
      const orgId = req.session.orgId;
@@ -38,7 +40,7 @@ async function createItems (req, res) {
        if (err.message === "DUPLICATE_NAME") {
             return res.status(400).json({ error: "An item with that name already exists" });
        }
-       res.status(500).json({ error: "Server error" });
+       return res.status(500).json({ error: "Server error" });
     }
 
 }

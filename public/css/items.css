@@ -16,9 +16,6 @@ footer {
   flex-shrink: 0;      /* ensures footer stays at the bottom */
 }
 
- #rightCard {
-    display: none;
-  }
 
 
 
@@ -102,6 +99,16 @@ table{
   cursor:pointer;
 }
 
+#smartFillButton {
+  background-color: #6fa66f;
+  color: white;
+  border-color: #6fa66f;
+  border-radius: 0.375rem;
+  height: auto;
+  width: 50px;
+
+}
+
 .price-unit-wrapper {
   display: flex;
   gap: 8px;
@@ -160,13 +167,71 @@ table{
 #responseMessage.success { color: green; }
 #responseMessage.error   { color: red; }
 
-#addItemButton {
+ #addItemButton {
   background-color: #6fa66f;
   color: white;
   border-color: #6fa66f;
   width: 145px;
   height: 50px;
-  margin-right: 5px;
+  border-radius: 0.375rem 0px 0px 0.375rem;
+ }
+
+.addItemDropdown {
+  display: block;
+  position: relative;  
+}
+
+#addItemDropdownButton {
+  background-color: #6fa66f;
+  color: white;
+  border-color: #6fa66f;
+  width: 36px;
+  height: 50px;
+  border-radius: 0px 0.375rem 0.375rem 0px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+  line-height: 1;
+}
+
+.addItemDropdownContent {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 140px;
+  background-color: rgb(250, 249, 246);
+  border: 1px solid #ccc;
+  border-radius: 0.375rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 1000;
+}
+
+.addItemDropdownContent a {
+  display: block;
+  padding: 10px 12px;
+  text-decoration: none;
+  color: black;
+}
+
+.addItemDropdownContent a:hover {
+  background-color: #f2f2f2;
+}
+
+.addItemPanel {
+  gap:0px;
+}
+
+.addItemDropdown:hover .addItemDropdownContent {
+  display: block;
+}
+
+#addItemDropdownButton:hover {
+  background-color: #6e965f;
+  border-color: #6e965f;
 }
 
 #addItemButton:hover {
@@ -179,8 +244,18 @@ table{
   border-color: #5f8550;
 }
 
+#addItemDropdownButton:active {
+  background-color: #5f8550; /* optional slightly darker */
+  border-color: #5f8550;
+}
+
 #addItemButton:focus,
 #addItemButton:focus-visible {
+  box-shadow: none; /* remove blue ring */
+}
+
+#addItemDropdownButton:focus,
+#addItemDropdownButton:focus-visible {
   box-shadow: none; /* remove blue ring */
 }
 

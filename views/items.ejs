@@ -66,11 +66,28 @@
                     
                 </tbody>
                 <tfoot>
-                    
-                    <!-- New Item Form Row -->
-                    <tr class="inventory-row d-none" id="newItemForm">
+
+                    <!-- New Item Form Smart Entry Row -->
+                    <tr class="inventory-row d-none" id="smartForm">
+                        <td id="newItemSku">
+                          <% const newSku = items.length + 1%>
+                          <%= String(newSku).padStart(3, "0") %>
+                        </td>
+                        
+                        <td colspan="4">
+                          <input type="text" class="form-control" id="newItemPrompt"
+                          placeholder="Type something like: '1000 Kumquat from Orchard Distributors at 0.75 per pound.'" required>
+                        </td>
+
+                        <td>
+                          <button type="button" class="btn" id="smartFillButton">Fill</button>
+                        </td>
+                    </tr>               
+
+
+                    <!-- New Item Form Manual Entry Row -->
+                    <tr class="inventory-row d-none" id="manualForm">
                       <td id="newItemSku">
-                        <% const newSku = items.length + 1%>
                         <%= String(newSku).padStart(3, "0") %>
                       </td>
                       <td>
@@ -139,8 +156,16 @@
                 <span id="responseMessage" class=""></span>
             </div>
             <!-- Add Item Button -->
-            <div class="inventoryControlPanelItem">
-                <button type="button" class="btn" id="addItemButton">Add a New Item</button>
+            <div class="inventoryControlPanelItem addItemPanel">
+                <button type="button" class="btn" id="addItemButton">New Item</button>
+                <div class="addItemDropdown">
+                  <button type="button" class="btn" id="addItemDropdownButton">▼</button>
+                  <div class="addItemDropdownContent">
+                    <a href="#" id="smartAddOption">Smart Add <i class="fa fa-magic"></i></a>
+                    <a href="#" id="manualAddOption">Manual Add</a>
+                  </div>
+                </div>
+                 
             </div>
           </div>
            
