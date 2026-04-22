@@ -142,3 +142,14 @@ main {
   text-decoration: underline;
 }
 
+
+/* MOBILE STYLING */
+@media (max-width: 768px) {
+  .auth-container {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+
+}

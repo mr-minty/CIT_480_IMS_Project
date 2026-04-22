@@ -63,12 +63,11 @@ addItemButton.addEventListener("click", async () => {
 });
 
 //Extracting data from user prompt
-smartFillButton.addEventListener("click", async () => {
-  //Display info message on fill
+async function handleSmartFill() {
   displayResponseMessage(MESSAGE_TYPES.INFO, "Filling out fields, one moment");
-  //Get user prompt 
+
   const userPrompt = document.getElementById("newItemPrompt").value;
-  //Send to OpenAI API endpoint for VALUES extraction
+
   try {
     const res = await fetch("/api/ai/add-item", {
       method: "POST",
@@ -77,10 +76,8 @@ smartFillButton.addEventListener("click", async () => {
       credentials: "same-origin",
     });
 
-    //Get VALUES
-    const { name, category, supplier, price, unit, quantity }= await res.json();
+    const { name, category, supplier, price, unit, quantity } = await res.json();
 
-    //Add VALUES to UI display for user check
     document.getElementById("newItemName").value = name;
     document.getElementById("newItemCategory").value = category;
     document.getElementById("newItemSupplier").value = supplier;
@@ -88,15 +85,23 @@ smartFillButton.addEventListener("click", async () => {
     document.getElementById("newItemUnit").value = unit;
     document.getElementById("newItemQuantity").value = quantity;
 
-    //Reveal smart-filled manual entry form
     smartForm.classList.add("d-none");
     manualForm.classList.remove("d-none");
 
-
   } catch (err) {
-      console.log(err);
-      displayResponseMessage(MESSAGE_TYPES.ERROR, errorMessage);
-      return;
+    console.log(err);
+    displayResponseMessage(MESSAGE_TYPES.ERROR, errorMessage);
+  }
+}
+
+// Button click
+smartFillButton.addEventListener("click", handleSmartFill);
+
+// Enter key on input
+document.getElementById("newItemPrompt").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault(); // prevents form submission if inside a form
+    handleSmartFill();
   }
 });
 
@@ -153,8 +158,12 @@ submitNewItemButton.addEventListener("click", async () => {
       <td>$${createdItem.price} / ${createdItem.unit}</td>
       <td>${createdItem.quantity}</td>
     `;
+    row.classList.add("inventory-row");
     document.getElementById("itemsList").appendChild(row);
     
+    //Clear input values
+    resetAddItemForms();
+
     //Reset view
     resetView();
 
@@ -230,7 +239,14 @@ function showCurrentForm() {
 }
 
 //Empty the form after an invalid entry attempt
-function resetNewItemForm(){
-  const newItemForm = getElementById("newItemForm");
-  
+function resetAddItemForms() {
+  manualForm.querySelectorAll("input, select, textarea").forEach(field => {
+    field.value = "";
+  });
+
+  smartForm.querySelectorAll("input, select, textarea").forEach(field => {
+    field.value = "";
+  });
+
+  addMode = "smart";
 }

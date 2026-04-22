@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
     <!--EJS vars: %title, %content, %user-->
 <head>
@@ -26,12 +26,17 @@
     <div class="container mt-2">
 
       <!-- Header row (separate) -->
-      <div class="row">
-        <div class="col-12">
-          <span class="h1">Inventory</span>
-          <hr class="w-100">
+      <div class="d-flex justify-content-between align-items-center">
+        <span class="h1 mb-0">Inventory</span>
+
+        <div class="search-container">
+          <i class="fa fa-search"></i>
+          <input id="searchInput" type="text" placeholder="Search" />
         </div>
       </div>
+
+      <hr class="w-100">
+
 
             
       <!-- GRID CONTAINER -->
@@ -94,20 +99,11 @@
                           <input type="text" class="form-control" id="newItemName" name="name" placeholder="Name" required>
                       </td>
                       <td>
-                          <select class="form-select" id="newItemCategory" name="category" placeholder="Category" required>
-                            <option value="" disabled selected>Select a category</option>
-                            <option value="1">Vegetable</option>
-                            <option value="2">Fruit</option>
-                            <option value="3">Nuts & Seeds</option>
-                          </select>
+                          <input type="text" class="form-control" id="newItemCategory" name="name" placeholder="Category" required>
                       </td>
+                    
                       <td>
-                          <select class="form-select" id="newItemSupplier" name="supplier" placeholder="Supplier" required>
-                            <option value="" disabled selected>Select a supplier</option>
-                            <option value="1">Vegetable Co.</option>
-                            <option value="2">Fruit Co.</option>
-                            <option value="3">Nut & Seed Co.</option>
-                          </select>
+                          <input type="text" class="form-control" id="newItemSupplier" name="name" placeholder="Supplier" required>
                       </td>
                       <td>
                         <div class="price-unit-wrapper">
@@ -184,11 +180,6 @@
         <% }) %>
       </div>
   
-      <script> const inventory = <%- JSON.stringify(items) %>; </script>
-      <script src="/js/utils.js"></script>
-      <script src="/js/add-item.js" defer></script>
-      <script src="/js/retrieve-items.js" defer></script>
-      <script src="js/items-client.js" defer></script>
     </div>
 
    <!-- Mobile Pop up details Modal -->
@@ -218,5 +209,12 @@
 
     <%- include('partials/footer') %> 
     
+<!-- SCRIPTS -->
+<script> const inventory = <%- JSON.stringify(items) %>; </script>
+<script src="/js/utils.js"></script>
+<script src="/js/add-item.js" defer></script>
+<script src="/js/retrieve-items.js" defer></script>
+<script src="js/items-client.js" defer></script>
+<script src="js/search.js" defer></script>
 </body>
 </html>

@@ -22,7 +22,7 @@ footer {
 
 .grid-container {
   display:grid;
-  grid-template-columns: 1fr 1fr ;
+  grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
 }
 
@@ -30,4 +30,14 @@ footer {
   min-height: 60%;
   max-height: 60%;
   overflow-y: scroll;
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+
 }

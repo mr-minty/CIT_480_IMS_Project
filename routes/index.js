@@ -2,10 +2,11 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 
+
+//Page Routes
 const registerRouter = require("../routes/register-route.js");
 const loginRouter = require("../routes/login-route.js");
 const dashboardRouter = require("../routes/dashboard-route.js");
-// const tableRouter = require("../routes/table-route.js");
 const logoutRouter = require("../routes/logout-route.js");
 const accountRouter = require("../routes/account-route.js");
 const itemsRouter = require("../routes/items-route.js");
@@ -13,6 +14,7 @@ const addItemRouter = require("../routes/add-item-route.js");
 const retrieveItemsRouter = require("../routes/retrieve-items-route.js");
 const orgRouter = require("../routes/org-route.js");
 const aiRouter = require("../routes/ai-route.js");
+const ordersRouter = require("../routes/orders-route.js");
 
 //External middleware
 const requireLogin = require("../middleware/auth.js");
@@ -29,6 +31,7 @@ router.use("/api/retrieve-item", requireLogin, retrieveItemsRouter);
 router.use("/api/add-item", requireLogin, addItemRouter);
 router.use("/api/ai/add-item", requireLogin, aiRouter);
 router.use("/organization", requireLogin, orgRouter);
+router.use("/orders", requireLogin, ordersRouter);
 
 //Static Files
 router.use(express.static(path.join(__dirname, "..", "public")));
@@ -49,7 +52,7 @@ router.get("/create-account", (req, res) => {
   res.render('create-account', { page: '/create-account' });
 });
 
-router.get("/orders", (req, res) => res.render('orders', { title:"orders"}));
+// router.get("/orders", (req, res) => res.render('orders', { title:"orders"}));
 
 // router.get("/organization", (req, res) => res.render('organization', { title:"org"}));
 
