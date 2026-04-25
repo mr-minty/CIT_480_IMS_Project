@@ -17,48 +17,6 @@ main {
   font-family: "Roboto", "Sans Serif";
 }
 
-/* 
-.dashboard-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr); 
-
-  gap: 1rem;
-
-  height: calc(100vh - 120px); 
-  padding: 1rem;
-
-  max-width: 1140px;
-  margin: 0 auto;
-
-  border: none;
-  border-radius: 18px;
-  background-color: rgb(250, 249, 246);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-  overflow: hidden;
-
-  font-family: "Roboto", "Sans Serif";
-  font-size: 1.25rem;
-  font-weight: 500;
-}
-
-.dashboard-card {
-  width: 100%;
-  height: 100%; 
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  text-align: center;
-  padding: 1rem;
-
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-} */
-
 .dashboard-container{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -67,7 +25,6 @@ main {
 
   border: none;
   border-radius: 18px;
-  background-color: rgb(250, 249, 246);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   overflow: hidden;
 
@@ -75,7 +32,7 @@ main {
   font-size: 1.25rem;
   font-weight: 500;
 
-  min-height: 100%;
+  min-height: 90%;
 }
 
 .dashboard-card {
@@ -92,14 +49,18 @@ main {
   text-decoration: none;
   color: black;
 
-  background: white;
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  background-color: rgb(250, 249, 246);
 
   cursor: pointer;
 }
 
+.dashboard-card:hover {
+  transform: translateY(5px);
+  background-color: rgb(240, 239, 236);
 
+}
 .dashboard-card-sub {            
   height: 3.6em;   
   
@@ -141,18 +102,10 @@ main {
   .dashboard-card {
     min-height: 140px;
 
-    display: flex;
-    align-items: center;
     text-align: center;
     vertical-align: middle;
-    justify-content: center;
 
-    background: rgb(250, 249, 246);
     border-radius: 18px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-
-    text-decoration: none;
-    color: black;
   }
 
   #ordersPanel {

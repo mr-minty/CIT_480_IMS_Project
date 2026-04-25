@@ -331,15 +331,31 @@ table{
 }
 
 #tableScrollContainer {
-  max-height: 60vh;      
-  overflow-y: auto;      
-  overflow-x: hidden; 
-  scrollbar-color: #6fa66f rgb(250, 249, 246);;   
+  max-height: 60vh;
+  overflow-y: auto;
+  overflow-x: auto;          /* avoid clipping */
+  scrollbar-gutter: stable;  /* reserve space for scrollbar */
+  background-color: rgb(250, 249, 246);
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #6fa66f rgb(250, 249, 246);
 }
 
-/* Scrollbar styling */
+/* Chrome / Edge / Safari */
 #tableScrollContainer::-webkit-scrollbar {
-    width: 20px;
+  width: 16px;
+  height: 14px;
+}
+
+#tableScrollContainer::-webkit-scrollbar-track {
+  background: rgb(250, 249, 246);
+}
+
+#tableScrollContainer::-webkit-scrollbar-thumb {
+  background-color: #6fa66f;
+  border-radius: 999px;
+  border: 3px solid rgb(250, 249, 246);
 }
 
 /* ITEM CARD STYLING [START] */
