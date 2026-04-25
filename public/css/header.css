@@ -7,11 +7,16 @@ body {
     overflow-x: hidden;
 }
 
+body.menu-open {
+  overflow: hidden;
+}
+
 header {
     background-color: #6fa66f;
     align-items: center;
     font-family: "Roboto", "Sans Serif";
     font-size: 1.5rem;
+    z-index: 5;
 }
 
 #siteLogo {
@@ -68,6 +73,14 @@ header {
     background-color: #5087065f;
 }
 
+#dropdownMenu a:last-child{
+    background-color: #5a7e5a;
+}
+
+#dropdownMenu a:last-child:hover{
+    background-color: black;
+}
+
  #hbIcon{
     font-size: 45px;
     color: white;
@@ -101,32 +114,12 @@ header {
 }
 
 #dropdownMenu {
-    position: static;
-    top: auto;
-    right: auto;
-    width: 100%;
-    flex-shrink: 0;
-    z-index: 10;
+   top: 36px;
+   position: fixed;
+   height: calc(100dvh - 36px);
+   width: 100vw;
 }
 
-#dropdownMenu.show {
-
-}
-
-#dropdownMenu a{
-    height: 60px;
-    font-size: 1.2rem;;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-decoration: none;
-    background-color: #5a8e5a;
-}
-
-#dropdownMenu a:hover{
-    background-color: #6e965f;
-}
 
 #hbIcon{
     font-size: 20px;
