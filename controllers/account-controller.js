@@ -32,7 +32,8 @@ async function renderAccounts(req, res) {
         const userInfo = { ...userAccount, ...userCreds };
         return res.render("account", { 
             title: "account",
-            user: userInfo
+            user: userInfo,
+            page: "/account"
          });
     } catch (err) {
         console.log(err);

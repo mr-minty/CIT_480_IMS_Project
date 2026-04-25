@@ -22,7 +22,8 @@ async function renderDashboard(req, res) {
             user: userAccount,
             title: dashboardTitle,
             content: dashboardContent,
-            items: userInventory
+            items: userInventory,
+            page: "/dashboard"
         });
     } catch(err) {
         return res.status(500).json({ error: "User not found" });

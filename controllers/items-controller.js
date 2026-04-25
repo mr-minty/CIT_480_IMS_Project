@@ -7,7 +7,11 @@ async function renderItems (req, res) {
         const items = await inventoryService.getInventory(orgId);
         if(!items) return res.status(401).json({ error: "No items found" });
         //Items found, render the items page
-        return res.render("items", { items, title:"items" });
+        return res.render("items", { 
+            items, 
+            title:"items",
+            page: "/items"
+         });
     } catch (err) {
         console.log(err);
         throw(err);
