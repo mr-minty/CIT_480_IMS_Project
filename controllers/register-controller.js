@@ -19,7 +19,6 @@ async function registerUser (req, res){
 
     try {
         const validOrg = await authService.verifyOrgCode(org_code);
-        console.log("[register-controller] validOrgCode returned obj: ", validOrg);
         if (!validOrg) {
             return res.status(409).json({ orgCode: "This org code is not valid" });
         }
@@ -50,10 +49,8 @@ async function registerUser (req, res){
     try {
         //console.log("[PW]: " + password + "\n[HASH]: " + newUser.password); //reeeemove
         const user_id = await userService.addUser(newUser);
-        console.log("User inserted successfuly");
         return res.status(201).json({ message: "User created successfully", userId: user_id });
     } catch (err) {
-        console.log("[ERROR2]: " + err);
         return res.status(500).json({ 
             err: err.message, 
             form: "Something went wrong, please try again."

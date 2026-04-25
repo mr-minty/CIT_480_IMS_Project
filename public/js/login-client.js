@@ -1,5 +1,3 @@
-console.log("login-client.js running");
-
 document.getElementById("loginForm").addEventListener("submit", async (e) => {
   e.preventDefault();
 

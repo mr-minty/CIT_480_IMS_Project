@@ -89,7 +89,6 @@ async function handleSmartFill() {
     manualForm.classList.remove("d-none");
 
   } catch (err) {
-    console.log(err);
     displayResponseMessage(MESSAGE_TYPES.ERROR, errorMessage);
   }
 }

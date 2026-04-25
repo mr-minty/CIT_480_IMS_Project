@@ -16,11 +16,19 @@ app.use(express.json()); // parses JSON payloads
 app.set('view engine', 'ejs');
 
 //Session config
+const isProd = process.env.NODE_ENV === 'production';
+
+app.set('trust proxy', 1); // only really needed in prod behind proxy
+
 app.use(session({
   secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
-  cookie: { httpOnly: true }
+  cookie: {
+    httpOnly: true,
+    secure: isProd,        // 🔑 only true in production
+    sameSite: isProd ? 'lax' : 'lax' // can keep same, or tweak if needed
+  }
 }));
 
 //Routes
