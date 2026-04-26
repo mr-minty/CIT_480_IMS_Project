@@ -15,7 +15,8 @@ async function renderOrgs(req, res) {
       return res.render("organization", {
         title: "organization",    
         members: orgMembers,
-        info: orgInfo
+        info: orgInfo,
+        page: "/organization"
       });
 
     } catch (err) {
