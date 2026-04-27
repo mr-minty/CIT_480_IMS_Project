@@ -1,0 +1,114 @@
+:root {
+    /* Primary Background colors */
+    --bg-main: white;
+    --bg-accent: #6fa66f;
+    --bg-accent-dark: #6e965f;
+    --bg-secondary: rgb(250, 249, 246);
+
+    /* Brand Colors */
+    --logo-main: darkgreen;
+    --bg-landing: linear-gradient(135deg, #f5faf6, #d9ecde);
+    --title-landing: #184326;
+    --subtitle-landing: #446154;
+    
+    /* Text styling */
+    --text-main: black;
+    --font-main: "Roboto", "sans-serif";
+
+    /* Button styling */
+    --button-bg: #6fa66f;
+    --button-border: #6fa66f;
+    --button-hover: #6e965f;
+    --button-hover-border: #6e965f;
+    --button-text: white;
+
+    /* Toggle theme button styles */
+    --toggle-btn-bg: white;
+    --toggle-btn-border: white; 
+    --toggle-btn-hover: #776fa6;
+    --toggle-btn-hover-border: #776fa6;
+    --toggle-btn-text: #6fa66f;
+    --toggle-btn-hover-text: black;
+
+    /* Info card styling */
+    --card-hover: rgb(240, 239, 236);
+    --card-text: black;
+    --card-subtext: #9aa0a6;
+    --card-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    --panel-bg: #eef3f8;
+    --panel-border: #eef3f8;
+
+    /* Input styling */
+    --input-bg: white;
+
+    /* Misc */
+    --row-hover: rgba(95, 168, 122, 0.2);
+    
+}
+
+[data-theme="dark"] {
+    /* Primary Background colors */
+    /* --bg-main: rgb(75, 75, 75); */
+    /* --bg-main: rgb(50, 50, 50); */
+    --bg-main: #1f1c2b; 
+    --bg-accent: #776fa6;
+    --bg-accent-dark: #5f5599;
+    --bg-secondary: #2a2638;
+
+    /* Brand Colors */
+    --logo-main: darkslateblue;
+    --bg-landing: linear-gradient(135deg, #2d0d42, #2c1758);
+    --title-landing: #9a7ec0;
+    --subtitle-landing: #804daa;
+
+    /* Text styling */
+    --text-main: rgba(255, 255, 255, 0.8);
+    
+
+    /* Button styling */
+    --button-bg: #776fa6;
+    --button-border: #776fa6;
+    --button-hover: #5f5599;
+    --button-hover-border: #5f5599;
+    --button-text: white;
+
+    /* Toggle theme button styles */
+    --toggle-btn-bg: #5f5599;
+    --toggle-btn-border: #5f5599;
+    --toggle-btn-hover: white ;
+    --toggle-btn-hover-border: white;
+    --toggle-btn-text: white;
+    --toggle-btn-hover-text: #6fa66f;
+
+    /* Info card styling */
+    --card-hover: #5f5599;
+    --card-text: rgb(255, 255, 255);
+    --card-subtext: rgba(255, 255, 255, 0.6);
+    --card-shadow:  0 1px 0 rgba(255,255,255,0.05),
+                    0 6px 16px rgba(0,0,0,0.6);
+    --panel-bg: #3c3555;
+    --panel-border: #40385a;
+
+    /* Input styling */
+    --input-bg: #3c3555;;
+
+    /* Misc */
+    --row-hover: rgba(123, 95, 168, 0.2); /*Change green row hover to purple on items table*/
+    --bs-secondary-color: rgba(255, 255, 255, 0.6); /*Boostrap override for card subtext*/
+}
+
+.card {
+  --bs-card-color: var(--text-main);
+  --bs-card-bg: var(--bg-secondary);
+}
+
+.btn {
+  --bs-btn-bg: var(--button-bg);
+  --bs-btn-border-color: var(--button-border);
+  --bs-btn-color: var(--button-text);
+
+  --bs-btn-hover-bg: var(--button-hover);
+  --bs-btn-hover-border-color: var(--button-hover-border);
+
+  --bs-btn-active-bg: var(--button-hover);
+}

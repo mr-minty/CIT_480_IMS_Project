@@ -9,7 +9,13 @@ body {
 }
 
 main {
+  background-color: var(--bg-main);
+  color: var(--text-main);
   flex: 1 0 auto;      /* expands to take leftover space */
+}
+
+.h1{
+  color: var(--text-main);
 }
 
 footer {
@@ -17,9 +23,9 @@ footer {
 }
 
 .grid-card {
-  background-color: rgb(250, 249, 246);
+  background-color: var(--bg-secondary);
   border: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--card-shadow);
 }
 
 .grid-container {

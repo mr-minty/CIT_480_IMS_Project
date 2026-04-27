@@ -10,7 +10,12 @@ body {
 
 main {
   flex: 1;
-  margin-bottom: 2rem;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+}
+
+h1{
+  color: var(--text-main);
 }
 
 #welcome-banner {
@@ -47,24 +52,24 @@ main {
   gap: 0.5rem;
 
   text-decoration: none;
-  color: black;
+  color: var(--card-text);
 
   border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-  background-color: rgb(250, 249, 246);
+  box-shadow: var(--card-shadow);
+  background-color: var(--bg-secondary);
 
   cursor: pointer;
 }
 
 .dashboard-card:hover {
   transform: translateY(5px);
-  background-color: rgb(240, 239, 236);
+  background-color: var(--card-hover);
 
 }
 .dashboard-card-sub {            
   height: 3.6em;   
   
-  color: #9aa0a6;
+  color: var(--card-subtext);
   font-size: 0.95rem;
   font-style: italic;
 
@@ -140,7 +145,7 @@ main {
 .nav-card {
   width: 100%;
   min-height: 180px;
-  background-color: rgb(250, 249, 246);
+  background-color: var(--bg-secondary);
   border-radius: 1rem;
   box-shadow: 0 10px 5px rgba(15, 23, 42, 0.12);
   display: flex;

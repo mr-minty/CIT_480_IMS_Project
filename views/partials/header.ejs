@@ -1,26 +1,32 @@
-<header class="text-white d-flex align-items-center justify-content-between px-3"> 
+<header id="headerContainer"> 
 
   <a href="/"> 
     <img id="siteLogo" src="img/stockify-logo-transparent.png" alt="app logo"> 
     <h3 id="logoBrand">Stockify</h3>
   </a>
   
-  <% if (page !== '/login' && page !== '/create-account' && page !== '/dashboard') { %>
-    <div id="dropdownWrapper">
-      <a class="icon" id="dropdownIcon"> 
-        <i id="hbIcon" class="fa fa-bars"></i> 
-      </a> 
 
-      <nav id="dropdownMenu"> 
-        <a href="/items">Inventory</a> 
-        <a href="/orders">Orders</a> 
-        <a href="/organization">Organization</a> 
-        <a href="/account">Account</a> 
-        <a href="/api/logout">Log out</a>
-      </nav>
-    </div>
-  <% } %>
+  <div id="headerWrapper">
+
+    <button type="button" id="themeToggleButton" class="btn">Dark mode</button>
+
+    <% if (page !== '/login' && page !== '/create-account' && page !== '/dashboard') { %>
+      <div id="dropdownWrapper">
+        <a class="icon" id="dropdownIcon"> 
+          <i id="hbIcon" class="fa fa-bars"></i> 
+        </a> 
+
+        <nav id="dropdownMenu"> 
+          <a href="/items">Inventory</a> 
+          <a href="/orders">Orders</a> 
+          <a href="/organization">Organization</a> 
+          <a href="/account">Account</a> 
+          <a href="/api/logout">Log out</a>
+        </nav>
+      </div>
+    <% } %>
+  </div>
 
 </header>
 
-<script src="/js/header-client.js"></script>
+<script src="/js/header-client.js" defer></script>

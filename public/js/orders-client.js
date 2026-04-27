@@ -3,6 +3,7 @@ document.querySelectorAll(".order-row").forEach(row => {
   row.addEventListener("click", () => {
     const details = row.nextElementSibling;
     details.classList.toggle("show");
+    row.classList.toggle("expanded");
   });
 });
 

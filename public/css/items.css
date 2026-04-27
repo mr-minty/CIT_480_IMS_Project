@@ -9,11 +9,23 @@ body {
 }
 
 main {
+  background-color: var(--bg-main);
+  color: var(--text-main);
   flex: 1 0 auto;      /* expands to take leftover space */
+}
+
+.h1{
+  color: var(--text-main);
 }
 
 footer {
   flex-shrink: 0;      /* ensures footer stays at the bottom */
+}
+
+
+#leftCard {
+  box-shadow: var(--card-shadow);
+  border: none;
 }
 
 
@@ -51,19 +63,20 @@ footer {
 
 
 /* INVENTORY TABLE STYLING */
-table{
-   font-family: "Roboto", "Sans Serif";
-}
 
 #inventoryTable{
   width: 100%;
-  table-layout: fixed;
-  background-color: rgb(250, 249, 246);
+  border-collapse: collapse;
+  background-color: var(--bg-secondary);
+
+  font-family: "Roboto", "Sans Serif";
+
+  color: var(--text-main);
 }
 
 #inventoryTable th,td {
   padding: 8px;
-  border: 1px solid #ddd;
+  border-bottom: 1px solid var(--bg-main);
 }
 
 #inventoryTable th{
@@ -119,7 +132,7 @@ table{
 }
 
 #submitNewItemButton:hover {
-  color: #6fa66f;
+  color: var(--button-hover);
 }
 
 #submitNewItemButton.pressed td {
@@ -131,12 +144,17 @@ table{
 }
 
 #smartFillButton {
-  background-color: #6fa66f;
-  color: white;
-  border-color: #6fa66f;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border-color: var(--button-border);
   border-radius: 0.375rem;
   height: auto;
   width: 50px;
+}
+
+#newItemPrompt {
+  background-color: var(--input-bg);
+  color: var(--text-main);
 }
 
 .price-unit-wrapper {
@@ -149,7 +167,7 @@ table{
 }
 
 #inventoryTable tr.inventory-row:hover td {
-  background-color: rgba(95, 168, 122, 0.2);
+  background-color: var(--row-hover);
 }
 
 #inventoryControlPanel {
@@ -157,12 +175,12 @@ table{
   flex-direction: row;
   height: 10vh;
   width: 100%;
-  background-color: rgb(250, 249, 246);  
+  background-color: var(--bg-secondary);  
 }
 
 .inventoryControlPanelItem {
   display: flex;
-  color: black;
+  color: var(--text-main);
   padding: 10px;
   width: auto;
   gap: 0.5rem;
@@ -198,9 +216,9 @@ table{
 #responseMessage.error   { color: red; }
 
  #addItemButton {
-  background-color: #6fa66f;
-  color: white;
-  border-color: #6fa66f;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border-color: var(--button-border);
   width: 145px;
   height: 50px;
   border-radius: 0.375rem 0px 0px 0.375rem;
@@ -212,9 +230,9 @@ table{
 }
 
 #addItemDropdownButton {
-  background-color: #6fa66f;
-  color: white;
-  border-color: #6fa66f;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border-color: var(--button-border);
   width: 36px;
   height: 50px;
   border-radius: 0px 0.375rem 0.375rem 0px;
@@ -227,13 +245,18 @@ table{
   line-height: 1;
 }
 
+#addItemDropdownButton:hover {
+  background-color: var(--button-hover);
+  border-color: var(--button-hover-border);
+}
+
 .addItemDropdownContent {
   display: none;
   position: absolute;
   top: 100%;
   right: 0;
   min-width: 140px;
-  background-color: rgb(250, 249, 246);
+  background-color: var(--bg-secondary);
   border: 1px solid #ccc;
   border-radius: 0.375rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -244,7 +267,7 @@ table{
   display: block;
   padding: 10px 12px;
   text-decoration: none;
-  color: black;
+  color: var(--text-main);
 }
 
 .addItemDropdownContent a:hover {
@@ -259,10 +282,7 @@ table{
   display: block;
 }
 
-#addItemDropdownButton:hover {
-  background-color: #6e965f;
-  border-color: #6e965f;
-}
+
 
 #addItemButton:hover {
   background-color: #6e965f;
@@ -304,19 +324,21 @@ table{
 #sortOrder, #sortColumn {
   width: auto;
   max-height: 4vh;
+  background-color: var(--input-bg);
+  color: var(--text-main);
 }
 
 #sortButton {
-  background-color: #6fa66f;
-  color: white;
-  border-color: #6fa66f;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border-color: var(--button-border);
   height: 4vh;
   margin-right: 5px;
 }
 
 #addItemButton:hover {
-  background-color: #6e965f;
-  border-color: #6e965f;
+  background-color: var(--button-hover);
+  border-color: var(--button-hover-border);
 }
 
 #addItemButton:active {
@@ -335,11 +357,11 @@ table{
   overflow-y: auto;
   overflow-x: auto;          /* avoid clipping */
   scrollbar-gutter: stable;  /* reserve space for scrollbar */
-  background-color: rgb(250, 249, 246);
+  background-color: var(--bg-secondary);
 
   /* Firefox */
   scrollbar-width: thin;
-  scrollbar-color: #6fa66f rgb(250, 249, 246);
+  scrollbar-color: var(--bg-accent) var(--bg-secondary);
 }
 
 /* Chrome / Edge / Safari */
@@ -349,13 +371,13 @@ table{
 }
 
 #tableScrollContainer::-webkit-scrollbar-track {
-  background: rgb(250, 249, 246);
+  background: var(--bg-secondary);
 }
 
 #tableScrollContainer::-webkit-scrollbar-thumb {
-  background-color: #6fa66f;
+  background-color: var(--bg-accent);
   border-radius: 999px;
-  border: 3px solid rgb(250, 249, 246);
+  border: 3px solid var(--bg-secondary);
 }
 
 /* ITEM CARD STYLING [START] */
@@ -364,7 +386,7 @@ table{
   font-family: "Roboto", "Sans Serif";
   font-size: 1.5rem;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  background-color: rgb(250, 249, 246);
+  background-color: var(--bg-secondary);
   position: relative;
   top: calc(var(--i, 0) * -10px);
   transform: translateY(calc(var(--i, 0) * -100px));
@@ -424,48 +446,57 @@ table{
                 -----------------------
 
 */
-@media screen and (max-width: 768px) {
-  body {
-    font-size: 14px;
+@media screen and (max-width: 768px), screen and (max-height: 600px) {
+    body {
+      font-size: 14px;
+    }
+  
+    #leftCard {
+      display: none;
+    }
+
+    .grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
   }
- 
-  #leftCard {
-    display: none;
+
+  .inventory-list {
+    display: flex;
+    flex-direction: column; /* stack vertically */
+    padding: 1rem;
   }
 
-  .grid-container {
-  display: grid;
-  grid-template-columns: 1fr;
-}
+  .inventory-list-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    border-top: 1px solid var(--bg-accent);
+  }
 
-.inventory-list {
-  display: flex;
-  flex-direction: column; /* stack vertically */
-  padding: 1rem;
-}
+  .inventory-list-item:last-child {
+    border-bottom: 1px solid var(--bg-accent);
+  }
 
-.inventory-list-item {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 0.75rem 1rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
-  border-top: 1px solid #6fa66f;
-}
+  .inventory-list-item:hover {
+    background-color: #e0e0e0;
+  }
 
-.inventory-list-item:last-child {
-  border-bottom: 1px solid #6fa66f;;
-}
+  .inventory-list-data {
+    color: var(--text-main);
+  }
 
-.inventory-list-item:hover {
-  background-color: #e0e0e0;
-}
+  .modal-content {
+    background-color: var(--bg-secondary);
+  }
 
-.inventory-list-data {
-  color: black;
-}
-
+  .modal-content button {
+    background-color: var();
+  }
 
 }
+
+
 

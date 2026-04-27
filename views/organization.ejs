@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Prevent unthemed content from flashing on reload -->
+    <script src="/js/prevent-unthemed-flash.js"></script> 
+
     <!-- Favicon -->
     <link rel="icon" href="img/stockify-favicon-32x32.png" type="image/x-icon">
     
@@ -13,6 +16,7 @@
     <%- include("partials/fonts-call.ejs") %> 
 
     <!-- CSS call -->
+    <link rel="stylesheet" href="/css/variables.css">
     <link rel="stylesheet" href="/css/organization.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -76,6 +80,8 @@
           
     </main>
     
-    <%- include('partials/footer') %> 
+    <%- include('partials/footer') %>
+<!-- SCRIPTS -->
+    <script src="/js/toggle-theme.js" defer></script> 
 </body>
 </html>

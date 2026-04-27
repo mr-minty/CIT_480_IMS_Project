@@ -9,7 +9,13 @@ body {
 }
 
 main {
+  background-color: var(--bg-main);
+  color: var(--text-main);
   flex: 1 0 auto;      /* expands to take leftover space */
+}
+
+.h1{
+  color: var(--text-main);
 }
 
 footer {
@@ -20,14 +26,14 @@ footer {
 .card {
   border: none;
   border-radius: 18px;
-  background-color: rgb(250, 249, 246);
+  background-color: var(--bg-secondary);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   overflow: hidden;
 }
 
 #orderList {
   width: 100%;
-  background-color: rgb(250, 249, 246);
+  background-color: var(--bg-secondary);
   font-family: "Roboto", "Sans Serif";
   padding: 14px;
 }
@@ -48,10 +54,15 @@ footer {
   justify-content: space-between;
   gap: 16px;
   padding: 16px 18px;
-  background-color: white;
+  background-color: var(--bg-main);
+  color: var(--text-main);
   border-radius: 14px;
   cursor: pointer;
   transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.order-row.expanded {
+  border-radius: 14px 14px 0px 0px;
 }
 
 .order-row:hover {
@@ -63,7 +74,6 @@ footer {
 .order-row-number {
   font-weight: 600;
   letter-spacing: 0.02em;
-  color: #1f2937;
 }
 
 .order-row-wrapper {
@@ -112,7 +122,8 @@ footer {
   overflow: hidden;
   padding: 0 18px;
   margin: 0;
-  background-color: white;
+  background-color: var(--bg-main);
+  color: var(--text-main);
   transition: max-height 0.25s ease, opacity 0.2s ease, padding 0.25s ease;
 }
 
@@ -146,8 +157,8 @@ footer {
 .order-details-list {
   padding: 10px;
   
-  background-color: #eef3f8;
-  border: 1px solid #d6ebff;
+  background-color: var(--panel-bg);
+  border: 1px solid var(--panel-border);
 
   display: grid;
   grid-template-columns: max-content max-content;
@@ -165,20 +176,19 @@ footer {
 
 /* ORDER ASSIGNMENT BUTTON */
 .assign-order-btn {
-  background-color: #6fa66f;
-  color: white;
-  border-color: #6fa66f;
+  background-color: var(--button-bg);
+  color: var(--button-text);
   border-radius: 10rem;
   height: 50px;
   width: 120px;
-  border: 1px solid #6fa66f;
+  border: 1px solid var(--button-border);
   margin-right:50px;
   justify-self: end;
 }
 
 .assign-order-btn:hover {
-  background-color: #6e965f;
-  border-color: #6e965f;
+  background-color: var(--button-bg);
+  border-color: var(--button-hover-border);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
@@ -189,8 +199,8 @@ footer {
   justify-self: start;
   padding: 10px;
 
-  background-color: #f7f9fb;
-  border: 1px solid #d9e4ef;
+  background-color: var(--panel-bg);
+  border: 1px solid var(--panel-border);
 
   max-height: 256px;
 
@@ -220,10 +230,9 @@ footer {
 }
 
 .item-submit-button {
-  background-color: #6fa66f;
-  color: white;
-  border-color: #6fa66f;
-  border: 1px solid #6fa66f;
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: 1px solid var(--button-border);
   border-radius: 0.375rem;
 
   height: 30px;

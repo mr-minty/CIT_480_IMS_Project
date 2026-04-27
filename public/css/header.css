@@ -11,12 +11,37 @@ body.menu-open {
   overflow: hidden;
 }
 
-header {
-    background-color: #6fa66f;
+#headerContainer {
+    background-color: var(--bg-accent);
+
+    display: flex;
     align-items: center;
+    justify-content: space-between;
+
     font-family: "Roboto", "Sans Serif";
     font-size: 1.5rem;
-    z-index: 5;
+
+    padding: 0 20px;
+}
+
+#headerWrapper {
+    display: flex;
+    align-items: center;
+    gap: 40px; 
+}
+
+#themeToggleButton {
+    --bs-btn-bg: var(--toggle-btn-bg);
+    --bs-btn-border-color: var(--toggle-btn-border);
+    --bs-btn-color: var(--toggle-btn-text);
+
+    --bs-btn-hover-bg: var(--toggle-btn-hover);
+    --bs-btn-hover-border-color: var(--toggle-btn-hover-border);
+    --bs-btn-hover-color: var(--toggle-btn-hover-text);
+
+    --bs-btn-active-bg: var(--toggle-btn-hover);
+    --bs-btn-active-border-color: var(--toggle-btn-hover-border);
+    --bs-btn-active-color: var(--toggle-btn-hover-text);
 }
 
 #siteLogo {
@@ -29,7 +54,7 @@ header {
 }
 
 #logoBrand {
-    color: darkgreen;
+    color: var(--logo-main);
     position: absolute;
     left: 100px;
     top: 20px;
@@ -41,7 +66,7 @@ header {
     right: 0px;
 
     /* Slide left onto screen animation */
-    transform: translateX(100%);
+    transform: translateX(110%);
     transition: transform 0.3s ease;
 
     display: flex;
@@ -51,6 +76,8 @@ header {
     height: calc(100vh - 120px);
 
     overflow: hidden;
+
+    z-index: 5;
 }
 
 #dropdownMenu.show {
@@ -65,29 +92,27 @@ header {
     justify-content: center;
     color: white;
     text-decoration: none;
-    background-color: #5a8e5a;
+    background-color: var(--bg-accent-dark);
     box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
 #dropdownMenu a:hover{
-    background-color: #5087065f;
+    background-color: var(--bg-accent);
 }
 
 #dropdownMenu a:last-child{
-    background-color: #5a7e5a;
+    background-color: var(--bg-accent);
 }
 
 #dropdownMenu a:last-child:hover{
     background-color: black;
 }
 
- #hbIcon{
+#hbIcon {
     font-size: 45px;
     color: white;
-    position: relative;
-    right: 20px;
     cursor: pointer;
- }
+}
 
  #hbIcon:hover {
     color: #eee
@@ -96,38 +121,49 @@ header {
 /* MOBILE STYLING */
 @media (max-width: 768px) {
 
-#siteLogo {
-    height:30px; 
-    width:30px; 
-    position: relative; 
-    left:10px;
-    max-width: none;
-    flex-shrink: 0;
-}
+    #siteLogo {
+        height:30px; 
+        width:30px; 
+        position: relative; 
+        left:10px;
+        max-width: none;
+        flex-shrink: 0;
+    }
 
-#logoBrand {
-    color: darkgreen;
-    position: absolute;
-    left: 55px;
-    top: 11px;
-    font-size: medium;
-}
+    #logoBrand {
+        position: absolute;
+        left: 55px;
+        top: 11px;
+        font-size: medium;
+    }
 
-#dropdownMenu {
-   top: 36px;
-   position: fixed;
-   height: calc(100dvh - 36px);
-   width: 100vw;
-}
+    #dropdownMenu {
+    top: 36px;
+    position: fixed;
+    height: calc(100dvh - 36px);
+    width: 100vw;
+    }
 
 
-#hbIcon{
-    font-size: 20px;
-    color: white;
-    position: relative;
-    right: 10px;
-    cursor: pointer;
-}
+    #hbIcon{
+        font-size: 20px;
+        color: white;
+        position: relative;
+        right: 10px;
+        cursor: pointer;
+    }
 
+    #themeToggleButton {
+        border-radius: 0%;
+    }
     
+}
+
+@media (max-height: 600px) {
+  #dropdownMenu {
+    position: fixed;
+    top: 70px;
+    width: 100vw;
+    height: calc(100dvh - 70px);
+  }
 }

@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Prevent unthemed content from flashing on reload -->
+    <script src="/js/prevent-unthemed-flash.js"></script> 
+
     <!-- Favicon -->
     <link rel="icon" href="img/stockify-favicon-32x32.png" type="image/x-icon">
 
@@ -13,6 +16,7 @@
     <%- include("partials/fonts-call.ejs") %> 
 
     <!-- CSS call -->
+    <link rel="stylesheet" href="/css/variables.css">
     <link rel="stylesheet" href="/css/orders.css">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -38,6 +42,7 @@
                 <div class="container" id="orderList">
                     <% orders.forEach(({ order_id, status, user_id, created_at, items }) => { %>
                     <div class="order-card">
+                        <!-- Collapsed Order Row -->
                         <div class="order-row">
                             <span class="order-row-number">ORD-<%= String(order_id).padStart(4, "0") %></span>
                             <div class="order-row-wrapper">
@@ -45,12 +50,14 @@
                                 <span class="order-row-dropdown"><i class="fa fa-caret-down"></i></span>
                             </div>
                         </div>
+
+                        <!-- Expanded Order Row -->
                         <div class="expanded-order-row">
                             
-                             <!-- ORDER-DETAILS HEADER-->
+                             <!-- ORDER-DETAILS HEADER -->
                             <div class="order-header-left">Details</div>
                             
-                            <!-- ORDER-DETAILS LIST CONTAINER-->
+                            <!-- ORDER-DETAILS LIST CONTAINER -->
                             <div class="order-details-container">
 
                                 <div class="order-details-list">
@@ -75,7 +82,7 @@
                                 <% } %>
 
                             </div>
-                             <!-- ORDER-ITEMS HEADER-->
+                             <!-- ORDER-ITEMS HEADER -->
                             <div class="order-header-right">Items</div>
                             
                             <!-- ORDER-ITEMS LIST -->
@@ -105,6 +112,8 @@
     </main>
     
     <%- include('partials/footer') %> 
+<!-- SCRIPTS -->
     <script src="/js/orders-client.js" defer></script>
+    <script src="/js/toggle-theme.js" defer></script>
 </body>
 </html>
