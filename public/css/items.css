@@ -157,6 +157,11 @@ footer {
   color: var(--text-main);
 }
 
+#manualForm input {
+  background-color: var(--input-bg);
+  color: var(--text-main);
+}
+
 .price-unit-wrapper {
   display: flex;
   gap: 8px;
@@ -285,18 +290,18 @@ footer {
 
 
 #addItemButton:hover {
-  background-color: #6e965f;
-  border-color: #6e965f;
+  background-color: var(--button-hover);
+  border-color: var(--button-hover-border);
 }
 
 #addItemButton:active {
-  background-color: #5f8550; /* optional slightly darker */
-  border-color: #5f8550;
+  background-color: var(--button-hover);
+  border-color: var(--button-hover-border);
 }
 
 #addItemDropdownButton:active {
-  background-color: #5f8550; /* optional slightly darker */
-  border-color: #5f8550;
+  background-color: var(--button-hover);
+  border-color: var(--button-hover-border);
 }
 
 #addItemButton:focus,
@@ -342,8 +347,8 @@ footer {
 }
 
 #addItemButton:active {
-  background-color: #5f8550; 
-  border-color: #5f8550;
+  background-color: var(--button-hover);
+  border-color: var(--button-hover-border);
 }
 
 #inventoryControlPanelLabel {
