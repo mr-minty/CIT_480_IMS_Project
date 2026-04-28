@@ -43,6 +43,7 @@ footer {
   border: 1px solid #ece7de;
   border-radius: 14px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  margin-bottom: 5px;
 }
 
 
@@ -240,8 +241,8 @@ footer {
 }
 
 .item-submit-button:hover {
-  background-color: #6e965f;
-  border-color: #6e965f;
+  background-color: var(--button-hover);
+  border-color: var(--button-hover-border);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 

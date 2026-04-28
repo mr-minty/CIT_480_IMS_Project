@@ -8,10 +8,10 @@ async function loginUser(req, res) {
 //Check database for matching username and password
     try {
         authorizedUser = await authService.checkUserCredentials(userCredential);
-        if (!authorizedUser) return res.status(401).json({ error: "1Login Failed: Invalid username/email or password." });
+        if (!authorizedUser) return res.status(401).json({ error: "Login Failed: Invalid username/email or password." });
         else {
             const match = await bcrypt.compare(password, authorizedUser.password);
-            if(!match)  return res.status(401).json({ error: "2Login Failed: Invalid username/email or password." });
+            if(!match)  return res.status(401).json({ error: "Login Failed: Invalid username/email or password." });
         }
     } catch(err) {
         return res.status(500).json({ error: err.message });

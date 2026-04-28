@@ -35,7 +35,7 @@ async function retrieveItems(req, res) {
 }
 
 //Called by /api/add-item, add an additional item row
-async function createItems (req, res) {
+async function addNewItem (req, res) {
      const newItem = req.body; 
      const orgId = req.session.orgId;
     try {
@@ -50,4 +50,4 @@ async function createItems (req, res) {
 
 }
 
-module.exports = { renderItems, createItems, retrieveItems };
+module.exports = { renderItems, addNewItem, retrieveItems };

@@ -4,6 +4,6 @@ const itemsController = require("../controllers/items-controller");
 const router = express.Router();
 
 //Add new Inventory Item
-router.post("/", itemsController.createItems);
+router.post("/", itemsController.addNewItem);
 
 module.exports = router;

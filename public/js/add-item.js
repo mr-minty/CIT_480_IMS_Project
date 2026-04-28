@@ -59,6 +59,7 @@ addItemButton.addEventListener("click", async () => {
       setView();
   } else {
       resetView();
+      resetAddItemForms();
   }
 });
 
@@ -131,7 +132,7 @@ submitNewItemButton.addEventListener("click", async () => {
   //Display info message on submit
   displayResponseMessage(MESSAGE_TYPES.INFO, infoMessage);
   try {
-    const res = await fetch("/api/add-item", {
+    const res = await fetch("/api/items", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
