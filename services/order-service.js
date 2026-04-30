@@ -44,7 +44,7 @@ async function getOrders(orgId) {
 async function assignOrder(orderId, orgId, userId) {
     const [assignment] = await pool.query(
         `UPDATE orders 
-        SET user_id=?, status='assigned'
+        SET user_id=?, status='assigned', updated_at=CURRENT_TIMESTAMP
         WHERE order_id=? AND org_id=? AND status='unassigned'`,
         [userId, orderId, orgId]
     );
