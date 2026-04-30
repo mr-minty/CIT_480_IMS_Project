@@ -98,19 +98,22 @@
                                         <span><%= name %></span>
                                         <span>x</span>
                                         <span><%= quantity %></span>
-                                        <div class="item-submit-wrap">
-                                            <button class="item-submit-button" type="button">
+                                        <div class="item-ready-wrap">
+                                            <% if (status === "assigned") { %>
+                                            <button class="item-ready-button" type="button">
                                                 <i class="fa fa-plus"></i>
                                             </button>
-                                            <span class="submit-message">Submitted!</span>
+                                            <% } %>
+                                            <span class="submit-message">Picked</span>
                                         </div>
                                     </div>
                                 <% }) %>   
                                 </div>
-
-                                <div class="submitted-item-list">
-                                    
-                                </div>
+                                <% if (status === "assigned") { %>
+                                    <button class="submit-order-btn" data-order-id="<%= order_id %>">
+                                        Submit
+                                    </button>
+                                <% } %>
                             </div>
                         </div>
                     </div>

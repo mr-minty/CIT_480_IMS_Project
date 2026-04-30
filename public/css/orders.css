@@ -222,29 +222,23 @@ footer {
 /* ORDER-ITEM LIST STYLING */
 .order-items-container {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  width: 100%;
-  min-width: 0;
-
+  align-items: start;
   gap: 12px;
 }
 
 .order-items-list {
   display: flex;
   flex-direction: column;
-  justify-self: start;
   padding: 10px;
-
   background-color: var(--panel-bg);
   border: 1px solid var(--panel-border);
-
   max-height: 256px;
-
   overflow-y: auto;
 
-  width: 100%;
-  min-width: 0;
+  width: fit-content;
+  min-width: 450px;
+  max-width: 100%;
 }
 
  .order-items-list-row {
@@ -260,16 +254,15 @@ footer {
 .order-items-list-row:last-child {
   border-bottom: none;
 }
+/* ITEM READY BUTTON STYLING */
 
-/* ITEM SUBMIT BUTTON STYLING */
-
-.item-submit-wrap {
+.item-ready-wrap {
   position: relative;
   display: inline-flex;
   align-items: center;
 }
 
-.item-submit-button {
+.item-ready-button {
   background-color: var(--button-bg);
   color: var(--button-text);
   border: 1px solid var(--button-border);
@@ -279,28 +272,28 @@ footer {
   width: 30px;
 }
 
-.item-submit-button:hover {
+.item-ready-button:hover {
   background-color: var(--button-hover);
   border-color: var(--button-hover-border);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 }
 
-.item-submit-button.active {
+.item-ready-button.active {
   background-color: #d8a676;
   border-color: #d8a676;
 }
 
-.item-submit-button.active:hover {
+.item-ready-button.active:hover {
   background-color: #b48151;
 }
 
-.item-submit-button i {
+.item-ready-button i {
   display: inline-block; /* important for transform */
   transform: rotate(0deg);
   transition: transform 0.2s ease;
 }
 
-.item-submit-button i.active {
+.item-ready-button i.active {
   transform: rotate(45deg);
 }
 
@@ -324,14 +317,25 @@ footer {
   opacity: 1;
 }
 
-/* Submitted Item List styling */
-.submitted-item-list {
-  background-color: var(--panel-bg);
-  border: 1px solid var(--panel-border);
-  box-shadow: var(--panel-shadow);
-  min-height: 100%;
-  min-width: 200px;
+/* Submit Order Button styling */
+.submit-order-btn {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border-radius: 10rem;
+  height: 50px;
+  width: 120px;
+  border: 1px solid var(--button-border);
+  margin-right:50px;
+  justify-self: end;
 }
+
+.submit-order-btn:hover {
+  background-color: var(--button-bg);
+  border-color: var(--button-hover-border);
+  box-shadow: var(--card-shadow);
+  transform: translateY(1px);
+}
+
 
 @media (max-width: 768px) {
   .order-row {
@@ -379,9 +383,9 @@ footer {
     width: 100%;
   }
 
-  .submitted-item-list {
-    min-height: 50px;
-    min-width: 100%;
+  .submit-order-btn {
+    width: 100%;
+    margin-right: 0;
   }
 }
 

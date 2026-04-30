@@ -38,6 +38,7 @@ async function getOrders(orgId) {
     return orders;
 }
 
+//Update db with assigned user and order status
 async function assignOrder(orderId, orgId, userId) {
     const [assignment] = await pool.query(
         `UPDATE orders 
@@ -49,4 +50,16 @@ async function assignOrder(orderId, orgId, userId) {
     return assignment.affectedRows;
 }
 
-module.exports = { getOrders, assignOrder };
+//Update db with completed order
+async function submitOrder(orderId, orgId, userId) {
+return  "route is working";
+    const [assignment] = await pool.query(
+        `UPDATE orders 
+        SET status='completed'
+        WHERE order_id=? AND org_id=? AND status='assigned'`,
+        [userId, orderId, orgId]
+    );
+    return assignment.affectedRows;
+}
+
+module.exports = { getOrders, assignOrder, submitOrder };

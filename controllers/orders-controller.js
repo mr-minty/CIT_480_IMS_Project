@@ -57,4 +57,25 @@ async function assignOrder(req, res) {
     }
 }
 
-module.exports = { renderOrders, getOrders, assignOrder };
+async function submitOrder(req, res) {
+    const { order_id } = req.params;
+    const userId = req.session.userId;
+    const orgId = req.session.orgId;
+
+    try {
+        const result = await orderService.submitOrder(order_id, orgId, userId);
+
+        if (result === 0) {
+            return res.status(500).json({ error: "Order submission failed" });
+        }
+
+
+        return res.json({ success: true, message: result });
+
+    } catch (err) {
+        console.log(err);
+        return res.status(500).json({ error: "Server error" });
+    }
+}
+
+module.exports = { renderOrders, getOrders, assignOrder, submitOrder };

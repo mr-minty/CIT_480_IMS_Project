@@ -9,11 +9,8 @@ document.querySelectorAll(".order-row").forEach(row => {
   });
 });
 
-//Get User name from user_id of order
-
-
 //Mark item as picked
-document.querySelectorAll(".item-submit-button").forEach(button => {
+document.querySelectorAll(".item-ready-button").forEach(button => {
   button.addEventListener("click", () => {
     const submitMessage = button.nextElementSibling;
     submitMessage.classList.toggle("show");
@@ -32,6 +29,19 @@ document.querySelectorAll(".assign-order-btn").forEach(button => {
     if (assignmentResult.success){
       //Fill in UI with temp values
       updateAssignmentUi(button, assignmentResult);
+    }
+  });
+});
+
+//submit order as complete
+document.querySelectorAll(".submit-order-btn").forEach(button => {
+  button.addEventListener("click", async () => {
+    const order_id = button.getAttribute("data-order-id");
+
+    const submissionResult = await requestOrderSubmission(order_id);
+    if(submissionResult.success){
+      //Move the order to the completed section
+      updateSubmissionUi(button, submissionResult);
     }
   });
 });
@@ -55,6 +65,24 @@ async function requestOrderAssignment(order_id) {
   return data;
 }
 
+async function requestOrderSubmission(order_id) {
+  const res = await fetch(`/api/orders/${ order_id }/submit`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "same-origin"
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    console.log("error", data);
+    return { success: false };
+  }
+
+  return data;
+}
+
+
 // ---------- UI helpers ----------
 
 function updateAssignmentUi(button, assignmentResult) {
@@ -62,4 +90,8 @@ function updateAssignmentUi(button, assignmentResult) {
   button.closest(".order-card").querySelector(".order-row-status").classList.toggle("assigned")
   button.closest(".order-card").querySelector(".status").textContent = 'assigned';
   button.closest(".order-card").querySelector(".assigned-to").textContent = assignmentResult.name;
+}
+
+function updateSubmissionUi(button, submissionResult) {
+  console.log("result: ", submissionResult.message);
 }
