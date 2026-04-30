@@ -37,6 +37,9 @@
                 </div>
             </div>
             <div class="card">
+                <% if (orders.length === 0) { %>
+                <div class="no-orders">No orders to display</div>
+                <% } else { %>
                 <div class="container" id="orderList">
                     <% orders.forEach(({ order_id, status, user_id, created_at, updated_at, items, user_name }) => { %>
                     <div class="order-card">
@@ -73,19 +76,15 @@
                                         <span>Submitted: </span>
                                         <span><%= new Date(created_at).toLocaleString() %></span>
                                     </div>
-                                    <% if (status === "assigned") { %>
-                                    <div class="order-details-list-row">  
+                                    <div class="order-details-list-row assigned-at <%= status !== 'assigned' ? 'hidden-display' : '' %>">  
                                         <span>Assigned: </span>
                                         <span><%= new Date(updated_at).toLocaleString() %></span>
                                     </div>
-                                    <% } %>
                                 </div>
 
-                                <% if (status === "unassigned") { %>
-                                <button class="assign-order-btn" type="button" data-order-id="<%= order_id %>">
+                                <button class="assign-order-btn <%= status !== 'assigned' ? '' : 'hidden-fade' %>" type="button" data-order-id="<%= order_id %>">
                                     Assign to Me
                                 </button>
-                                <% } %>
 
                             </div>
                              <!-- ORDER-ITEMS HEADER -->
@@ -99,26 +98,23 @@
                                         <span>x</span>
                                         <span><%= quantity %></span>
                                         <div class="item-ready-wrap">
-                                            <% if (status === "assigned") { %>
-                                            <button class="item-ready-button" type="button">
+                                            <button class="item-ready-button <%= status !== 'assigned' ? 'hidden-fade' : '' %>" type="button">
                                                 <i class="fa fa-plus"></i>
                                             </button>
-                                            <% } %>
                                             <span class="submit-message">Picked</span>
                                         </div>
                                     </div>
                                 <% }) %>   
                                 </div>
-                                <% if (status === "assigned") { %>
-                                    <button class="submit-order-btn" data-order-id="<%= order_id %>">
+                                    <button class="submit-order-btn <%= status !== 'assigned' ? 'hidden-fade' : '' %>" data-order-id="<%= order_id %>">
                                         Submit
                                     </button>
-                                <% } %>
                             </div>
                         </div>
                     </div>
                     <% }) %>
                 </div>
+                <% } %>
             </div>
             
         </div>
