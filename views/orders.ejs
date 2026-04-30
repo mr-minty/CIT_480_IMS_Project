@@ -29,7 +29,6 @@
 
     <main class="flex-grow-1">
         <div class="container mt-2">
-            
              <!-- Header row (separate) -->
             <div class="row">
                 <div class="col-12">
@@ -37,23 +36,24 @@
                 <hr class="w-100">
                 </div>
             </div>
-
             <div class="card">
                 <div class="container" id="orderList">
-                    <% orders.forEach(({ order_id, status, user_id, created_at, items }) => { %>
+                    <% orders.forEach(({ order_id, status, user_id, created_at, updated_at, items, user_name }) => { %>
                     <div class="order-card">
                         <!-- Collapsed Order Row -->
                         <div class="order-row">
                             <span class="order-row-number">ORD-<%= String(order_id).padStart(4, "0") %></span>
                             <div class="order-row-wrapper">
-                                <span class="order-row-status"><%= status %></span>
+                                <% const assignedClass = status === 'assigned' ? 'assigned' : ''; %>
+                                <span class="order-row-status <%= assignedClass %>">
+                                  <%= status === "unassigned" ? "not assigned" : status %>
+                                </span>
                                 <span class="order-row-dropdown"><i class="fa fa-caret-down"></i></span>
                             </div>
                         </div>
 
                         <!-- Expanded Order Row -->
-                        <div class="expanded-order-row">
-                            
+                        <div class="order-row-body">
                              <!-- ORDER-DETAILS HEADER -->
                             <div class="order-header-left">Details</div>
                             
@@ -63,20 +63,26 @@
                                 <div class="order-details-list">
                                     <div class="order-details-list-row">  
                                         <span>Assigned To: </span>
-                                        <span><%=  user_id || " N/A"%></span>
+                                        <span class="assigned-to"><%=  user_name || "N/A"%></span>
                                     </div>
                                     <div class="order-details-list-row">  
                                         <span>Status: </span>
-                                        <span><%=  status %></span>
+                                        <span class="status"><%=  status %></span>
                                     </div>
                                     <div class="order-details-list-row">  
                                         <span>Submitted: </span>
                                         <span><%= new Date(created_at).toLocaleString() %></span>
                                     </div>
+                                    <% if (status === "assigned") { %>
+                                    <div class="order-details-list-row">  
+                                        <span>Assigned: </span>
+                                        <span><%= new Date(updated_at).toLocaleString() %></span>
+                                    </div>
+                                    <% } %>
                                 </div>
 
                                 <% if (status === "unassigned") { %>
-                                <button class="assign-order-btn" type="button">
+                                <button class="assign-order-btn" type="button" data-order-id="<%= order_id %>">
                                     Assign to Me
                                 </button>
                                 <% } %>
@@ -84,23 +90,27 @@
                             </div>
                              <!-- ORDER-ITEMS HEADER -->
                             <div class="order-header-right">Items</div>
-                            
-                            <!-- ORDER-ITEMS LIST -->
-                            <div class="order-items-list">
-                            <% items.forEach(({ name, quantity }) => { %>
-                                <div class="order-items-list-row">  
-                                    <span><%= name %></span>
-                                    <!-- <span><i class="fa fa-times"></i></span> -->
-                                     <span>x</span>
-                                    <span><%= quantity %></span>
-                                    <div class="item-submit-wrap">
-                                        <button class="item-submit-button" type="button">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                        <span class="submit-message">Submitted!</span>
+                            <div class="order-items-container">
+                                <!-- ORDER-ITEMS LIST -->
+                                <div class="order-items-list">
+                                <% items.forEach(({ name, quantity }) => { %>
+                                    <div class="order-items-list-row">  
+                                        <span><%= name %></span>
+                                        <span>x</span>
+                                        <span><%= quantity %></span>
+                                        <div class="item-submit-wrap">
+                                            <button class="item-submit-button" type="button">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                            <span class="submit-message">Submitted!</span>
+                                        </div>
                                     </div>
+                                <% }) %>   
                                 </div>
-                            <% }) %>    
+
+                                <div class="submitted-item-list">
+                                    
+                                </div>
                             </div>
                         </div>
                     </div>
