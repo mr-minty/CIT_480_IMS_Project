@@ -11,11 +11,11 @@ const logoutRouter = require("../routes/logout-route.js");
 const accountRouter = require("../routes/account-route.js");
 const itemsPageRouter = require("./items-page.js");
 const itemsApiRouter = require("./items-api.js");
-const addItemRouter = require("../routes/add-item-route.js");
 const retrieveItemsRouter = require("./items-api.js");
 const orgRouter = require("../routes/org-route.js");
 const aiRouter = require("../routes/ai-route.js");
-const ordersRouter = require("../routes/orders-route.js");
+const ordersRouter = require("./orders-page.js");
+const ordersApiRouter = require("./orders-api.js");
 
 //External middleware
 const requireLogin = require("../middleware/auth.js");
@@ -32,6 +32,7 @@ router.use("/api/items", requireLogin, itemsApiRouter);
 router.use("/api/ai/add-item", requireLogin, aiRouter);
 router.use("/organization", requireLogin, orgRouter);
 router.use("/orders", requireLogin, ordersRouter);
+router.use("/api/orders/", requireLogin, ordersApiRouter);
 
 //Static Files
 router.use(express.static(path.join(__dirname, "..", "public")));

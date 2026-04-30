@@ -47,7 +47,6 @@ async function registerUser (req, res){
 
 //User does not exist, insert them into the DB
     try {
-        //console.log("[PW]: " + password + "\n[HASH]: " + newUser.password); //reeeemove
         const user_id = await userService.addUser(newUser);
         return res.status(201).json({ message: "User created successfully", userId: user_id });
     } catch (err) {

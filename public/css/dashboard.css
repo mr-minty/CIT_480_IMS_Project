@@ -19,7 +19,7 @@ h1{
 }
 
 #welcome-banner {
-  font-family: "Roboto", "Sans Serif";
+  font-family: "Roboto", sans-serif;
 }
 
 .dashboard-container{
@@ -33,7 +33,7 @@ h1{
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
   overflow: hidden;
 
-  font-family: "Roboto", "Sans Serif";
+  font-family: "Roboto", sans-serif;
   font-size: 1.25rem;
   font-weight: 500;
 

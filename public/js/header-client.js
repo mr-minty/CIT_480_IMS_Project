@@ -17,7 +17,4 @@ if (dropdownButton && dropdownMenu && headerWrapper) {
     }
   });
 
-  window.addEventListener("resize", () => {
-    console.log("Viewport changed");
-  });
 }

@@ -1,6 +1,6 @@
 /* GLOBAL/DESKTOP STYLING */
 :root {
-    font-family: "Roboto", "Sans Serif";
+    font-family: "Roboto", sans-serif;
 }
 
 body {
@@ -18,7 +18,7 @@ body.menu-open {
     align-items: center;
     justify-content: space-between;
 
-    font-family: "Roboto", "Sans Serif";
+    font-family: "Roboto", sans-serif;
     font-size: 1.5rem;
 
     padding: 0 20px;
@@ -31,17 +31,21 @@ body.menu-open {
 }
 
 #themeToggleButton {
-    --bs-btn-bg: var(--toggle-btn-bg);
-    --bs-btn-border-color: var(--toggle-btn-border);
-    --bs-btn-color: var(--toggle-btn-text);
+  background: var(--toggle-btn-bg);
+  border: 1px solid var(--toggle-btn-border);
+  color: var(--toggle-btn-text);
+}
 
-    --bs-btn-hover-bg: var(--toggle-btn-hover);
-    --bs-btn-hover-border-color: var(--toggle-btn-hover-border);
-    --bs-btn-hover-color: var(--toggle-btn-hover-text);
+@media (hover: hover) and (pointer: fine) {
+  #themeToggleButton:hover {
+    background: var(--toggle-btn-hover);
+    border-color: var(--toggle-btn-hover-border);
+    color: var(--toggle-btn-hover-text);
+  }
+}
 
-    --bs-btn-active-bg: var(--toggle-btn-hover);
-    --bs-btn-active-border-color: var(--toggle-btn-hover-border);
-    --bs-btn-active-color: var(--toggle-btn-hover-text);
+#themeToggleButton:active {
+  background: var(--toggle-btn-hover);
 }
 
 #siteLogo {

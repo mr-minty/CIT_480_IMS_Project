@@ -37,13 +37,23 @@
     --card-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
     --panel-bg: #eef3f8;
     --panel-border: #eef3f8;
+    --panel-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
 
     /* Input styling */
     --input-bg: white;
 
     /* Misc */
     --row-hover: rgba(95, 168, 122, 0.2);
-    
+    --dropdown-hover: #f3f4f6;
+
+    /* Status */
+    --status-unassigned-bg: #f5eeee;
+    --status-unassigned-border: #f5eeee;
+    --status-unassigned-text: #7a4d4d;
+
+    --status-assigned-bg: #eef3ee;
+    --status-assigned-border: #eef3ee;
+    --status-assigned-text: #4d6b52;
 }
 
 [data-theme="dark"] {
@@ -90,11 +100,21 @@
     --panel-border: #40385a;
 
     /* Input styling */
-    --input-bg: #3c3555;;
+    --input-bg: #3c3555;
 
     /* Misc */
     --row-hover: rgba(123, 95, 168, 0.2); /*Change green row hover to purple on items table*/
     --bs-secondary-color: rgba(255, 255, 255, 0.6); /*Boostrap override for card subtext*/
+    --dropdown-hover: #2a2638;
+
+    /* Status styling */
+    --status-unassigned-bg: rgba(197, 34, 34, 0.12);
+    --status-unassigned-border: rgba(197, 34, 34, 0.35);
+    --status-unassigned-text: #de4a4a;
+
+    --status-assigned-bg: rgb(34, 197, 94, 0.12);
+    --status-assigned-border: rgb(34, 197, 94, 0.35);
+    --status-assigned-text: #4ade80;
 }
 
 .card {
