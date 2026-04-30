@@ -448,5 +448,11 @@ footer {
 
   .assign-order-btn {
     margin-right: 12px;
+
+  }
+
+  .order-items-list {
+    min-width: 0;      
+    width: 100%;     
   }
 }
