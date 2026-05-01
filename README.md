@@ -39,7 +39,15 @@
 1. Install Node.js, make sure it works by running `node -v`
 2. Run the command `npm install`, this will install all necessary dependencies
 3. Run the command `node .`
-4. In a web browser, navigate to localhost:3000 via your web browser and you should see the web app 
+4. In a web browser, navigate to localhost:3000 via your web browser and you should see the web app
+
+### Pre-configured credentials
+You may login to the site by either creating an account using the `org_code` "DEFAULT001" or using one of these pre-made accounts:
+|   Username    |   Password    |
+| ------------- | ------------- |
+|   org_owner   |   org_pass    |
+|    manager    | manager_pass  |
+|     staff     |  staff_pass   |
 
 # Contributing to the project:
 
@@ -83,6 +91,7 @@ CIT_480_IMS_Project/
   controllers/        - Business logic between routes and models
   middleware/         - Custom Express middleware
   db/                 - Database connection and models
+  ai/                 - OpenAI api calls
   services/           - External services or API integrations
   views/              - EJS templates for server-side rendering
   public/             - Static files (images, CSS, client-side JS)
