@@ -77,6 +77,12 @@ async function handleSmartFill() {
       credentials: "same-origin",
     });
 
+    if(!res.ok) {
+      displayResponseMessage(MESSAGE_TYPES.ERROR, "Smart fill is not configured, please use manual fill");
+      addMode = "manual";
+      showCurrentForm();
+      return;
+    }
     const { name, category, supplier, price, unit, quantity } = await res.json();
 
     document.getElementById("newItemName").value = name;
