@@ -38,7 +38,7 @@
 ## Run the Node.js app locally
 1. Install Node.js, make sure it works by running `node -v`
 2. Run the command `npm install`, this will install all necessary dependencies
-3. Run the command `node .`
+3. Run the command `node .` or `node [PATH_TO_"CIT_480_IMS_Project"]`
 4. In a web browser, navigate to localhost:3000 via your web browser and you should see the web app
 
 ### Pre-configured credentials
