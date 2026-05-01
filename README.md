@@ -18,11 +18,15 @@
 
 ## Set Up MySQL Database
 1. Install MariaDB/MySQL server (You will create the password for the default "root" account here)
-2. Download 'IMS_Database_Schema.sql"
-3. Run the command `mysql -u root -p < [PATH_TO_"IMS_Database_Schema.sql"]`
-4. Enter your password
-5. This should have created the pre-filled database 'ims_test'
-6. You can interact with 'ims_test' by running `mysql -u root -p ims_test` and your OS password OR `mysql -u ims_user -p ims_test` with the password: 'ims_pass'
+2. Download 'IMS_Database_Schema.sql'
+3. Open 'IMS_Database_Schema.sql' in a text editor
+4. Replace "change_me_password" with a strong, secure password
+5. Back in the console, run the command `mysql -u root -p < [PATH_TO_"IMS_Database_Schema.sql"]`
+6. Enter the password from *step 1*
+7. This should have created the pre-filled database 'ims_test'
+8. You can interact with 'ims_test' by running `mysql -u root -p ims_test` and your OS password OR `mysql -u ims_user -p ims_test` with the password you configured in *step 4*
+
+**Note: You will be prompted for the password ***after*** running `mysql -u user -p database_name`*
 
 ## Clone this repo to a local folder on your device
 1. Install git, make sure it works by running `git -v`
