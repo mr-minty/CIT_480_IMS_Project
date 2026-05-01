@@ -14,7 +14,7 @@
 - Git: https://git-scm.com/downloads/  
 - Node.js: https://nodejs.org/en/download/
 - MariaDB/MySQL: https://mariadb.org/download/
-- OpenAI API: https://openai.com/api/ *optional
+- OpenAI API: https://openai.com/api/ **optional*
 
 ## Set Up MySQL Database
 1. Install MariaDB/MySQL server (You will create the password for the default "root" account here)
