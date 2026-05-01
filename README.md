@@ -11,16 +11,17 @@
 >Do not clone this repository into networked or cloud-synced folders (e.g., Google Drive, OneDrive). Pushing commits from such locations can corrupt the repository. Use a local folder instead.
 ## Required tools
 
-- Git: https://git-scm.com/downloads/win  
+- Git: https://git-scm.com/downloads/  
 - Node.js: https://nodejs.org/en/download/
-- MariaDB/MySQL: https://mariadb.org/download/?t=mariadb&p=mariadb&r=12.0.2&os=windows&cpu=x86_64&pkg=msi&mirror=xtom_fre
+- MariaDB/MySQL: https://mariadb.org/download/
+- OpenAI API: https://openai.com/api/ *optional
 
 ## Set Up MySQL Database
 1. Install MariaDB/MySQL server (You will create the password for the default "root" account here)
 2. Download 'IMS_Database_Schema.sql"
 3. Run the command `mysql -u root -p < [PATH_TO_"IMS_Database_Schema.sql"]`
 4. Enter your password
-5. This should have created the empty database 'ims_test'
+5. This should have created the pre-filled database 'ims_test'
 6. You can interact with 'ims_test' by running `mysql -u root -p ims_test` and your OS password OR `mysql -u ims_user -p ims_test` with the password: 'ims_pass'
 
 ## Clone this repo to a local folder on your device
@@ -28,17 +29,17 @@
 2. Navigate to the directory you want to clone the repo inside
 3. Run `git clone https://github.com/mr-minty/CIT_480_IMS_Project`
 4. You should now see a directory called 'CIT_480_IMS_Project' in your current directory
-5. Navigate to the CIT_480_IMS_Project directory, all instructions moving forward will be run from inside this directory
+5. Navigate to the CIT_480_IMS_Project directory, **all instructions moving forward will be run from inside this directory**
 
 ## Configure the .env file
 1. In your project folder do `copy .env.example .env` or create a blank text file titled '.env'
-2. The default environment variables in .env.example will work. You do not need to change the password.
+2. Follow env.example to enter values for the environment variables
 
 ## Run the Node.js app locally
 1. Install Node.js, make sure it works by running `node -v`
 2. Run the command `npm install`, this will install all necessary dependencies
 3. Run the command `node .`
-4. In a web browser, navigate to localhost:3000 and you should see "IMS Project is running 🚀"
+4. In a web browser, navigate to localhost:3000 via your web browser and you should see the web app 
 
 # Contributing to the project:
 
