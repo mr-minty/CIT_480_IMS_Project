@@ -8,28 +8,28 @@ const userService = require("../services/user-service");
 
 async function registerUser (req, res){
 //Get submitted form elements and put them in newUser object   
-    const { username, email, password, role, name, dob, org_code } = req.body;
+    const { username, email, password, role, name, dob } = req.body;
     const newUser = { username, email, password, role, name, dob };
     const userCredential = { username, email };
 
 //Generate hash for storing password securely
     newUser.password = await bcrypt.hash(newUser.password, 10);
 
-//Check if org code is valid
+//Check if org code is valid (Currently Removed from Scope)
 
-    try {
-        const validOrg = await authService.verifyOrgCode(org_code);
-        if (!validOrg) {
-            return res.status(409).json({ orgCode: "This org code is not valid" });
-        }
-        newUser.org_id = validOrg.org_id;
-    } catch(err){
-        console.log("[ERROR1]: " + err);
-        return res.status(500).json({ 
-            error: err.message,
-            form: "Something went wrong, please try again."
-         });
-    }
+    // try {
+    //     const validOrg = await authService.verifyOrgCode(org_code);
+    //     if (!validOrg) {
+    //         return res.status(409).json({ orgCode: "This org code is not valid" });
+    //     }
+    //     newUser.org_id = validOrg.org_id;
+    // } catch(err){
+    //     console.log("[ERROR1]: " + err);
+    //     return res.status(500).json({ 
+    //         error: err.message,
+    //         form: "Something went wrong, please try again."
+    //      });
+    // }
 
 //Check if User already exists
     try {

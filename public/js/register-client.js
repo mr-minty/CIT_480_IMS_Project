@@ -27,9 +27,9 @@ document.getElementById("registerForm").addEventListener("submit", async (e) => 
       document.getElementById("passwordError").innerText = "password must be between 8-20 characters";
       hasError = true;
   } else if(!/[A-Z]/.test(data.password)) {
-      document.getElementById("passwordError").innerText = "Password must ";
+      document.getElementById("passwordError").innerText = "Password must contain a capital letter";
       hasError = true;
-  } else if(data.password)
+  } 
 
 
   
