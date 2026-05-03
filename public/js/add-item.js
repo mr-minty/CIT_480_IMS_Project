@@ -138,7 +138,7 @@ submitNewItemButton.addEventListener("click", async () => {
   //Display info message on submit
   displayResponseMessage(MESSAGE_TYPES.INFO, infoMessage);
   try {
-    const res = await fetch("/api/items", {
+    const res = await fetch("/api/items/add", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

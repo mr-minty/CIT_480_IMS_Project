@@ -4,9 +4,9 @@ const itemsController = require("../controllers/items-controller");
 const router = express.Router();
 
 //Add new Inventory Item 
-router.get("/", itemsController.retrieveItems);
+router.post("/retrieve", itemsController.retrieveItems);
 
 //Add new Inventory Item
-router.post("/", itemsController.addNewItem);
+router.post("/add", itemsController.addNewItem);
 
 module.exports = router;

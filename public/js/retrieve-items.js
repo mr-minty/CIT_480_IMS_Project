@@ -10,7 +10,7 @@ sortButton.addEventListener("click", async () => {
     }
 
     
-    const res = await fetch("/api/retrieve-item", {
+    const res = await fetch("/api/items/retrieve", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
