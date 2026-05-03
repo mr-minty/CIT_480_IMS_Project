@@ -14,7 +14,7 @@ async function parseNewItem (prompt) {
             Rules:
             - The first letter of "name" MUST be capitalized
             - "name" must be singular, strip any ending s AND convert plural form to singular if present
-            - "category" must be one of: "Fruit", "Vegetable", "Bakery", "Beverage", "Meat", "Frozen", or "Nuts and Seeds"
+            - "category" must be one of: "Fruit", "Vegetables", "Bakery", "Beverage", "Meat", "Frozen", or "Nuts and Seeds"
             - Infer category from the product name, not the supplier
             - "supplier" is the company/vendor name mentioned in the text
             - "price" must be numeric only
